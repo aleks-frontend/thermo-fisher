@@ -358,6 +358,11 @@
       .copy li {
         font-size: 10.31pt;
       }
+      
+      .is-safari .copy p,
+      .is-safari .copy h1, 
+      .is-safari .copy h2,
+      .is-safari .copy li { font-size: 10.15pt; }
 
       .copy li li {
         margin-top: 11pt;
@@ -1199,6 +1204,17 @@
     <script>
 
       console.clear();
+      
+      function safariDetect() {
+        var ua = navigator.userAgent.toLowerCase(); 
+        const safariCheck = ua.indexOf('safari') !== -1;
+        const notChromeCheck = ua.indexOf('chrome') === -1;
+        if (safariCheck && notChromeCheck) { 
+          document.body.classList.add('is-safari');
+        }
+      }
+
+      safariDetect();      
 
       // Tracking text changes and firing text restriction functions (mutationObserver)
       const overflowObserver = new MutationObserver(function(mutations) {
@@ -1260,7 +1276,6 @@
       TextFit.fit({
         selector: '.textFit'
       });
-
 
     </script>
 
