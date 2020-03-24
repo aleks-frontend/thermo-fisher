@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html data-sign="OSZ">
+  <head>
+    <title>Template title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/minireset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/placeholder-controller.css">
+
+    <style>
+      @import url('https://outfit-assets-production.s3.amazonaws.com/fonts/HelveticaNeueLTW1G/stylesheet.css');
+
+
+
+      :root {
+        --black: #000;
+        --white: {{{account.colors.white}}};
+        --red: {{{account.colors.primary}}};
+        --green: {{{account.colors.blue-medium}}};
+        --orange: {{{account.colors.orange}}};
+        --blue: {{{account.colors.dark-blue}}};
+        --gray: {{{account.colors.gray-medium}}};
+        --table-gray: #c9cacc;
+        --table-light-gray: #e2e3e5;
+      }
+
+
+
+      /* Input Order
+
+      {{show-crop}}
+      {{placeholder-opacity}}
+      {{placeholder-image-1}}
+      {{placeholder-image-2}}
+      {{placeholder-image-3}}
+      {{placeholder-toggle-new}}
+      {{placeholder-validation}}
+      {{{TF_-front-page-layout-style-amf}}}
+      {{{TF_branding-theme--amf}}}
+      {{{TF_hero-image--amf}}}
+      {{{TF_heading--amf}}}
+      {{{TF_headings-position--amf}}}
+      {{{TF_subheading--amf}}}
+      {{{TF_body-copy-column-left--amf}}}
+      {{{TF_body-copy-column-right--amf}}}
+      {{{TF_distributor-logo--amf}}}
+      {{{TF_primary-logo--amf}}}
+      {{{TF_footer-text--amf}}}
+      {{{TF_terms--amf}}}
+      {{#collection.TF_pages--amf}}
+      {{#block.TF_internal-page--amf}}{{/block.TF_internal-page--amf}}
+      {{#block.TF_back-page--amf}}
+      {{{brand-logo}}}
+      {{#collection.body-content--amf}}{{/collection.body-content--amf}}
+      {{{distributor-logo}}}
+      {{{primary-logo--amf}}}
+      {{{terms-upper}}}
+      {{{footer-text--amf}}}
+      {{{terms-lower}}}
+      {{/block.TF_back-page--amf}}
+      {{/collection.TF_pages--amf}}
+
+      */
+
+      html {
+        font-family: 'HelveticaNeueLT W1G 45 Lt';
+        font-size: 11pt;
+        color: var(--gray);
+        word-break: break-word;
+      }
+
+      .backgroundImage {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+      }
+
+      .backgroundImage div {
+        width: auto !important;
+        height: auto !important;
+        right: 0;
+        bottom: 0;
+      }
+
+      .fit {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .frontPageLayout--layout2 .fit {
+        padding-bottom: 7pt;
+      }
+
+      .fit--backPage {
+        padding-top: 45pt;
+      }
+
+      .header {
+        position: relative;
+      }
+
+      .header--frontPage {
+        margin-bottom: 32pt;
+        padding: 30pt 0 24pt;
+      }
+
+      .header--backPage {
+        min-height: 30pt;
+        margin-bottom: 4pt;
+        padding: 0pt 45pt;
+        font-size: 0;
+      }
+
+      .frontPageLayout--layout1 .header {
+        height: 535pt;
+      }
+
+      .frontPageLayout--layout2 .header {
+        min-height: 241pt;
+        max-height: 383pt;
+        padding-bottom: 5pt;
+      }
+
+      .frontPageLayout--layout3 .header {
+        height: 283pt;
+      }
+
+      .hero {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+
+      .frontPageLayout--layout2 .hero {
+        height: 241pt;
+      }
+
+      .frontPageLayout--layout3 .hero {
+        top: 114pt;
+      }
+
+      .strip {
+        display: none;
+        position: relative;
+        height: 42.4pt;
+        padding: 0pt 35pt;
+        font-size: 0;
+      }
+
+      .brandingTheme--thermoScientific .strip--thermoScientific,
+      .brandingTheme--appliedBiosystems .strip--appliedBiosystems,
+      .brandingTheme--invitrogen .strip--invitrogen,
+      .brandingTheme--ionTorrent .strip--ionTorrent,
+      .brandingTheme--gibco .strip--gibco,
+      .brandingTheme--thermoFisher .strip--thermoFisher {
+        display: flex;
+        align-items: center;
+      }
+
+      .strip--thermoScientific,
+      .strip--invitrogen{
+        background: var(--red);
+      }
+
+      .strip--appliedBiosystems {
+        background: var(--blue);
+      }
+
+      .strip--ionTorrent {
+        background: var(--gray);
+      }
+
+      .strip--gibco {
+        background: var(--green);
+      }
+
+      .strip--thermoFisher {
+        background: var(--white);
+      }
+
+      .strip__logo,
+      .logo--brand {
+        object-position: left center;
+      }
+
+      .strip__logo {
+        width: 170pt;
+        height: 38pt;
+      }
+
+      .logo--brand {
+        min-height: 30pt;
+        max-height: 50pt;
+        width: 137pt;
+        margin: 13pt 23pt;
+      }
+
+      .content__container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+
+      .frontPageLayout--layout1 .content__container {
+        min-height: calc((92.1% / 100) *{{{TF_headings-position--amf}}});
+        padding: 68pt 43pt 0pt;
+      }
+
+      .frontPageLayout--layout2 .content__container {
+        justify-content: flex-start;
+        padding: 68pt 43pt 0pt;
+        padding-top: calc(68pt + (1.29pt * {{{TF_headings-position--amf}}}));
+      }
+
+      .frontPageLayout--layout3 .content__container {
+        min-height: calc((83.1% / 100) *{{{TF_headings-position--amf}}});
+        padding: 42pt 43pt 0pt;
+      }
+
+
+      .content {
+        position: relative;
+      }
+
+      .heading {
+        color: var(--black);
+      }
+
+      .frontPageLayout--layout1 .heading,
+      .frontPageLayout--layout2 .heading {
+        font-size: 33.2pt;
+        line-height: 1.15em;
+      } 
+
+      .frontPageLayout--layout3 .heading {
+        font-size: 30.4pt;
+        line-height: 1.15em;
+      } 
+
+      .frontPageLayout--layout1 .subheading,
+      .frontPageLayout--layout2 .subheading {
+        font-size: 21.9pt;
+        line-height: 1.3em;
+      } 
+
+      .frontPageLayout--layout3 .subheading {
+        font-size: 17pt;
+        line-height: 1.3em;
+      } 
+
+      .heading + .subheading {
+        margin-top: 13pt;
+      }
+
+      .body {
+        flex: 1;  
+      }
+
+      .fit--frontPage .body,
+      .fit--backPage .body {
+        padding: 0pt 43.9pt;
+      }
+
+      .fit--internalPage .body {
+        padding: 50pt 43.9pt;
+      }
+
+      .column__container {
+        display: flex;
+      }
+
+      .fit--backPage .column__container + .table__container {
+        margin-top: 74.2pt;
+      }
+
+      .table__container + .fit--backPage .column__container {
+        margin-top: 40.8pt;
+      }
+
+      .column {
+        width: 264pt;
+      }
+
+      .column--backPage {
+        flex: 1;
+        margin-left: 0pt;
+      }
+
+      .column:last-child {
+        margin-left: 13pt;
+      }
+
+      .column--backPage:last-child {
+        margin-left: 0pt;
+      }
+
+      .column--backPage + .column--backPage {
+        width: 264pt;
+        margin-left: 13pt;
+      }
+
+      .copy h1,
+      .copy h2,
+      .copy p {
+        font-size: 10.36pt;
+        line-height: 1.4em;
+      }
+
+      .copy h1 {
+        font-family: 'HelveticaNeueLT W1G 65 Md';
+        font-weight: 600;
+        letter-spacing: -0.3pt;
+        color: var(--black);
+      }
+
+      .copy h2,
+      .copy p strong,
+      .copy li strong {
+        font-family: 'HelveticaNeueLT W1G 65 Md';
+        font-weight: 500;
+      }
+
+      .copy h2 {
+        letter-spacing: 0.2pt;
+      }
+
+      .copy ul,
+      .copy ol {
+        margin-bottom: 11pt;
+        padding-left: 11pt;
+      }
+
+      .column--backPage .copy ul,
+      .column--backPage .copy ol {
+        padding-left: 10pt;
+      }
+
+      .copy ul,
+      .copy ul ul ul,
+      .copy ol ul ul {
+        list-style-type: disc;
+      }
+
+      .copy ul ul,
+      .copy ol ul {
+        list-style-type: " – ";
+      }
+
+      .copy p,
+      .copy li {
+        font-size: 10.31pt;
+      }
+
+      .copy li li {
+        margin-top: 11pt;
+      }
+
+      .copy p {
+        margin-bottom: 12pt;
+      }
+
+      .copy li {
+        margin-bottom: 11pt;
+      }
+
+      .copy h1:last-child,
+      .copy h2:last-child,
+      .copy p:last-child,
+      .copy ul:last-child,
+      .copy ol:last-child,
+      .copy li:last-child {
+        margin-bottom: 0;
+      }
+
+      .table__container {
+        margin-bottom: 24pt;
+      }
+
+      .table__container:last-child {
+        margin-bottom: 0pt;
+      }
+
+      .table__container + .table__container--4 {
+        margin-top: 30pt;
+      }
+
+      .table__title {
+        margin-bottom: 1pt;
+        font-family: 'HelveticaNeueLT W1G 65 Md';
+        font-size: 9.8pt;
+        font-weight: 600;
+        line-height: 1.2em;
+      }
+
+      .table__container--4 .table__title {
+        font-family: 'HelveticaNeueLT W1G 45 Lt';
+        font-size: 8.2pt;
+        line-height: 1.3em;
+      }
+
+      .table__container--4 .table__title strong {
+        font-family: 'HelveticaNeueLT W1G 65 Md';
+        font-size: 7.52pt;
+        font-weight: 600;
+      }
+
+      .fit--backPage .table__title {
+        font-size: 10pt;
+      }
+
+      .table {
+        width: 100%;
+        margin-bottom: 2.1pt;
+        border-collapse: collapse;
+      }
+
+      .table--backPage {
+        margin-bottom: 4.4pt;
+      }
+
+      .table__row {
+        border-top: 0.7pt solid var(--gray);
+      }
+
+      .table--2 .table__row:nth-child(odd) {
+        background-color: var(--table-gray); 
+      }
+
+      .table--2 .table__row:nth-child(even) {
+        background-color: var(--table-light-gray); 
+      }
+
+      .table__row:nth-child(1) {
+        border-top: 0;
+      }
+
+      .table__row:last-child {
+        border-bottom: 0.7pt solid var(--gray);
+      }
+
+      .table .table__row--heading:first-child .table__item--heading {
+        background-color: var(--black); 
+        border-top: 0;
+      }
+
+      .table__row--separatorY,
+      .table__row--separatory {
+        background-color: var(--table-gray); 
+        border-top: 0.7pt solid var(--table-gray);
+      }
+
+      .table__row--separatorY + .table__row,
+      .table__row--separatory + .table__row {
+        border-top: 0.7pt solid var(--table-gray);
+      }
+
+
+      .table--1 .table__item {
+        padding: 1.5pt 5pt 0.8pt;
+        font-size: 9.3pt;
+        line-height: 1.3em;
+      }
+
+      .table--2 .table__item {
+        padding: 2.5pt 3pt 1.4pt;
+        font-size: 8.34pt;
+        line-height: 1.2em;
+      }
+
+      .table--3 .table__item {
+        padding: 3pt 5.5pt 0.7pt;
+        font-size: 10.24pt;
+        line-height: 1.2em;
+      }
+
+      .table--4 .table__item {
+        width: 55pt;
+        padding: 3pt 5.5pt 0.7pt;
+        font-size: 10.24pt;
+        line-height: 1.2em;
+      }
+
+      .table--backPage .table__item {
+        padding: 4.4pt 4.5pt 2pt;
+        font-size: 10.24pt;
+        line-height: 1.2em;
+      }
+
+      .table__item ul {
+        list-style-type: disc;
+        padding-left: 10pt;
+      }
+
+      .table--3 .table__item--primary,
+      .table--4 .table__item--primary{
+        font-family: 'HelveticaNeueLT W1G 65 Md';
+        font-size: 9.7pt;
+        background-color: var(--table-gray);
+        color: var(--gray);
+      }
+
+      .table--1 .table__item:first-child,
+      .table--2 .table__item:first-child {
+        width: 95pt;
+      }
+
+      .table--3 .table__item:first-child {
+        width: 83pt;
+      }
+
+      .table--3 .table__item:nth-child(2) {
+        width: 90pt;
+      }
+
+      .table--4 .table__item:first-child {
+        width: 77pt;
+      }
+
+      .table--backPage .table__item:first-child {
+        width: 356pt;
+      }
+
+      .table--backPage .table__item:nth-child(2) {
+        width: 95pt;
+      }
+
+      .table__item--heading {
+        vertical-align: bottom;
+        color: var(--white);
+      }
+
+      .table__item--heading,
+      .table__row--separatorY .table__item,
+      .table__row--separatory .table__item {
+        font-family: 'HelveticaNeueLT W1G 65 Md';
+        font-weight: 500;
+        line-height: 1.2em;
+      }
+
+      .table--backPage .table__row--separatorY .table__item,
+      .table--backPage .table__row--separatory .table__item {
+        font-size: 10.7pt;
+      }
+
+      .table__row--separatorY .table__item,
+      .table__row--separatory .table__item {
+        font-size: 9.7pt;
+      }
+
+      .table--1 .table__item--heading {
+        max-height: 5em;
+        padding: 5pt 5pt 3pt;
+      }
+
+      .table--2 .table__item--heading {
+        max-height: 4.5em;
+        padding: 3pt 5pt 1pt;
+        font-size: 8.7pt;
+      }  
+
+      .table--3 .table__item--heading {
+        max-height: 4em;
+        padding: 3.8pt 5pt 1pt;
+        font-size: 10.6pt;
+      }
+
+      .table--4 .table__item--heading {
+        max-height: 4em;
+        padding: 4pt 5pt 1pt;
+        font-size: 10.6pt;
+      }
+
+      .table--backPage .table__item--heading {
+        max-height: 4em;
+        padding: 4pt 5pt 1pt;
+        font-size: 10.6pt;
+      }
+
+
+      .table__row--separator .table__item {
+        color: var(--gray);
+      }
+
+      .table__footnote {
+        font-family: 'HelveticaNeueLT W1G 57 Cn';
+        font-size: 6.4pt;
+        font-weight: 600;
+        line-height: 1.3em;
+      }
+
+      .table--4 .table__footnote {
+        font-family: 'HelveticaNeueLT W1G 57 Cn';
+        font-size: 6.4pt;
+        font-weight: 600;
+        line-height: 1.3em;
+      }
+
+      .footer {
+        position: relative;
+        margin-top: 20pt;
+        padding-left: 44pt;
+        font-size: 0;
+      }
+
+      .logo__container {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo__container--main {
+        justify-content: center;
+        height: 149pt;
+        width: 215pt;
+        padding: 0 0 6pt 4pt;
+        float: right;
+      }
+
+      .logo__container--marginTop {
+        margin-top: 41pt;
+      }
+
+      .logo__container--distributor {
+        height: 56pt;
+        width: 355pt;
+        margin-bottom: 18pt;
+      }
+
+      .logo__container--withUpperTerms {
+        margin-bottom: 35pt;
+      }
+
+      .logo {
+        object-fit: contain;
+      }
+
+      .logo--distributor {
+        width: 200pt;
+        height: 26pt;
+        object-position: left center;
+      }
+
+      .logo--main {
+        width: 122pt;
+        height: 28pt;
+        object-position: center center;
+      }
+
+      .footer__text {
+        margin-bottom: 8pt;
+        font-size: 13.9pt;
+        line-height: 1.2em;
+      }
+
+      .footer__text strong {
+        font-family: 'HelveticaNeueLT W1G 65 Md';
+        font-weight: 600;
+        letter-spacing: -0.3pt;
+      }
+
+      .terms {
+        max-height: 10em;
+        margin-bottom: 20pt;
+        font-size: 7.08pt;
+        font-family: 'HelveticaNeueLT W1G 57 Cn';
+      }
+
+      .terms--upper {
+        margin-bottom: 15pt;
+        font-size: 5.57pt;
+        line-height: 1.3em;
+      }
+
+      .terms h3 {
+        font-size: 7.08pt;
+        line-height: 1.3em;
+      }
+
+      .terms h3 strong {
+        font-size: 7.5pt;
+        font-weight: bold;
+      }
+
+      .terms p {
+        font-size: 6.7pt;
+        line-height: 1.3em;
+      }
+
+      .terms p strong {
+        font-size: 6.9pt;
+        font-weight: bold;
+      }
+
+      /* Helper classes */
+      .u-hide { display: none; }
+
+      /* Helper class for fixing Reposition tool bug */
+      .reposition-fix {
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;        
+      }
+
+      .reposition-fix div {
+        top: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
+    </style>
+  </head>
+  <body style="background: white" data-crop="{{show-crop}}" data-reduce-export-font-size-by-percent="0" data-reduce-firefox-font-size-by-percent="0" data-prevent-export-overflow="false"
+        class="brandingTheme--{{{TF_branding-theme--amf}}}{{^TF_branding-theme--amf}}thermoScientific{{/TF_branding-theme--amf}}">
+    <div class="placeholderMaster" data-opacity="{{ placeholder-opacity }}">
+      <div class="placeholderMaster__item" data-bg="{{ placeholder-image-1 }}"></div>
+      <div class="placeholderMaster__item" data-bg="{{ placeholder-image-2 }}"></div>
+      <div class="placeholderMaster__item" data-bg="{{ placeholder-image-3 }}"></div>
+    </div><!-- end placeholderMaster -->
+    <div class="page frontPageLayout--{{{TF_-front-page-layout-style-amf}}}{{^TF_-front-page-layout-style-amf}}layout1{{/TF_-front-page-layout-style-amf}}">
+
+      <div class="bleed">
+
+        <div class="container fit fit--frontPage">
+          <div class="header header--frontPage">
+            <div class="hero"><div class="reposition-fix">{{{TF_hero-image--amf}}}</div></div> <!--hero-->
+            <div class="strip strip--thermoScientific">
+              <img class="strip__logo" src="https://files.outfit.io/media_library_items/145638/2018-Q3-ThermoScientific-13px.png"/>
+            </div> <!--brandBar-->
+            <div class="strip strip--appliedBiosystems">
+              <img class="strip__logo" src="https://files.outfit.io/media_library_items/145637/2019-Q3-AppliedBiosystems-13px.png"/>
+            </div> <!--brandBar-->
+            <div class="strip strip--invitrogen">
+              <img class="strip__logo" src="https://files.outfit.io/media_library_items/145636/2019-Q3-Invitrogen-13px.png"/>
+            </div> <!--brandBar-->
+            <div class="strip strip--ionTorrent">
+              <img class="strip__logo" src="https://files.outfit.io/media_library_items/145639/2019-Q3-IonTorrent-13px.png"/>
+            </div> <!--brandBar-->
+            <div class="strip strip--gibco">
+              <img class="strip__logo" src="https://files.outfit.io/media_library_items/145641/2019-Q3-Gibco-13px.png"/>
+            </div> <!--brandBar-->
+            <div class="strip strip--thermoFisher">
+              <img class="strip__logo" src="https://files.outfit.io/media_library_items/145640/2018-Q3-ThermoFisherScientific-13px.png"/>
+            </div> <!--brandBar-->
+            <div class="content__container">
+              <div class="content">
+                {{#TF_heading--amf}}
+                <div class="heading" data-max-line="2">{{{TF_heading--amf}}}</div> <!--heading-->
+                {{/TF_heading--amf}}
+                {{#TF_subheading--amf}}
+                <div class="subheading" data-max-line="2">{{{TF_subheading--amf}}}</div> <!--subheading-->
+                {{/TF_subheading--amf}}
+              </div> <!--content-->
+            </div> <!--content__container-->
+          </div> <!--header-->
+          <div class="body">
+            <div class="body__inner" data-max-height="dynamic">
+              <div class="column__container">
+                <div class="column">
+                  <div class="copy u-heading-patch">{{{TF_body-copy-column-left--amf}}}</div> <!--copy-->
+                </div> <!--column-->
+                <div class="column">
+                  <div class="copy u-heading-patch">{{{TF_body-copy-column-right--amf}}}</div> <!--copy-->
+                </div> <!--column-->
+              </div> <!--column__container-->
+            </div> <!--body__inner-->
+          </div> <!--body-->
+          <div class="footer">
+            {{#TF_primary-logo--amf}}
+            <div class="logo__container logo__container--main">
+              <img class="logo logo--main" src="{{{TF_primary-logo--amf}}}" /> <!--logo-->
+            </div> <!--logo__container-->
+            {{/TF_primary-logo--amf}}
+            {{#TF_distributor-logo--amf}}
+            <div class="logo__container logo__container--distributor">
+              <img class="logo logo--distributor" src="{{{TF_distributor-logo--amf}}}" /> <!--logo-->
+            </div> <!--logo__container-->
+            {{/TF_distributor-logo--amf}}
+            {{#TF_footer-text--amf}}
+            <div class="footer__text" data-max-line="1">{{{TF_footer-text--amf}}}</div> <!--footer__text-->
+            {{/TF_footer-text--amf}}
+            {{#TF_terms--amf}}
+            <div class="terms" data-max-height="css">{{{TF_terms--amf}}}</div> <!--terms-->
+            {{/TF_terms--amf}}
+          </div> <!--footer-->
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+    {{#collection.TF_pages--amf}}
+    {{#block.TF_internal-page--amf}}
+    <div class="page">
+
+      <div class="bleed">
+
+        <div class="container fit fit--internalPage">
+          <div class="body body--internalPage">
+            <div class="body__inner" data-max-height="dynamic">
+              <div class="column__container">
+                <div class="column">
+                  {{#collection.TF_left-column-content--amf}}
+                  {{#block.copy}}
+                  <div class="copy">{{{text--amf}}}</div> <!--copy-->
+                  {{/block.copy}}
+                  {{#block.table-option-1}}
+                  <div class="table__container">
+                    {{#top-heading}}
+                    <div class="table__title" data-max-line="1">{{{top-heading}}}</div> <!--table__title-->
+                    {{/top-heading}}
+                    <table class="table table--1">
+                      <thead>
+                        <tr class="table__row table__row--heading">
+                          {{#left-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{left-column-heading}}}</th> <!--table__item-->
+                          {{/left-column-heading}}
+                          {{#right-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{right-column-heading}}}</th> <!--table__item-->
+                          {{/right-column-heading}}
+                        </tr> <!--table__row-->
+                      </thead>
+                      <tbody>
+                        {{#spreadsheet.TF_table-1--amf}}                 
+                        <tr class="table__row table__row--separator{{{separator}}}">
+                          <td class="table__item"><div class="js-customRichText-src">{{{left-column}}}</div></td> <!--table__item-->
+                          <td class="table__item"><div class="js-customRichText-src">{{{right-column}}}</div></td> <!--table__item-->
+                        </tr> <!--table__row-->
+                        {{/spreadsheet.TF_table-1--amf}}
+                      </tbody>
+                    </table> <!--table-->
+                    {{#table-footnote}}
+                    <div class="table__footnote" data-max-line="3">{{{table-footnote}}}</div> <!--table__footnote-->
+                    {{/table-footnote}}
+                  </div> <!--table__container-->
+                  {{/block.table-option-1}}
+                  {{#block.table-option-2}}
+                  <div class="table__container">
+                    {{#top-heading}}
+                    <div class="table__title" data-max-line="1">{{{top-heading}}}</div> <!--table__title-->
+                    {{/top-heading}}
+                    <table class="table table--2">
+                      <thead>
+                        <tr class="table__row table__row--heading">
+                          {{#left-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{left-column-heading}}}</th> <!--table__item-->
+                          {{/left-column-heading}}
+                          {{#right-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{right-column-heading}}}</th> <!--table__item-->
+                          {{/right-column-heading}}
+                        </tr> <!--table__row-->
+                      </thead>
+                      <tbody>               
+                        {{#spreadsheet.TF_table-1--amf}}                 
+                        <tr class="table__row table__row--separator">
+                          <td class="table__item"><div class="js-customRichText-src">{{{left-column}}}</div></td> <!--table__item-->
+                          <td class="table__item"><div class="js-customRichText-src">{{{right-column}}}</div></td> <!--table__item-->
+                        </tr> <!--table__row-->
+                        {{/spreadsheet.TF_table-1--amf}}
+                      </tbody>
+                    </table> <!--table-->
+                    <div class="table__footnote" data-max-line="3">{{{table-footnote}}}</div> <!--table__footnote-->
+                  </div> <!--table__container-->
+                  {{/block.table-option-2}}
+                  {{#block.table-option-3}}
+                  <div class="table__container">
+                    {{#top-heading}}
+                    <div class="table__title" data-max-line="1">{{{top-heading}}}</div> <!--table__title-->
+                    {{/top-heading}}
+                    <table class="table table--3">
+                      <thead>
+                        <tr class="table__row table__row--heading">
+                          {{#left-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{left-column-heading}}}</th> <!--table__item-->
+                          {{/left-column-heading}}
+                          {{#central-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{central-column-heading}}}</th> <!--table__item-->
+                          {{/central-column-heading}}
+                          {{#right-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{right-column-heading}}}</th> <!--table__item-->
+                          {{/right-column-heading}}
+                        </tr> <!--table__row-->
+                      </thead>
+                      <tbody>               
+                        {{#spreadsheet.TF_table-1--amf}}                 
+                        <tr class="table__row table__row--separator">
+                          <td class="table__item table__item--primary"><div class="js-customRichText-src">{{{left-column}}}</div></td> <!--table__item-->
+                          <td class="table__item table__item"><div class="js-customRichText-src">{{{central-column}}}</div></td> <!--table__item-->
+                          <td class="table__item table__item"><div class="js-customRichText-src">{{{right-column}}}</div></td> <!--table__item-->
+                        </tr> <!--table__row-->
+                        {{/spreadsheet.TF_table-1--amf}}
+                      </tbody>
+                    </table> <!--table-->
+                    <div class="table__footnote" data-max-line="3">{{{table-footnote}}}</div> <!--table__footnote-->
+                  </div> <!--table__container-->
+                  {{/block.table-option-3}}
+                  {{#block.table-option-4}}
+                  <div class="table__container table__container--4">
+                    {{#top-heading}}
+                    <div class="table__title" data-max-line="5">{{{top-heading}}}</div> <!--table__title-->
+                    {{/top-heading}}
+                    <table class="table table--4">
+                      <thead>
+                        <tr class="table__row table__row--heading">
+                          {{#first-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{first-column-heading}}}</th> <!--table__item-->
+                          {{/first-column-heading}}
+                          {{#second-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{second-column-heading}}}</th> <!--table__item-->
+                          {{/second-column-heading}}
+                          {{#third-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{third-column-heading}}}</th> <!--table__item-->
+                          {{/third-column-heading}}
+                          {{#forth-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{forth-column-heading}}}</th> <!--table__item-->
+                          {{/forth-column-heading}}
+                        </tr> <!--table__row-->
+                      </thead>
+                      <tbody>               
+                        {{#spreadsheet.TF_table-4--amf}}                 
+                        <tr class="table__row table__row--separator">
+                          <td class="table__item table__item--primary"><div class="js-customRichText-src">{{{first-column}}}</div></td> <!--table__item-->
+                          <td class="table__item table__item"><div class="js-customRichText-src">{{{second-column}}}</div></td> <!--table__item-->
+                          <td class="table__item table__item"><div class="js-customRichText-src">{{{third-column}}}</div></td> <!--table__item-->
+                          <td class="table__item table__item"><div class="js-customRichText-src">{{{forth-column}}}</div></td> <!--table__item-->
+                        </tr> <!--table__row-->
+                        {{/spreadsheet.TF_table-4--amf}}
+                      </tbody>
+                    </table> <!--table-->
+                    <div class="table__footnote" data-max-line="3">{{{table-footnote}}}</div> <!--table__footnote-->
+                  </div> <!--table__container-->
+                  {{/block.table-option-4}}
+                  {{/collection.TF_left-column-content--amf}}
+                </div> <!--column-->
+                <div class="column">
+                  {{#collection.TF_right-column-content--amf}}
+                  {{#block.copy}}
+                  <div class="copy">{{{text--amf}}}</div> <!--copy-->
+                  {{/block.copy}}
+                  {{#block.table-option-1}}
+                  <div class="table__container">
+                    {{#top-heading}}
+                    <div class="table__title" data-max-line="1">{{{top-heading}}}</div> <!--table__title-->
+                    {{/top-heading}}
+                    <table class="table table--1">
+                      <thead>
+                        <tr class="table__row table__row--heading">
+                          {{#left-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{left-column-heading}}}</th> <!--table__item-->
+                          {{/left-column-heading}}
+                          {{#right-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{right-column-heading}}}</th> <!--table__item-->
+                          {{/right-column-heading}}
+                        </tr> <!--table__row-->
+                      </thead>
+                      <tbody>
+                        {{#spreadsheet.TF_table-1--amf}}                 
+                        <tr class="table__row table__row--separator{{{separator}}}">
+                          <td class="table__item"><div class="js-customRichText-src">{{{left-column}}}</div></td> <!--table__item-->
+                          <td class="table__item"><div class="js-customRichText-src">{{{right-column}}}</div></td> <!--table__item-->
+                        </tr> <!--table__row-->
+                        {{/spreadsheet.TF_table-1--amf}}
+                      </tbody>
+                    </table> <!--table-->
+                    {{#table-footnote}}
+                    <div class="table__footnote" data-max-line="3">{{{table-footnote}}}</div> <!--table__footnote-->
+                    {{/table-footnote}}
+                  </div> <!--table__container-->
+                  {{/block.table-option-1}}
+                  {{#block.table-option-2}}
+                  <div class="table__container">
+                    {{#top-heading}}
+                    <div class="table__title" data-max-line="1">{{{top-heading}}}</div> <!--table__title-->
+                    {{/top-heading}}
+                    <table class="table table--2">
+                      <thead>
+                        <tr class="table__row table__row--heading">
+                          {{#left-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{left-column-heading}}}</th> <!--table__item-->
+                          {{/left-column-heading}}
+                          {{#right-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{right-column-heading}}}</th> <!--table__item-->
+                          {{/right-column-heading}}
+                        </tr> <!--table__row-->
+                      </thead>
+                      <tbody>               
+                        {{#spreadsheet.TF_table-1--amf}}                 
+                        <tr class="table__row table__row--separator">
+                          <td class="table__item"><div class="js-customRichText-src">{{{left-column}}}</div></td> <!--table__item-->
+                          <td class="table__item"><div class="js-customRichText-src">{{{right-column}}}</div></td> <!--table__item-->
+                        </tr> <!--table__row-->
+                        {{/spreadsheet.TF_table-1--amf}}
+                      </tbody>
+                    </table> <!--table-->
+                    <div class="table__footnote" data-max-line="3">{{{table-footnote}}}</div> <!--table__footnote-->
+                  </div> <!--table__container-->
+                  {{/block.table-option-2}}
+                  {{#block.table-option-3}}
+                  <div class="table__container">
+                    {{#top-heading}}
+                    <div class="table__title" data-max-line="1">{{{top-heading}}}</div> <!--table__title-->
+                    {{/top-heading}}
+                    <table class="table table--3">
+                      <thead>
+                        <tr class="table__row table__row--heading">
+                          {{#left-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{left-column-heading}}}</th> <!--table__item-->
+                          {{/left-column-heading}}
+                          {{#central-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{central-column-heading}}}</th> <!--table__item-->
+                          {{/central-column-heading}}
+                          {{#right-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{right-column-heading}}}</th> <!--table__item-->
+                          {{/right-column-heading}}
+                        </tr> <!--table__row-->
+                      </thead>
+                      <tbody>               
+                        {{#spreadsheet.TF_table-1--amf}}                 
+                        <tr class="table__row table__row--separator">
+                          <td class="table__item table__item--primary"><div class="js-customRichText-src">{{{left-column}}}</div></td> <!--table__item-->
+                          <td class="table__item table__item"><div class="js-customRichText-src">{{{central-column}}}</div></td> <!--table__item-->
+                          <td class="table__item table__item"><div class="js-customRichText-src">{{{right-column}}}</div></td> <!--table__item-->
+                        </tr> <!--table__row-->
+                        {{/spreadsheet.TF_table-1--amf}}
+                      </tbody>
+                    </table> <!--table-->
+                    <div class="table__footnote" data-max-line="3">{{{table-footnote}}}</div> <!--table__footnote-->
+                  </div> <!--table__container-->
+                  {{/block.table-option-3}}
+                  {{#block.table-option-4}}
+                  <div class="table__container table__container--4">
+                    {{#top-heading}}
+                    <div class="table__title" data-max-line="5">{{{top-heading}}}</div> <!--table__title-->
+                    {{/top-heading}}
+                    <table class="table table--4">
+                      <thead>
+                        <tr class="table__row table__row--heading">
+                          {{#first-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{first-column-heading}}}</th> <!--table__item-->
+                          {{/first-column-heading}}
+                          {{#second-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{second-column-heading}}}</th> <!--table__item-->
+                          {{/second-column-heading}}
+                          {{#third-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{third-column-heading}}}</th> <!--table__item-->
+                          {{/third-column-heading}}
+                          {{#forth-column-heading}}
+                          <th class="table__item table__item--heading" data-max-height="css">{{{forth-column-heading}}}</th> <!--table__item-->
+                          {{/forth-column-heading}}
+                        </tr> <!--table__row-->
+                      </thead>
+                      <tbody>               
+                        {{#spreadsheet.TF_table-4--amf}}                 
+                        <tr class="table__row table__row--separator">
+                          <td class="table__item table__item--primary"><div class="js-customRichText-src">{{{first-column}}}</div></td> <!--table__item-->
+                          <td class="table__item table__item"><div class="js-customRichText-src">{{{second-column}}}</div></td> <!--table__item-->
+                          <td class="table__item table__item"><div class="js-customRichText-src">{{{third-column}}}</div></td> <!--table__item-->
+                          <td class="table__item table__item"><div class="js-customRichText-src">{{{forth-column}}}</div></td> <!--table__item-->
+                        </tr> <!--table__row-->
+                        {{/spreadsheet.TF_table-4--amf}}
+                      </tbody>
+                    </table> <!--table-->
+                    <div class="table__footnote" data-max-line="3">{{{table-footnote}}}</div> <!--table__footnote-->
+                  </div> <!--table__container-->
+                  {{/block.table-option-4}}
+                  {{/collection.TF_right-column-content--amf}}
+                </div> <!--column-->
+              </div> <!--column__container-->
+            </div> <!--body__inner-->
+          </div> <!--body-->
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+    {{/block.TF_internal-page--amf}}
+
+    {{#block.TF_back-page--amf}}
+    <div class="page">
+
+      <div class="bleed">
+
+        <div class="container fit fit--backPage">
+          {{#brand-logo}}
+          <div class="header header--backPage">
+            <img class="logo logo--brand" src="{{{brand-logo}}}" /> <!--logo-->
+          </div> <!--header-->
+          {{/brand-logo}}
+          <div class="body">
+            <div class="body__inner" data-max-height="dynamic">
+              {{#collection.body-content--amf}}
+              {{#block.column--amf}}
+              <div class="column__container">
+                {{#collection.column-text--amf}}
+                {{#block.column-text--amf}}
+                <div class="column column--backPage">
+                  <div class="copy copy">{{{text}}}</div> <!--copy-->
+                </div> <!--column-->
+                {{/block.column-text--amf}}
+                {{/collection.column-text--amf}}
+              </div> <!--column__container-->
+              {{/block.column--amf}}
+              {{#block.table}}
+              <div class="table__container">
+                {{#top-heading}}
+                <div class="table__title" data-max-line="1">{{{top-heading}}}</div> <!--table__title-->
+                {{/top-heading}}
+                <table class="table table--backPage">
+                  <thead>
+                    <tr class="table__row table__row--heading">
+                      {{#first-column-heading}}
+                      <th class="table__item table__item--heading" data-max-height="css">{{{first-column-heading}}}</th> <!--table__item-->
+                      {{/first-column-heading}}
+                      {{#second-column-heading}}
+                      <th class="table__item table__item--heading" data-max-height="css">{{{second-column-heading}}}</th> <!--table__item-->
+                      {{/second-column-heading}}
+                      {{#third-column-heading}}
+                      <th class="table__item table__item--heading" data-max-height="css">{{{third-column-heading}}}</th> <!--table__item-->
+                      {{/third-column-heading}}
+                    </tr> <!--table__row-->
+                  </thead>
+                  <tbody>               
+                    {{#spreadsheet.table--amf}}                 
+                    <tr class="table__row table__row--separator{{{separator}}}">
+                      <td class="table__item table__item--primary"><div class="js-customRichText-src">{{{first-column}}}</div></td> <!--table__item-->
+                      <td class="table__item table__item"><div class="js-customRichText-src">{{{second-column}}}</div></td> <!--table__item-->
+                      <td class="table__item table__item"><div class="js-customRichText-src">{{{third-column}}}</div></td> <!--table__item-->
+                    </tr> <!--table__row-->
+                    {{/spreadsheet.table--amf}}
+                  </tbody>
+                </table> <!--table-->
+                <div class="table__footnote" data-max-line="3">{{{table-footnote}}}</div> <!--table__footnote-->
+              </div> <!--table__container-->
+              {{/block.table}}
+              {{/collection.body-content--amf}}
+            </div> <!--body__inner-->
+          </div> <!--body-->
+          <div class="footer">
+            <div class="logo__container logo__container--main logo__container--{{#terms-upper}}marginTop{{/terms-upper}}">
+              {{#primary-logo--amf}}
+              <img class="logo logo--main" src="{{{primary-logo--amf}}}" /> <!--logo-->
+              {{/primary-logo--amf}}
+            </div> <!--logo__container-->
+            <div class="logo__container logo__container--distributor logo__container--{{#terms-upper}}withUpperTerms{{/terms-upper}}">
+              {{#distributor-logo}}
+              <img class="logo logo--distributor" src="{{{distributor-logo}}}" /> <!--logo-->
+              {{/distributor-logo}}
+            </div> <!--logo__container-->
+            {{#terms-upper}}
+            <div class="terms terms--upper" data-max-line="3">{{{terms-upper}}}</div> <!--terms-->
+            {{/terms-upper}}
+            <div class="footer__text" data-max-line="1">{{{footer-text--amf}}}</div> <!--footer__text-->
+            {{#terms-lower}}
+            <div class="terms terms--lower" data-max-line="10">{{{terms-lower}}}</div> <!--terms-->
+            {{/terms-lower}}
+          </div> <!--footer-->
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+    {{/block.TF_back-page--amf}}
+    {{/collection.TF_pages--amf}}
+
+
+    <script>
+      window.showCrop = {{show-crop}}{{^show-crop}}true{{/show-crop}};
+    </script>
+    <script src="js/main.js"></script>   
+    <script src="js/prefixfree.js"></script>
+    <script src="js/placeholder-controller.js"></script>
+    <script src="js/char-limit.js"></script>
+    <script src="js/check-export-mode.js"></script>
+    <script src="js/max-line-check.js"></script>
+    <script src="js/max-height-check.js"></script>
+    <script src="js/hide-empty-titles.js"></script>
+    <script src="js/custom-rich-text.js"></script>
+    <script src="js/dynamic-inject.js"></script>
+    <script src="js/text-fit-min.js"></script>
+    <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.4.min.js" type="text/javascript"></script>
+    <script>
+      {{ #placeholder-toggle-new }}document.body.classList.add("u-placeholder-{{ placeholder-toggle-new }}{{^placeholder-toggle-new}}hide{{/placeholder-toggle-new}}"); {{ /placeholder-toggle-new }}
+      {{ #placeholder-validation }}document.body.classList.add("placeholder__validation--{{placeholder-validation}}"){{ /placeholder-validation }}
+    </script>
+    <script>
+
+      console.clear();
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck();
+          maxHeightCheck();
+          charLimit();
+          hideEmptyTitles();
+          customRichText();
+        });
+      });
+
+      const injectObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          injectDynamicContent();
+        });
+      });      
+
+      const injectSources = document.querySelectorAll('[data-target-id]');
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });
+
+      if ( injectSources.length > 0 ) {
+        injectSources.forEach(src => {
+          injectObserver.observe(src, {
+            attributes: false,
+            characterData: true,
+            childList: true,
+            subtree: true,
+            attributeOldValue: false,
+            characterDataOldValue: true
+          });            
+        });
+      }    
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck();
+        maxHeightCheck();
+        injectDynamicContent();
+        hideEmptyTitles();
+        customRichText();
+      });
+
+      placeholderController();
+      checkCrop();
+      checkExport();
+      charLimit();
+      customRichText();
+
+      // TextFit function decreases the font of the selected element to make it fit in single line (if needed, uncomment the code bellow)
+      TextFit.fit({
+        selector: '.textFit'
+      });
+
+
+    </script>
+
+
+  </body>
+</html>
