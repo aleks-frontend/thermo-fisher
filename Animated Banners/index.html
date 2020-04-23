@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html data-sign="OSM">
+  <head>
+    <title>Template title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/minireset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/placeholder-controller.css">
+
+    <style>
+      
+       
+      @import url('https://outfit-assets-production.s3.amazonaws.com/fonts/HelveticaNeueLTW1G/stylesheet.css');
+
+      {{{account.snippets.timelineControllerCSS}}}
+
+
+      :root {
+        --white: {{{account.colors.white}}};
+        --red: {{{account.colors.primary}}};
+        --blue: {{{account.colors.blue}}};
+      }
+
+      html {
+       font-family: 'HelveticaNeueLT W1G 45 Lt';
+        font-weight: 300;
+        font-size: 11pt;
+        color: #000;
+        word-break: break-word;
+      }
+
+      .backgroundImage {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+      }
+
+      .backgroundImage div {
+        width: auto !important;
+        height: auto !important;
+        right: 0;
+        bottom: 0;
+      }      
+
+      /* Helper classes */
+      .u-hide { display: none; }
+
+      /* Helper class for fixing Reposition tool bug */
+      .reposition-fix {
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;        
+      }
+
+      .reposition-fix div {
+        top: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      .fit {
+        top: 3mm;
+        right: 3mm;
+        bottom: 3mm;
+        left: 3mm;
+      }
+
+      .frame {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        opacity: 0;
+        background: var(--white);
+      }
+
+      .frame:first-child {
+        opacity: 1;
+      }
+
+      .layout--468x60 .frame,
+      .layout--728x90 .frame {
+        flex-direction: row;
+      }
+
+      .hero {
+        position: relative;
+        height: 89pt;
+      }
+
+      .layout--336x280 .hero {
+        height: 106pt;
+      }
+
+      .layout--120x600 .hero {
+        height: 187pt;
+      }
+
+      .layout--160x600 .hero {
+        height: 207pt;
+      }
+
+      .layout--300x600 .hero {
+        height: 303.3pt;
+      }
+
+      .layout--300x50 .hero,
+      .layout--320x50 .hero {
+        display: none;
+      }
+
+      .layout--468x60 .hero {
+        height: 100%;
+        width: 43pt;
+      }
+
+      .layout--728x90 .hero {
+        width: 129pt;
+        height: 100%;
+      }
+
+      .body {
+        flex: 1;
+        padding: 4.5pt 12pt;
+      }
+
+      .layout--336x280 .body {
+        padding: 4.4pt 14pt 5pt;
+      }
+
+      .layout--120x600 .body {
+        padding: 11pt 7pt 12pt;
+      }
+
+      .layout--160x600 .body {
+        padding: 10.8pt 9pt 9pt;
+      }
+
+      .layout--300x600 .body {
+        padding: 12pt 13pt 11pt;
+      }
+
+      .layout--300x50 .body {
+        padding: 3.2pt 4.8pt 0pt;
+      }
+
+      .layout--320x50 .body {
+        padding: 3.2pt 9pt 0pt;
+      }
+
+      .layout--468x60 .body {
+        padding: 4.7pt 5.5pt;
+      }
+
+      .layout--728x90 .body {
+        padding: 7.2pt 8.5pt;
+      }
+
+      .text { 
+        font-size: 14pt;
+        line-height: 1.15em;
+      }
+
+      .text .tinymce_style--light { color: var(--red); }
+
+      .layout--300x250 .text {
+        max-height: 57pt;
+        line-height: 1.05;
+        letter-spacing: -0.3pt;
+      }
+
+      .layout--336x280 .text {
+        max-height: 62pt;
+        font-size: 14.3pt;
+        line-height: 1.2;
+      }
+
+      .layout--120x600 .text {
+        max-height: 73pt;
+        font-size: 12.4pt;
+        line-height: 1.2;
+        letter-spacing: -0.4pt;
+      }
+
+      .layout--160x600 .text {
+        max-height: 72pt;
+        font-size: 13.7pt;
+        line-height: 1.2;
+        letter-spacing: -0.3pt;
+      }
+
+      .layout--300x600 .text {
+        max-height: 72pt;
+        font-size: 15pt;
+        letter-spacing: -0.5pt;
+      }
+
+      .layout--300x50 .text {
+        max-width: 150pt;
+        max-height: 27pt;
+        font-size: 8.5pt;
+        line-height: 1.1em;
+      }
+
+      .layout--320x50 .text {
+        max-width: 155pt;
+        max-height: 26pt;
+        font-size: 8.6pt;
+        line-height: 1.1;
+        letter-spacing: -0.1pt;
+      }
+
+      .layout--468x60 .text {
+        max-width: 147pt;
+        max-height: 32pt;
+        font-size: 11.6pt;
+        letter-spacing: -0.1pt;
+      }
+
+      .layout--728x90 .text {
+        max-width: 219pt;
+        max-height: 54pt; 
+        font-size: 12pt;
+        letter-spacing: -0.2pt;
+        line-height: 1.1em;
+      }
+
+      .footer {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        height: 38pt;
+        padding: 0pt 3pt 12.1pt 12pt;
+      }
+
+      .layout--336x280 .footer {
+        height: 40pt;
+        padding: 0pt 1.1pt 11.6pt 13.3pt;
+      }
+
+      .layout--120x600 .footer {
+        flex-direction: column;
+        align-items: center;
+        height: 110pt;
+        padding: 0pt 1pt 17pt 1pt;
+      }
+
+      .layout--160x600 .footer {
+        flex-direction: column;
+        align-items: center;
+        height: 102pt;
+        padding: 0pt 11pt 15pt 11pt;
+      }
+
+      .layout--300x600 .footer {
+        height: 52pt;
+        padding: 0pt 6pt 14.3pt 15.3pt;
+      }
+
+      .layout--300x50 .footer {
+        height: 13.3pt;
+        padding: 0pt 5pt 3.3pt;
+      }
+
+      .layout--320x50 .footer {
+        height: 13.3pt;
+        padding: 0pt 0pt 2.7pt 9pt;
+      }
+
+      .layout--468x60 .footer {
+        height: 100%;
+        padding: 9pt 3pt 9pt 7pt;
+      }
+
+      .layout--728x90 .footer {
+        height: 100%;
+        padding: 14pt 2pt 10pt 0pt;
+      }
+
+      .cta {
+        width: 77pt;
+        padding: 6.9pt 3pt 7pt;
+        text-align: center;
+        font-weight: 500;
+        background: var(--red);
+      }
+
+      .layout--300x250 .cta {
+        max-height: 26pt;
+      }
+
+      .layout--336x280 .cta {
+        width: 86.1pt;
+        max-height: 31pt;
+        padding: 8.8pt 4.2pt 7.7pt;
+      }
+
+      .layout--120x600 .cta {
+        width: 67pt;
+        max-height: 22pt;
+        padding: 6.8pt 3.5pt 6.7pt;
+      }
+
+      .layout--160x600 .cta {
+        max-height: 27pt;
+        padding: 6.75pt 9.75pt 6pt 7pt;
+      }
+
+      .layout--300x600 .cta {
+        width: 86pt;
+        max-height: 30pt;
+        padding: 8.7pt 3pt 7.8pt;
+      }
+
+      .layout--300x50 .cta {
+        max-height: 17.2pt;
+        padding: 0;
+        text-align: left;
+        background: none;
+      }
+
+      .layout--320x50 .cta {
+        max-height: 17.2pt;
+        padding: 0;
+        background: none;
+      }
+
+      .layout--468x60 .cta {
+        width: 67pt;
+        max-height: 22pt; 
+        margin-right: 6pt;
+        padding: 6.2pt 3pt;
+      }
+
+      .layout--728x90 .cta {
+        width: 78pt;
+        max-height: 28pt; 
+        margin-right: 6pt;
+        padding: 7.9pt 3pt;
+      }
+
+      .cta__link {
+        display: block;
+        font-size: 9.5pt;
+        line-height: 1.2em;
+        text-decoration: none;
+        color: var(--white);
+      }
+
+      .layout--336x280 .cta__link {
+        font-size: 10.6pt;
+      }
+
+      .layout--120x600 .cta__link {
+        font-size: 8pt;
+      }
+
+      .layout--300x600 .cta__link {
+        font-size: 10.8pt;
+      }
+
+      .layout--300x50 .cta__link {
+        font-size: 9.8pt;
+        letter-spacing: -0.4pt;
+        color: var(--blue);
+      }
+
+      .layout--320x50 .cta__link {
+        font-size: 9.8pt;
+        text-align: left;
+        letter-spacing: -0.4pt;
+        color: var(--blue);
+      }
+
+      .layout--468x60 .cta__link {
+        font-size: 8pt;
+        text-align: left;
+        letter-spacing: -0.1pt;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .layout--728x90 .cta__link {
+        font-size: 9.1pt;
+        text-align: left;
+        letter-spacing: -0.1pt;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .logo {
+        width: 92pt;
+        margin-bottom: -8pt;
+      }
+
+      .layout--336x280 .logo {
+        width: 100pt;
+        margin-bottom: -10pt;
+      }
+
+      .layout--120x600 .logo {
+        width: 88pt;
+      }
+
+      .layout--160x600 .logo {
+        width: 97pt;
+      }
+
+      .layout--300x600 .logo {
+        width: 102pt;
+      }
+
+      .layout--300x50 .logo {
+        width: 66pt;
+        margin-right: -5pt;
+        margin-bottom: -3.7pt;
+      }
+
+      .layout--320x50 .logo {
+        width: 66pt;
+        margin-right: -1pt;
+        margin-bottom: -2.8pt;
+      }
+
+      .layout--468x60 .logo {
+        width: 70pt;
+        margin-bottom: -5.8pt;
+        margin-right: -1pt;
+      }
+
+      .layout--728x90 .logo {
+        width: 91pt;
+        margin-bottom: -7.5pt;
+      }
+
+      .u-flexEnd {
+        justify-content: flex-end;
+      }
+
+      .controlsContainer button {
+        background-color: rgba(0,0,0,0);
+        border: none;
+        text-align: center;
+        text-decoration: none;
+        width: 1.6rem;
+      }
+
+
+      /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
+    </style>
+  </head>
+  <body style="background: white" class="layout--{{{TF_size-variation--b}}}{{^TF_size-variation--b}}320x250{{/TF_size-variation--b}}">
+
+    <div class="page">
+
+      <div class="bleed">
+
+        <div class="container fit">
+          {{#collection.TF_animate-collection--b}}
+          <div class="frame">
+            {{#TF_backgroundImage--b}}
+            <div class="hero">
+              <div class="backgroundImage"><div class="reposition-fix">{{{TF_backgroundImage--b}}}</div></div><!--backgroundImage-->
+            </div><!--hero-->
+            {{/TF_backgroundImage--b}}
+            <div class="body">
+              <div class="text" data-max-height="css">{{{TF_body-b}}}</div><!--text-->
+            </div><!--body-->
+            <div class="footer {{^TF_call-to-action--b}}u-flexEnd{{/TF_call-to-action--b}}">
+              {{#TF_call-to-action--b}}
+              <div class="cta" data-max-height="css"><a class="cta__link" href="{{{TF_call-to-action-url--b}}}" target="_blank">{{{TF_call-to-action--b}}}</a></div><!--cta-->
+              {{/TF_call-to-action--b}}
+              <img class="logo" src="{{{account.logos.primary}}}"><!--logo-->
+            </div><!--footer-->
+          </div><!--frame-->
+          {{/collection.TF_animate-collection--b}}
+
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+      <div class="controlsContainer">
+        <div id="sliderWrapper">
+          <div id="slider">
+            <input type="range" min="1" max="100" value="0" class="slider" id="timelineSlider">
+          </div>
+        </div>
+        <div class="controls">
+          <div class="playback-buttons">
+            <button id="pause"><img class="timelineControlImage" src="https://files.outfit.io/media_library_items/147803/play.svg"/></button>
+            <button id="play"><img class="timelineControlImage" src="https://files.outfit.io/media_library_items/147804/pause.svg"/></button>
+            <button id="restart"><img class="timelineControlImage" src="https://files.outfit.io/media_library_items/147805/icons8-refresh.svg"/></button>
+          </div>
+        </div>  
+      </div>
+    </div><!--page-->
+
+
+    <script src="js/main.js"></script>   
+    <script src="js/prefixfree.js"></script>
+    <script src="js/placeholder-controller.js"></script>
+    <script src="js/char-limit.js"></script>
+    <script src="js/check-export-mode.js"></script>
+    <script src="js/max-line-check.js"></script>
+    <script src="js/max-height-check.js"></script>
+    <script src="js/hide-empty-titles.js"></script>
+    <script src="js/dynamic-inject.js"></script>
+    <script src="js/text-fit-min.js"></script>
+    <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.4.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenLite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TimelineLite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/plugins/CSSPlugin.min.js"></script>    
+    <script>
+
+
+
+    </script>
+    <script>
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck();
+          maxHeightCheck();
+          charLimit();
+          hideEmptyTitles();
+        });
+      });
+
+      const injectObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          injectDynamicContent();
+        });
+      });      
+
+      const injectSources = document.querySelectorAll('[data-target-id]');
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });
+
+      if ( injectSources.length > 0 ) {
+        injectSources.forEach(src => {
+          injectObserver.observe(src, {
+            attributes: false,
+            characterData: true,
+            childList: true,
+            subtree: true,
+            attributeOldValue: false,
+            characterDataOldValue: true
+          });            
+        });
+      }    
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck();
+        maxHeightCheck();
+        injectDynamicContent();
+        hideEmptyTitles();
+      });
+
+      //placeholderController();
+      checkCrop();
+      checkExport();
+      charLimit();
+
+      // TextFit function decreases the font of the selected element to make it fit in single line (if needed, uncomment the code bellow)
+      TextFit.fit({
+        selector: '.textFit'
+      });
+
+
+      var tl;
+
+      function slideShow() {
+        const frames = document.querySelectorAll('.frame');
+        tl = new TimelineLite();
+        TweenLite.ticker.fps(40);
+        let delay;
+        let count = 0;
+
+        function startOver() {
+          setTimeout(() => {
+            count++;
+            if ( count < 3 ) {
+              tl.restart();
+            } 
+          }, 5000);
+        }
+
+        frames.forEach((frame, i) => {
+          ( i == 0 ) ? delay = 0 : delay = 3;
+          tl.to(frame, 0, { opacity: 1, delay: delay });
+        });
+
+        tl.eventCallback("onComplete", startOver);
+
+        // Adding a pause when any input is changed 
+        // And playing on click if the animation is paused
+
+
+        document.body.addEventListener('click', () => {
+          if ( tl.paused() ) {
+            tl.play();
+          } else {
+            tl.pause();
+          }
+        });
+
+      }
+
+      slideShow();
+
+
+    </script>
+
+    <script>
+      var playBtn = document.getElementById("play");
+      var pauseBtn = document.getElementById("pause");
+      var restartBtn = document.getElementById("restart");
+      var timelineSlider = document.getElementById("timelineSlider");
+
+      document.getElementById("play").style.display = "none";
+      document.getElementById("pause").style.display = "block";
+
+      playBtn.onclick = function(){
+        playTimeline();
+      };
+
+      pauseBtn.onclick = function(){
+        pauseTimeline();
+      };
+
+      restartBtn.onclick = function(){
+        restartTimeline();
+      };
+
+      timelineSlider.oninput = function() {
+        tl.pause();
+        tl.progress(timelineSlider.value/100);
+        document.getElementById("play").style.display = "block";
+        document.getElementById("pause").style.display = "none";
+      }
+
+      function updateSlider(){
+      }
+
+      function pauseTimeline(){
+        tl.pause();
+        timelineState = "pause";
+
+        document.getElementById("play").style.display = "block";
+        document.getElementById("pause").style.display = "none";
+      }
+
+      function playTimeline(){
+        document.getElementById("play").style.display = "none";
+        document.getElementById("pause").style.display = "block";
+
+        if(tl.progress() != 1){
+          tl.play();
+        } else {
+          tl.restart();
+        }
+      }
+
+      function restartTimeline(){
+        tl.restart();
+      }
+
+      var interval = setInterval(function() { 
+        var currentProgress = tl.progress() * 100;
+        timelineSlider.value = currentProgress;
+      }, 500);
+
+      var outfitUrl = 'thermofisher.outfit.io';
+      if (!(window.location.host == outfitUrl)) {
+        var controlContainer = document.getElementsByClassName("controlsContainer")[0];
+        if (controlContainer.parentNode) {
+          controlContainer.parentNode.removeChild(controlContainer);
+        }
+        clearInterval(interval);
+      }
+    </script>
+
+
+  </body>
+</html>

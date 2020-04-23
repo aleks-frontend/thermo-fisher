@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+      <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" data-sign="OSL">
+
+  <head>
+     <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+          <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+          <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+          <meta name="x-apple-disable-message-reformatting"> <!-- Disable auto-scale in iOS 10 Mail entirely -->
+
+
+
+    <title>{{{EDM-Subject-Line}}}{{^EDM-Subject-Line}}Subject line goes here in sentence case{{/EDM-Subject-Line}}</title>
+
+    <!--
+  SL1: GOES HERE 
+  SL2: GOES HERE 
+  SL3: GOES HERE 
+  SL4: GOES HERE 
+  -->
+
+    <style>
+
+      /** Overflow Styles **/
+      .overflow {
+        position: relative !important;
+        border: 1px dashed red;
+        color: red !important;
+      }
+
+      .overflow * { 
+        color: inherit !important; 
+      }
+
+      .overflow {
+        border: none;
+        box-shadow: 0 0 0 0.0362rem red;
+        background: rgba(255, 0, 0, 0.4);
+        position: relative;
+        z-index: 999;}
+      .overflow h1, 
+      .overflow h2, 
+      .overflow h3, 
+      .overflow h4, 
+      .overflow h5, 
+      .overflow h6, 
+      .overflow p, 
+      .overflow li { color: red !important; }
+      .overflow::before {
+        content: '+';
+        position: absolute;
+        z-index: 5;
+        top: 0;
+        right: 0;
+        height: 1em;
+        width: 1em;
+        max-height: 100%;
+        color: red;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 0.8em;
+        text-align: center;
+        line-height: 1em;
+        background-color: white;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .overflow:hover:before {
+        background-color: red;
+        color: white; }
+      .overflow:after {
+        display: none; }
+      .overflow:hover:after {
+        display: block;
+        content: 'Max number of lines exceeded!';
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: black;
+        color: white;
+        border-radius: 0;
+        padding: 0 1.5em 0 0.5em;
+        box-sizing: border-box;
+        max-height: 100%;
+        font-size: 0.8em;
+        font-weight: 400;
+        text-align: right;
+        line-height: 1em;
+        z-index: 2;
+      }
+
+      .overflow[data-max-height]:hover:after {
+        content: 'Max height exceeded!';  
+      }
+
+      .overflow[data-char-limit]:hover:after {
+        content: 'Character limit exceeded';        
+      }
+
+      .overflow .token-value.token-empty {
+        display: none;
+      }      
+
+      /* Various client-specific fixes */
+      #outlook a {
+        padding: 0;
+      }
+
+      .ExternalClass {
+        width: 100% !important;
+      }
+
+      .ExternalClass,
+      .ExternalClass p,
+      .ExternalClass span,
+      .ExternalClass font,
+      .ExternalClass td,
+      .ExternalClass div {
+        line-height: 100%;
+      }
+
+      img {
+        outline: none;
+        text-decoration: none;
+        -ms-interpolation-mode: bicubic;
+      }
+
+      a img {
+        border: none;
+      }
+
+      .applelinks a {
+        color: #333333;
+        text-decoration: none;
+      }
+
+      .ExternalClass img[class^=Emoji] {
+        width: 10px !important;
+        height: 10px !important;
+        display: inline !important;
+      }
+
+      /* Mobile styles */
+      @media screen and (max-width: 600px) {
+        *[class=mainwrap] {
+          width: 320px !important;
+          height: auto !important;
+        }
+        *[class=imgfill] {
+          width: 100% !important;
+          height: auto !important;
+          padding: 0px !important;
+        }
+        *[class=mobinvis] {
+          display: none !important;
+        }
+        *[class=mobpad-0-0-0-0] {
+          padding: 0px 0px 0px 0px !important;
+        }
+        *[class=mobpad-0-0-10-0] {
+          padding: 0px 0px 10px 0px !important;
+          width: 100% !important;
+        }
+        *[class=mobpad-0-13-0-13] {
+          padding: 0px 13px 0px 13px !important;
+          width: 100% !important;
+        }
+        *[class=mobpad-10-13-10-13] {
+          padding: 10px 13px 10px 13px !important;
+          width: 100% !important;
+        }
+        *[class=colwrap] {
+          display: block !important;
+          width: 100% !important;
+        }  
+
+        .mob-float-none {
+          float: none !important;
+        } 
+        .mob-pad-10-0-0-13 {
+          padding: 10px 0px 0px 13px !important;
+        }
+
+      }
+
+      a {
+        color: #6caae3; 
+        text-decoration:underline;
+      }
+
+      p,ul,h1,h2 {
+        margin-block-end: 0;
+        margin-block-start: 0;
+      }
+
+      .productTable:nth-child(odd) {
+        background-color: #ffffff!important;
+      }
+
+      .eventTable tr:nth-child(odd) {
+        background-color: #f3f3f3!important;
+      }     
+      
+      /*
+      [data-brand-bar="no-brand"] {
+        display: none;
+      }*/
+
+
+    </style>
+
+  </head>
+  <body>
+   <!-- <button class="btn-red btn" data-clipboard-target="#email">Copy HTML Code</button>-->
+    <div class="js-theme-source" style="display: none;">{{TMF_branding-theme--edm}}{{^TMF_branding-theme--edm}}thermo-fisher-scientific{{/TMF_branding-theme--edm}}</div>
+    <!--#### MAIN WRAPPER ####-->
+    <table id="email" class="mainwrap" width="600" align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+
+      <!--#### PREHEADER ####-->
+      {{#TMF_upper-details--edm}}
+      <tr>
+        <td class="mobpad-10-13-10-13" width="100%" valign="top" style="padding-top: 12px; padding-right: 25px; padding-bottom: 12px; padding-left: 25px;">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Helvetica, sans-serif; font-size: 10px; line-height: 12px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+            <tr>
+              <td style="padding: 0px; font-family: Helvetica, sans-serif; font-size: 10px; line-height: 12px;">
+                {{{TMF_upper-details--edm}}}                              
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      {{/TMF_upper-details--edm}}
+      <!--#### //PREHEADER ####-->
+
+      <!--#### BRANDBAR ####-->
+      <tr>
+        <td align="left" data-brand-bar="{{{TMF_branding-theme--edm}}}" class="js-target-logoBackground">
+          <table style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; width:100%;" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td align="left" class="mobpad-10-13-10-13" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 12px;">
+                <a href="#" class="js-banner-link">
+                  <img src="" class="js-target-logo" alt="" width="200" height="50" style="vertical-align: bottom;" align="left" border="0" />
+                </a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!--#### //BRANDBAR ####-->
+
+      <!--#### HEADER ####-->
+      <tr>
+        <td>
+          <table style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; width: 100%; margin:auto;" cellpadding="0" cellspacing="0" border="0">
+
+            <!--#### HEADER IMAGE ####-->
+            <tr>
+              <td>
+                <img src="https://thermofisher.outfit.io/projects/95786/documents/694116/dynamic_export?access_token=m3hLzMmzaeH5DNK5goM3VAhx&context%5BTF_header-image--hia%5D={{TMF_header-image--edm}}&context%5BTF_header-image-title--hia%5D={{{TMF_header-image-title--edm}}}" alt="Header Image" width="600" height="300"  border="0" style="display:block;" />
+              </td>
+            </tr>
+            <!--#### // HEADER IMAGE ####-->
+
+          </table>
+        </td>
+      </tr>
+
+      <!--#### spacer ####-->
+      <tr>
+        <td height="10"></td>
+      </tr>
+
+      <!--#### //HEADER ####-->
+
+
+      <!--#### SUBHEAD AND BUTTON ####-->
+      <tr>
+        <td class="mobpad-10-13-10-13" width="100%" valign="top" style="padding-top: 0px; padding-right: 25px; padding-bottom: 0px; padding-left: 25px;">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" style="color: #ee3134; font-family: Helvetica, sans-serif; font-size: 16px; line-height: 22px; font-weight: bold; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+            <tr>
+
+              <!--#### subheadline ####-->
+              <td class="colwrap" align="center" valign="top" width="375">
+                <table border="0" cellspacing="0" cellpadding="0" width="100%" style="color: #ee3134; font-family: Helvetica, sans-serif; font-size: 16px; line-height: 22px; font-weight: bold;">
+                  <tr>
+                    <td class="mobpad-0-0-10-0 js-target-subheading" align="left" valign="top" style="padding-top: 10px; padding-right: 15px; padding-bottom: 10px; padding-left: 0px;">
+                      {{{TMF_subheadline--edm}}}
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <!--#### //subheadline ####-->
+
+              {{#TMF_call-to-action--edm}}
+              <!--#### button ####-->
+              <td class="colwrap" width="140" valign="middle" style="padding-top: 10px; padding-right: 0px; padding-bottom: 10px; padding-left: 0px;">
+                <table width="100%" align="center" border="0" cellpadding="10" cellspacing="0" style="background:#ee3134; font-family: Helvetica, sans-serif; font-size: 16px; line-height: 16px; color: #ffffff; text-decoration: none; font-weight: bold; mso-padding-alt: 10px; mso-cellspacing: 0px;">
+                  <tr>
+                    <td height="20" valign="middle" style="text-align: center; width:100%;" class="js-target-cta">
+                      <a href="{{TMF_call-to-action-url--edm}}" target="_blank" style="width:100%; display: inline-block; color: #ffffff; text-decoration: none;">{{{TMF_call-to-action--edm}}}</a>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <!--#### //button ####-->
+              {{/TMF_call-to-action--edm}}
+
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!--#### //SUBHEAD AND BUTTON ####-->
+
+
+
+      <!--#### BODY CONTENT ####-->
+      <tr>
+        <td class="mobpad-10-13-10-13" width="100%" valign="top" style="padding-top: 0px; padding-right: 25px; padding-bottom: 0px; padding-left: 25px;">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" style="mso-padding-alt: 0px; mso-cellspacing: 0px; font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333;">
+
+            <!--#### body text upper and support image ####-->
+            <tr>
+              <!--#### body text upper ####-->
+              <td class="colwrap" align="left" valign="top">
+                <table border="0" cellspacing="0" cellpadding="0" width="100%" style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                  <tr>
+
+                    {{#collection.TMF_body-text-upper--edm.length}}
+                    <td class="mobpad-0-0-10-0" align="left" valign="top" style="padding-top: 10px; padding-right: 15px; padding-bottom: 10px; padding-left: 0px;">
+
+                      {{#collection.TMF_body-text-upper--edm}}
+
+                      {{#block.paragraph}}
+                      {{#text}}<p style="margin-top: 0; margin-bottom: 5px; font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px;">{{{text}}}</p>{{/text}}
+                      {{/block.paragraph}}
+
+                      {{#block.unordered-list}}
+                      <ul style="margin-bottom: 5px; font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px;">
+                        {{#collection.TMF_unordered-list-item--edm}}
+                        <li>{{{text}}}</li>
+                        {{/collection.TMF_unordered-list-item--edm}}
+                      </ul>
+                      {{/block.unordered-list}}
+
+                      {{/collection.TMF_body-text-upper--edm}}
+
+                    </td>
+                    {{/collection.TMF_body-text-upper--edm.length}}
+
+                  </tr>
+                </table>
+              </td>
+
+              <!--#### support image and support image caption ####-->
+              {{#TMF_support-image--edm}}
+              <td class="colwrap" valign="top" style="width: 150px; padding-top: 10px; padding-right: 0px; padding-bottom: 10px; padding-left: 0px;">
+
+                <!--#### support image ####-->
+                <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="font-family: Helvetica, sans-serif; font-size: 11px; line-height: 14px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                  <tr>
+
+                    <!--#### CCS width should match image width ####-->
+                    <td class="mobpad-0-0-10-0" style="width: 150px; padding-top: 0px; padding-right: 0px; padding-bottom: 10px; padding-left: 0px;">
+                      <img class="imgfill mob-float-none" src="{{TMF_support-image--edm}}{{^TMF_support-image--edm}}http://www.thermofisher.com/content/dam/LifeTech/emails/templates/q318-support-image-294px2.jpg{{/TMF_support-image--edm}}" alt="" width="150" style="display:block; height: auto;" align="right" border="0" />
+                    </td>
+                  </tr>
+
+                  <!--#### support image caption ####-->
+                  {{#TMF_support-image-caption--edm}}
+                  <tr>
+                    <!--#### CCS width should match image width ####-->
+                    <td class="mobpad-0-0-10-0" style="width: 150px; padding-top: 0px; padding-right: 0px; padding-bottom: 10px; padding-left: 0px;">
+                      {{{TMF_support-image-caption--edm}}}
+                    </td>
+                  </tr>
+                  {{/TMF_support-image-caption--edm}}
+                </table>
+              </td>
+              {{/TMF_support-image--edm}}
+            </tr>
+
+            <!--#### copy full-width ####-->
+            <tr>
+              <td class="colwrap" colspan="2" valign="top">
+                <table border="0" cellspacing="0" cellpadding="0" width="100%" style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                  <tr>
+                    <td class="mobpad-0-0-10-0" align="left" valign="top" style="padding-top: 10px; padding-right: 0px; padding-bottom: 10px; padding-left: 0px;">
+
+                      {{#collection.TMF_body-text-lower--edm}}
+
+                      {{#block.paragraph}}
+                      {{#text}}<p style="margin-top: 0; margin-bottom: 5px; font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px;">{{{text}}}</p>{{/text}}
+                      {{/block.paragraph}}
+
+                      {{#block.unordered-list}}
+                      <ul style="margin-bottom: 5px; font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px;">
+                        {{#collection.TMF_unordered-list-item--edm}}
+                        <li>{{{text}}}</li>
+                        {{/collection.TMF_unordered-list-item--edm}}
+                      </ul>
+                      {{/block.unordered-list}}
+
+                      {{/collection.TMF_body-text-lower--edm}}
+
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!--#### //BODY CONTENT ####-->
+
+
+      <!--#### spacer ####-->
+      <tr>
+        <td height="10"></td>
+      </tr>
+
+      <!--#### EDM MODLUES ####-->
+      {{#collection.TMF_edm-modules--edm}}
+
+      <!--#### EVENT TABLE ####-->
+      {{#block.TMF_event-table--edm}}
+      <tr>
+        <td class="mobpad-10-13-10-13" style="padding-top: 10px; padding-right: 25px; padding-bottom: 10px; padding-left: 25px;">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px; border:solid 1px #c0c0c0; border-collapse:collapse;">
+
+            <!--#### title ####-->
+            <tr bgcolor="#555759" valign="top" style="font-weight:bold; color:#ffffff;">
+              <td class="colwrap" align="center" colspan="2" style="padding: 6px;" class="js-target-headingBanner">{{{TMF_table-header--edm}}}{{^TMF_table-header--edm}}Webinar title because webinars have titles{{/TMF_table-header--edm}}</td>
+            </tr>
+
+            <tr>
+              <!--#### details ####-->
+
+              <td class="colwrap" width="100%" align="left" valign="top" style="">
+                <table width="100%" border="0" cellpadding="6" cellspacing="0" class="eventTable" style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 6px; mso-cellspacing: 0px;">
+
+                  {{#TMF_speaker-name--edm}}
+                  <tr style="background-color: #f3f3f3">
+                    <td width="80" align="left" valign="top" style="font-weight:bold;">Speaker:</td>
+                    <td align="left" valign="top" data-max-height="40">{{{TMF_speaker-name--edm}}}</td>
+                  </tr>
+                  {{/TMF_speaker-name--edm}}
+
+                  {{#TMF_event-date--edm}}
+                  <tr style="background-color: #ffffff">
+                    <td width="80" align="left" valign="top" style="font-weight:bold;">Date:</td>
+                    <td align="left" valign="top" data-max-height="40">{{{TMF_event-date--edm}}}</td>
+                  </tr>
+                  {{/TMF_event-date--edm}}                  
+
+                  {{#TMF_event-time--edm}}
+                  <tr style="background-color: #f3f3f3">
+                    <td width="80" align="left" valign="top" style="font-weight:bold;">Time:</td>
+                    <td align="left" valign="top" data-max-height="40">{{{TMF_event-time--edm}}}</td>
+                  </tr>
+                  {{/TMF_event-time--edm}}
+
+                  {{#TMF_event-description--edm}}
+                  <tr style="background-color: #ffffff">
+                    <td width="80" align="left" valign="top" style="font-weight:bold;">Description:</td>
+                    <td align="left" valign="top" data-max-height="80">{{{TMF_event-description--edm}}}</td>
+                  </tr>
+                  {{/TMF_event-description--edm}}
+
+                </table>
+              </td>
+
+              <!--#### speaker image ####-->
+
+              {{#TMF_support-image--edm}}
+              <td bgcolor="#f3f3f3" class="colwrap" align="center" width="100%" valign="top" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+
+                <!-- #### if speaker image is not at least 292 px, removing 'imgfill' class will keep image unstretched, centered, and on a grey background #### -->
+                <img class="imgfill" src="{{TMF_support-image--edm}}" alt="" width="150" style="display:block; height: auto;" align="center" border="0" />
+              </td>
+              {{/TMF_support-image--edm}}
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+
+      <!--#### spacer ####-->
+      <tr>
+        <td height="10"></td>
+      </tr>
+
+      {{/block.TMF_event-table--edm}}
+      <!--#### //EVENT TABLE ####-->
+
+      <!--#### PRODUCT TABLE ####-->
+      {{#block.TMF_product-table--edm}}  
+      <tr>
+        <td class="mobpad-10-13-10-13" style="padding-top: 10px; padding-right: 25px; padding-bottom: 10px; padding-left: 25px;">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px; border:solid 1px #c0c0c0; border-collapse:collapse;">
+            <tr>
+
+              <!--#### responsive table cell can be duplicated, but use sparingly, or turn off elements with 'mobinvis' class ####-->
+              <td class="colwrap" width="100%" align="left" valign="top" style="">
+                <table width="100%" border="0" cellpadding="6" cellspacing="0" style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 6px; mso-cellspacing: 0px;">
+                  <tr bgcolor="#FFFFFF" style="font-weight:bold; color:#555759">
+                    <td align="left" valign="top">Product</td>
+                    <td align="center" valign="top">Quantity</td>
+                    <td align="center" valign="top">Size</td>
+                    <td align="center" valign="top">Cat. No.</td>
+                  </tr>
+                  {{#spreadsheet.TMF_product-details--edm}}
+                  <tr bgcolor="#F6F6F6" class="productTable">
+                    <td align="left" valign="top">{{{product}}}{{^product}}Product Name&trade; and background gray{{/product}}</td>
+                    <td align="center" valign="top">{{{quantity}}}{{^quantity}}23{{/quantity}}</td>
+                    <td align="center" valign="top">{{{size}}}{{^size}}10 rxns{{/size}}</td>
+                    <td align="center" valign="top">{{^cat-no-url}}{{{cat-no}}}{{/cat-no-url}} {{#cat-no-url}}<a href="{{cat-no-url}}" target="_blank" style="color:#6caae3; text-decoration:underline;">{{{cat-no}}}{{^cat-no}}CXXXXX{{/cat-no}}</a>{{/cat-no-url}}   </td>
+                  </tr>
+                  {{/spreadsheet.TMF_product-details--edm}}
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <!--#### spacer ####-->
+      <tr>
+        <td height="10"></td>
+      </tr>
+
+      <!--#### //spacer ####-->
+      {{/block.TMF_product-table--edm}}
+      <!--#### //PRODUCT TABLE ####-->
+
+
+      <!--#### SINGLE TEXT & IMAGE BLOCK ####-->    
+      {{#block.TMF_single-text-and-image-block--edm}}
+      <tr>
+        <td bgcolor="#f3f3f3" class="mobpad-0-0-10-0" width="100%" valign="top" style="padding-top: 0px; padding-right: 25px; padding-bottom: 0px; padding-left: 25px;">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+            <tr>
+
+              <!--#### image ####-->
+              <td class="colwrap" align="left" valign="top">
+                <table border="0" cellspacing="0" cellpadding="0" width="100%" style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                  <tr>
+                    <td class="mobpad-0-0-0-0" align="left" valign="top" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+                      <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                        <tr>
+                          <td class="mobpad-0-0-0-0" width="95" style="padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 0px;">
+                            <img class="imgfill mob-float-none mob-pad-10-0-0-13" src="{{TMF_support-image--edm}}{{^TMF_support-image--edm}}http://www.thermofisher.com/content/dam/LifeTech/emails/templates/q318-support-image-320px4.jpg{{/TMF_support-image--edm}}" alt="Thermo Fisher Scientific" width="85" style="display:block;" align="right" border="0" style="height: auto" />
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+
+              <!--#### copy ####-->
+              <td class="colwrap" valign="top" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+                <table border="0" cellspacing="0" cellpadding="0" width="100%" style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                  <tr>
+                    <td class="mobpad-10-13-10-13" align="left" valign="top" style="padding-top: 10px; padding-right: 0px; padding-bottom: 10px; padding-left: 0px;">
+
+                      {{#collection.TMF_body-text--edm}}
+
+                      {{#block.heading-1}}
+                      {{#text}}<p style="font-size: 13px; line-height: 22px; color: #555759; font-weight: bold;">{{{text}}}</p>{{/text}}
+                      {{/block.heading-1}}
+
+                      {{#block.paragraph}}
+                      {{#text}}<p style="">{{{text}}}</p>{{/text}}
+                      {{/block.paragraph}}
+
+                      {{/collection.TMF_body-text--edm}}
+
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!--#### spacer ####-->
+      <tr>
+        <td height="10"></td>
+      </tr>
+      <!--#### //spacer ####-->
+      {{/block.TMF_single-text-and-image-block--edm}}
+      <!--#### //SINGLE TEXT & IMAGE BLOCK ####-->
+
+      <!--#### FULL WIDTH TEXT BLOCK ####-->
+      {{#block.TMF_full-width-text-block--edm}}
+      <tr>
+        <td bgcolor="#f3f3f3" class="mobpad-10-13-10-13" width="100%" valign="top" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+          <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+            <tr>
+
+              <!--#### copy ####-->
+              <td class="colwrap" width="375" align="center" valign="top">
+                <table border="0" cellspacing="0" cellpadding="0" width="100%" style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                  <tr>
+                    <td class="mobpad-0-0-10-0" align="left" valign="top" style="padding-top: 10px; padding-right: 15px; padding-bottom: 10px; padding-left: 25px;">
+
+                      {{#collection.TMF_body-text--edm}}
+
+                      {{#block.heading-1}}
+                      {{#text}}<p style="color: #555759; font-weight: bold;">{{{text}}}</p>{{/text}}
+                      {{/block.heading-1}}
+
+                      {{#block.paragraph}}
+                      {{#text}}<p style="">{{{text}}}</p>{{/text}}
+                      {{/block.paragraph}}
+
+                      {{/collection.TMF_body-text--edm}}
+
+                    </td>
+                  </tr>
+                </table>
+              </td>
+
+
+              <!--#### button ####-->
+              {{#TMF_call-to-action-text--edm}}
+              <td class="colwrap" width="140" valign="middle" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+                <table border="0" cellspacing="0" cellpadding="0" width="100%" style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                  <tr>
+                    <td class="mobpad-0-0-10-0" align="left" valign="top" style="padding-top: 0px; padding-right: 25px; padding-bottom: 0px; padding-left: 0px;">
+                      <table width="100%" align="center" border="0" cellpadding="10" cellspacing="0" style="background:#ffffff; border: 1px solid #dcdcdc; border-collapse: collapse; font-family: Helvetica, sans-serif; font-size: 16px; line-height: 16px; color: #ffffff; text-decoration: none; font-weight: bold; mso-padding-alt: 10px; mso-cellspacing: 0px;">
+                        <tr>
+                          <td height="20" valign="middle" style="text-align: center; width:100%">
+                            <a href="{{TMF_call-to-action-url--edm}}" target="_blank" style="width:100%; display: inline-block; color: #1e8ae7; text-decoration: none;">{{{TMF_call-to-action-text--edm}}}</a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              {{/TMF_call-to-action-text--edm}}
+            </tr>
+          </table>
+        </td>
+      </tr>   
+      <!--#### spacer ####-->
+      <tr>
+        <td height="10"></td>
+      </tr>
+      <!--#### //spacer ####-->
+      {{/block.TMF_full-width-text-block--edm}}
+      <!--#### //TEXT WITH CTA BUTTON ####-->
+
+      <!--#### DOUBLE TEXT AND IMAGE BLOCKS ####-->
+      {{#block.TMF_double-text-and-image-blocks--edm}}  
+      <tr>
+        <td bgcolor="#f3f3f3" class="mobpad-0-0-10-0" width="100%" valign="top" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+          <table bgcolor="#f3f3f3" width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+            <tr>
+
+              <!--#### left ####-->
+              <td bgcolor="#f3f3f3" class="colwrap" align="left" valign="top" style="width: 301px;">
+
+                <table border="0" cellspacing="0" cellpadding="0" width="100%" style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px; ">
+                  <tr>
+                    <td class="mobpad-10-13-10-13" align="left" valign="top" style="padding-top: 10px; padding-right: 25px; padding-bottom: 10px; padding-left: 25px;">
+
+                      <!--#### image (mobile size will be actual image size) ####-->
+                      <table align="right" border="0" cellpadding="0" cellspacing="0" style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                        <tr>
+                          <td style="padding-top: 0px; padding-right: 0px; padding-bottom: 10px; padding-left: 10px;">
+                            <img class="imgfill" src="{{TMF_support-image-left-edm}}{{^TMF_support-image-left-edm}}http://www.thermofisher.com/content/dam/LifeTech/emails/templates/q318-support-image-150px2.jpg{{/TMF_support-image-left-edm}}" alt="" width="90" height="90" style="display:block;" align="right" border="0" />
+                          </td>
+                        </tr>
+                      </table>
+                      {{#collection.TMF_body-text-left--edm}}
+                      {{#block.heading-1}}
+                      {{#text}}<h1 style="color: #555759; font-weight: bold;">{{{text}}}</h1>{{/text}}
+                      {{/block.heading-1}}
+                      {{#block.paragraph}}
+                      {{#text}}<p style="">{{{text}}}</p>{{/text}}
+                      {{/block.paragraph}}
+                      {{/collection.TMF_body-text-left--edm}}
+                    </td>
+                  </tr>
+                </table>
+              </td>
+
+              <!--#### center space ####-->
+              <td bgcolor="#ffffff" class="colwrap" valign="top" style="padding-top: 5px; padding-right: 4px; padding-bottom: 5px; padding-left: 4px;"></td>
+
+              <!--#### right ####-->
+              <td bgcolor="#f3f3f3" class="colwrap" align="left" valign="top" style="width: 301px;">
+                <table border="0" cellspacing="0" cellpadding="0" width="100%" style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                  <tr>
+                    <td class="mobpad-10-13-10-13" align="left" valign="top" style="padding-top: 10px; padding-right: 25px; padding-bottom: 10px; padding-left: 25px;">
+
+                      <!--#### image (mobile size will be actual image size) ####-->
+                      <table align="right" border="0" cellpadding="0" cellspacing="0" style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                        <tr>
+                          <td style="padding-top: 0px; padding-right: 0px; padding-bottom: 10px; padding-left: 10px;">
+                            <img class="imgfill" src="{{TMF_support-image-right-edm}}{{^TMF_support-image-right-edm}}http://www.thermofisher.com/content/dam/LifeTech/emails/templates/q318-support-image-150px2.jpg{{/TMF_support-image-right-edm}}" alt="" width="90" height="90" style="display:block;" align="right" border="0" />
+                          </td>
+                        </tr>
+                      </table>
+                      {{#collection.TMF_body-text-right--edm}}
+                      {{#block.heading-1}}
+                      {{#text}}<h1 style="color: #555759; font-weight: bold;">{{{text}}}</h1>{{/text}}
+                      {{/block.heading-1}}
+                      {{#block.paragraph}}
+                      {{#text}}<p style="">{{{text}}}</p>{{/text}}
+                      {{/block.paragraph}}
+                      {{/collection.TMF_body-text-right--edm}}
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!--#### spacer ####-->
+      <tr>
+        <td height="10"></td>
+      </tr>
+      <!--#### //spacer ####-->
+      {{/block.TMF_double-text-and-image-blocks--edm}} 
+      <!--#### //DOUBLE TEXT AND IMAGE BLOCKS ####-->
+
+      {{/collection.TMF_edm-modules--edm}}
+      <!--#### EDM MODLUES ####-->
+
+
+      <!--#### spacer ####-->
+      <tr>
+        <td height="10"></td>
+      </tr>
+
+
+      <!--#### FOOTER ####-->
+      <tr>
+        <td>
+          <table width="100%" bgcolor="#F3F3F3" border="0" cellpadding="0" cellspacing="0" style="font-family:Helvetica, sans-serif; font-size:10px; line-height: 12px; color: #888888; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+
+            <tr>
+              <!-- COL1 -->
+
+              <td class="colwrap" style="">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family:Helvetica, sans-serif; font-size:10px; line-height: 12px; color: #888888; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                  <tr>
+
+                    <!--#### SOCIAL ####-->
+                    <td width="72" valign="top" style="width: 32px; padding-top: 25px; padding-right: 15px; padding-bottom: 25px; padding-left: 25px;">
+                      <table width="32" border="0" cellpadding="0" cellspacing="0" style="font-family: Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+
+                        {{#TMF_facebook-url--edm}}
+                        <!--#### Facebook ####-->
+                        <tr>
+                          <td>
+                            <a href="{{TMF_facebook-url--edm}}" target="_blank" class="js-social-link-fb"><img src="https://files.outfit.io/media_library_items/148096/q315-socialmedia-facebook.jpg" style="display:block;" width="32" height="32" alt="Facebook" title="Facebook" border="0" /></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td height="12"></td>
+                        </tr>
+                        {{/TMF_facebook-url--edm}}
+
+                        {{#TMF_twitter-url--edm}}
+                        <!--#### Twitter ####-->
+                        <tr>
+                          <td>
+                            <a href="{{TMF_twitter-url--edm}}" target="_blank" class="js-social-link-twitter"><img src="https://files.outfit.io/media_library_items/148095/q315-socialmedia-twitter.jpg" style="display:block;" alt="Twitter" width="32" height="32" border="0" /></a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td height="12"></td>
+                        </tr>
+                        {{/TMF_twitter-url--edm}}
+
+
+                        {{#TMF_linkedIn-url--edm}}
+                        <!--#### LinkedIn ####-->
+                        <tr>
+                          <td>
+                            <a href="{{TMF_linkedIn-url--edm}}" target="_blank" class="js-social-link-linkedin"><img src="https://files.outfit.io/media_library_items/148097/q315-socialmedia-linkedin.jpg" style="display:block;" alt="LinkedIn" width="32" height="32" border="0" /></a>
+                          </td>
+                        </tr>    
+                        <tr>
+                          <td height="12"></td>
+                        </tr>
+                        {{/TMF_linkedIn-url--edm}}
+
+                        {{#TMF_youtube-url--edm}}
+                        <!--#### YouTube ####-->
+                        <tr>
+                          <td>
+                            <a href="{{TMF_youtube-url--edm}}" target="_blank" class="js-social-link-youtube"><img src="https://files.outfit.io/media_library_items/148094/q315-socialmedia-youtube.jpg" style="display:block;" alt="YouTube" width="32" height="32" border="0" /></a>
+                          </td>
+                        </tr>
+                        {{/TMF_youtube-url--edm}}
+                      </table>
+                    </td>
+                    <!--#### //SOCIAL ####-->
+
+                    <!--#### TERMS & CONDITIONS ####-->
+                    <td width="382" valign="top" style="width: 357px; padding-top: 25px; padding-right: 25px; padding-bottom: 25px; padding-left: 0px; font-size:11px;">
+                      {{{TMF_terms-and-conditions--edm}}}
+                    </td>
+                    <!--#### //TERMS & CONDITIONS ####-->
+                  </tr>
+                </table>
+              </td>
+
+              <!--#### LOGO ####-->
+              <td class="colwrap" width="146" align="center" valign="top" style="width: 121px; ">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Helvetica, sans-serif; font-size:10px; line-height: 12px; color: #888888; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                  <tr>
+                    <td class="mobpad-0-0-0-0" align="center" style="padding-top: 80px; padding-right: 25px; padding-bottom: 25px; padding-left: 0px;">
+                      <img src="http://www.thermofisher.com/content/dam/LifeTech/emails/templates/q315-logo-thermofisherscientific.png" width="121" height="26" alt="" style="display:block;" />
+                    </td>
+                  </tr>
+
+                  <!--#### under logo spacer ####-->
+                  <tr>
+                    <td height="30"></td>
+                  </tr>
+                </table>
+
+              </td>
+              <!--#### //LOGO ####-->
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!--#### //FOOTER ####-->
+
+      <!--#### last spacer of email ####-->
+      <tr>
+        <td height="20"></td>
+      </tr>
+
+    </table>
+    <!--#### //MAIN WRAPPER ####-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js"></script>
+    <script>
+      console.clear();
+      function brandingTheme() {
+        const src = '{{TMF_branding-theme--edm}}{{^TMF_branding-theme--edm}}thermo-fisher-scientific{{/TMF_branding-theme--edm}}';
+        const logo = document.querySelector('.js-target-logo');
+        const subheading = document.querySelector('.js-target-subheading');
+        const cta = document.querySelector('.js-target-cta');
+        const headingBanner = document.querySelector('.js-target-headingBanner');
+        const logoBackgrund = document.querySelector('.js-target-logoBackground');
+        const bannerLink = document.querySelector('.js-banner-link');
+        // Social Links Elements
+        const facebookLink = document.querySelector('.js-social-link-fb');
+        const twitterLink = document.querySelector('.js-social-link-twitter');
+        const linkedinLink = document.querySelector('.js-social-link-linkedin');
+        const youtubeLink = document.querySelector('.js-social-link-youtube');
+
+        const socialLinks = {
+          thermoFisherScientific: {
+            facebook: 'http://facebook.com/thermo-fisher-dummy-url',
+            twitter: 'http://twitter.com/thermo-fisher-dummy-url',
+            linkedin: 'http://linkedin.com/thermo-fisher-dummy-url',
+            youtube: 'http://youtube.com/thermo-fisher-dummy-url',
+          },
+          appliedBioSystems: {
+            facebook: 'http://facebook.com/applied-bio-systems-dummy-url',
+            twitter: 'http://twitter.com/applied-bio-systems-dummy-url',
+            linkedin: 'http://linkedin.com/applied-bio-systems-dummy-url',
+            youtube: 'http://youtube.com/applied-bio-systems-dummy-url',
+          },
+          gibco: {
+            facebook: 'http://facebook.com/gibco-dummy-url',
+            twitter: 'http://twitter.com/gibco-dummy-url',
+            linkedin: 'http://linkedin.com/gibco-dummy-url',
+            youtube: 'http://youtube.com/gibco-dummy-url',
+          },
+          invitrogen: {
+            facebook: 'http://facebook.com/invitrogen-dummy-url',
+            twitter: 'http://twitter.com/invitrogen-dummy-url',
+            linkedin: 'http://linkedin.com/invitrogen-dummy-url',
+            youtube: 'http://youtube.com/invitrogen-dummy-url',
+          },          
+          ionTorrent: {
+            facebook: 'http://facebook.com/ion-torrent-dummy-url',
+            twitter: 'http://twitter.com/ion-torrent-dummy-url',
+            linkedin: 'http://linkedin.com/ion-torrent-dummy-url',
+            youtube: 'http://youtube.com/ion-torrent-dummy-url',
+          },                    
+          thermoScientific: {
+            facebook: 'http://facebook.com/thermo-scientific-dummy-url',
+            twitter: 'http://twitter.com/thermo-scientific-dummy-url',
+            linkedin: 'http://linkedin.com/thermo-scientific-dummy-url',
+            youtube: 'http://youtube.com/thermo-scientific-dummy-url',
+          }
+        }
+
+        const colors = {
+          white: 'ffffff',
+          red: '#ee3134',
+          gray: '#555555',
+          darkBlue: '#262262',
+          teal: '#7fba00',            
+        }
+
+        switch(src) {
+          case 'thermo-fisher-scientific':
+            logo.src = 'https://files.outfit.io/media_library_items/145640/2018-Q3-ThermoFisherScientific-13px.png';
+            logo.width = 200;
+            logo.height = 50;
+
+            facebookLink.setAttribute('href', socialLinks.thermoFisherScientific.facebook);
+            twitterLink.setAttribute('href', socialLinks.thermoFisherScientific.twitter);
+            linkedinLink.setAttribute('href', socialLinks.thermoFisherScientific.linkedin);
+            youtubeLink.setAttribute('href', socialLinks.thermoFisherScientific.youtube);
+
+            bannerLink.setAttribute('href', 'https://www.thermofisher.com');
+
+            if ( logoBackgrund ) logoBackgrund.style.backgroundColor = colors.white;
+            if ( subheading ) subheading.style.color = colors.red;
+            if ( cta ) cta.style.backgroundColor = colors.red;
+            if ( headingBanner ) headingBanner.style.backgroundColor = colors.gray;
+            break;
+          case 'applied-bio-systems':
+            logo.src = 'https://files.outfit.io/media_library_items/145637/2019-Q3-AppliedBiosystems-13px.png';
+            logo.width = 200;
+            logo.height = 50;      
+
+            facebookLink.setAttribute('href', socialLinks.thermoFisherScientific.facebook);
+            twitterLink.setAttribute('href', socialLinks.thermoFisherScientific.twitter);
+            linkedinLink.setAttribute('href', socialLinks.thermoFisherScientific.linkedin);
+            youtubeLink.setAttribute('href', socialLinks.thermoFisherScientific.youtube);
+
+            bannerLink.setAttribute('href', 'https://www.thermofisher.com-dummy-url');
+
+            if ( logoBackgrund ) logoBackgrund.style.backgroundColor = colors.darkBlue;
+            if ( subheading ) subheading.style.color = colors.darkBlue;
+            if ( cta ) cta.style.backgroundColor = colors.red;
+            if ( headingBanner ) headingBanner.style.backgroundColor = colors.darkBlue;
+            break;
+          case 'gibco':
+            logo.src = 'https://files.outfit.io/media_library_items/145641/2019-Q3-Gibco-13px.png';
+            logo.width = 200;
+            logo.height = 50;    
+            
+            facebookLink.setAttribute('href', socialLinks.thermoFisherScientific.facebook);
+            twitterLink.setAttribute('href', socialLinks.thermoFisherScientific.twitter);
+            linkedinLink.setAttribute('href', socialLinks.thermoFisherScientific.linkedin);
+            youtubeLink.setAttribute('href', socialLinks.thermoFisherScientific.youtube);
+
+            bannerLink.setAttribute('href', 'https://www.thermofisher.com-dummy-url');
+
+            if ( logoBackgrund ) logoBackgrund.style.backgroundColor = colors.teal;
+            if ( subheading ) subheading.style.color = colors.teal;
+            if ( cta ) cta.style.backgroundColor = colors.red;
+            if ( headingBanner ) headingBanner.style.backgroundColor = colors.teal;
+            break;      
+          case 'invitrogen':
+            logo.src = 'https://files.outfit.io/media_library_items/145636/2019-Q3-Invitrogen-13px.png';
+            logo.width = 200;
+            logo.height = 50;  
+            
+            facebookLink.setAttribute('href', socialLinks.thermoFisherScientific.facebook);
+            twitterLink.setAttribute('href', socialLinks.thermoFisherScientific.twitter);
+            linkedinLink.setAttribute('href', socialLinks.thermoFisherScientific.linkedin);
+            youtubeLink.setAttribute('href', socialLinks.thermoFisherScientific.youtube);
+
+            bannerLink.setAttribute('href', 'https://www.thermofisher.com-dummy-url');
+
+            if ( logoBackgrund ) logoBackgrund.style.backgroundColor = colors.red;
+            if ( subheading ) subheading.style.color = colors.red;
+            if ( cta ) cta.style.backgroundColor = colors.red;
+            if ( headingBanner ) headingBanner.style.backgroundColor = colors.gray;
+            break;      
+          case 'ion-torrent':
+            logo.src = 'https://files.outfit.io/media_library_items/145639/2019-Q3-IonTorrent-13px.png';
+            logo.width = 200;
+            logo.height = 50;  
+            
+            facebookLink.setAttribute('href', socialLinks.thermoFisherScientific.facebook);
+            twitterLink.setAttribute('href', socialLinks.thermoFisherScientific.twitter);
+            linkedinLink.setAttribute('href', socialLinks.thermoFisherScientific.linkedin);
+            youtubeLink.setAttribute('href', socialLinks.thermoFisherScientific.youtube);
+
+            bannerLink.setAttribute('href', 'https://www.thermofisher.com-dummy-url');
+
+            if ( logoBackgrund ) logoBackgrund.style.backgroundColor = colors.gray;
+            if ( subheading ) subheading.style.color = colors.gray;
+            if ( cta ) cta.style.backgroundColor = colors.red;
+            if ( headingBanner ) headingBanner.style.backgroundColor = colors.gray;
+            break;      
+          case 'thermo-scientific':
+            logo.src = 'https://files.outfit.io/media_library_items/145638/2018-Q3-ThermoScientific-13px.png';
+            logo.width = 200;
+            logo.height = 50; 
+            
+            facebookLink.setAttribute('href', socialLinks.thermoFisherScientific.facebook);
+            twitterLink.setAttribute('href', socialLinks.thermoFisherScientific.twitter);
+            linkedinLink.setAttribute('href', socialLinks.thermoFisherScientific.linkedin);
+            youtubeLink.setAttribute('href', socialLinks.thermoFisherScientific.youtube);
+
+            bannerLink.setAttribute('href', 'https://www.thermofisher.com-dummy-url');
+
+            if ( logoBackgrund ) logoBackgrund.style.backgroundColor = colors.red;
+            if ( subheading ) subheading.style.color = colors.red;
+            if ( cta ) cta.style.backgroundColor = colors.red;
+            if ( headingBanner ) headingBanner.style.backgroundColor = colors.gray;
+            break;  
+
+          default:
+            logo.src = 'https://files.outfit.io/media_library_items/145638/2018-Q3-ThermoScientific-13px.png';
+            logo.width = 200;
+            logo.height = 50;   
+            
+            facebookLink.setAttribute('href', socialLinks.thermoFisherScientific.facebook);
+            twitterLink.setAttribute('href', socialLinks.thermoFisherScientific.twitter);
+            linkedinLink.setAttribute('href', socialLinks.thermoFisherScientific.linkedin);
+            youtubeLink.setAttribute('href', socialLinks.thermoFisherScientific.youtube);
+
+            bannerLink.setAttribute('href', 'https://www.thermofisher.com-dummy-url');
+
+
+            if ( logoBackgrund ) logoBackgrund.style.backgroundColor = colors.red;
+            if ( subheading ) subheading.style.color = colors.red;
+            if ( cta ) cta.style.backgroundColor = colors.red;
+            if ( headingBanner ) headingBanner.style.backgroundColor = colors.gray;          
+        }
+      }
+
+      function maxLineCheck(orientation = 'portrait') {
+        const textBlocks = document.querySelectorAll('[data-max-line]');
+
+        textBlocks.forEach(block => {
+          const computedStyle = window.getComputedStyle(block);
+          // Checking if line-height is not set and has a normal value set by default
+          const isNormal = computedStyle.getPropertyValue('line-height') == 'normal';
+          // Getting the font-size of an element that will help us calculate the line-height
+          // if the line-height is set to 'normal'
+          const fontSize = parseFloat(computedStyle.getPropertyValue('font-size'));
+          // If line-height is normal, we multiply the element's font-size with 1.14
+          if ( isNormal ) block.style.lineHeight = (fontSize * 1.14) + 'px';
+          const lineHeight = parseFloat(computedStyle.getPropertyValue('line-height'));
+          const blockHeight = block.scrollHeight;
+          // Getting the data-max-line attribute value (max number of lines allowed)
+          const maxLineAlt = block.dataset.maxLineAlt || block.dataset.maxLine;
+          const maxLine = (orientation == 'portrait') ? block.dataset.maxLine : maxLineAlt;
+          // Setting the element's max-height 
+          const limitHeight = (lineHeight * maxLine) + (lineHeight / 2);
+
+          block.style.maxHeight = limitHeight + 'px';
+          ( blockHeight > limitHeight ) ? block.classList.add('overflow') : block.classList.remove('overflow');
+        });
+      }
+
+      function maxHeightCheck(variation = 'primary') {
+        const textBlocks = document.querySelectorAll('[data-max-height]');
+
+        textBlocks.forEach(block => {
+          const dynamicCheck = block.dataset.maxHeight == 'dynamic' || block.dataset.maxHeightDynamic == 'true';
+          if ( dynamicCheck ) dynamicAssign(block);
+
+          const cssCheck = block.dataset.maxHeight == 'css';
+          const bodyComputedStyle = window.getComputedStyle(document.body);
+          const blockHeight = block.scrollHeight;
+          const unit = block.dataset.maxHeightUnit || 'px';
+          const maxHeightAlt = block.dataset.maxHeightAlt || block.dataset.maxHeight;
+          let maxHeight = (variation == 'primary') ? block.dataset.maxHeight : maxHeightAlt;    
+
+          if ( cssCheck ) {
+            const computedBlockStyle = window.getComputedStyle(block);
+            maxHeight = parseInt(computedBlockStyle.maxHeight);
+          } else {
+            // Setting the element's max-height
+            block.style.maxHeight = maxHeight + unit;
+
+            // Recalculating maxHeight in case 'rem' is set as a unit
+            if ( unit == 'rem' ) maxHeight = maxHeight * parseFloat(bodyComputedStyle.fontSize);      
+          }
+
+          // Adding an 'overflow' class to an element if it's offset height exceedes the max-line-height
+          ( blockHeight > maxHeight ) ? block.classList.add('overflow') : block.classList.remove('overflow');
+        });
+      }
+
+      function dynamicAssign(element) {
+        const container = element.parentNode;
+        container.style.overflow = 'hidden';
+        const containerComputed = {
+          height: parseFloat(window.getComputedStyle(container).height),
+          top: parseFloat(window.getComputedStyle(container).paddingTop),
+          bottom: parseFloat(window.getComputedStyle(container).paddingBottom)
+        };
+        const containerHeight = Math.floor(containerComputed.height - containerComputed.top - containerComputed.bottom);
+        const subtrahends = [...container.querySelectorAll('.js-subtrahend')];
+
+        const subtrahendsHeight = subtrahends.reduce((totalHeight, subtrahend) => {
+          const subtrahendMargins = {
+            top: parseFloat(window.getComputedStyle(subtrahend).marginTop),
+            bottom: parseFloat(window.getComputedStyle(subtrahend).marginBottom)
+          };
+          return totalHeight + subtrahend.offsetHeight + subtrahendMargins.top + subtrahendMargins.bottom;
+        }, 0);
+
+        const dynamicHeight = containerHeight - subtrahendsHeight;
+
+        element.dataset.maxHeightDynamic = 'true';
+        element.dataset.maxHeight = dynamicHeight;
+        container.style.overflow = 'visible';
+      }
+
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck();         
+          maxHeightCheck();    
+        });
+      });
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck();    
+        maxHeightCheck();    
+        brandingTheme();
+      });
+
+
+
+      // ADDING EXPORTS SCREEN
+      $( document ).ready(function() {
+        $('.js-exports').append('<div id="exports" class="copy-overlay dynamic-content"> <div class="copy-content"> <div> <h1>Publishing a case study to Drupal</h1> </div> <div> <h2>Step One</h2> <p>Click the button below to copy the case study HTML</p> <button class="btn-red btn" data-clipboard-target="#case-study">Copy HTML Code</button> </div> </div><!--copy-content--> </div><!--exports-->');
+
+        // Copy HTML to clipboard
+
+        new Clipboard('button');
+
+      });
+
+
+    </script>
+  </body>
+
+</html>

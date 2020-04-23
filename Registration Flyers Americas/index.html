@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html data-sign="OSM">
+  <head>
+    <title>Template title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/minireset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+   
+
+    <style>
+      /* Inputs Order
+      {{show-crop}}
+
+      */
+
+      @import url('https://outfit-assets-production.s3.amazonaws.com/fonts/Circular/stylesheet.css');
+      @import url('https://outfit-assets-production.s3.amazonaws.com/fonts/HelveticaNeueLTW1G/stylesheet.css');
+      @import url('https://outfit-assets-production.s3.amazonaws.com/fonts/Helvetica%20Neue%20LT/stylesheet.css');
+      @import url('https://outfit-assets-production.s3.amazonaws.com/fonts/helvetica-neue/stylesheet.css');
+
+      :root {
+        --primary: {{{account.colors.primary}}};
+        --white: {{{account.colors.white}}};
+        --medium-grey: {{{account.colors.gray-medium}}};
+        --dark-blue: {{{account.colors.dark-blue}}}
+      }
+
+      html {
+        font-family: 'HelveticaNeueLT W1G 45 Lt';
+        font-size: 11pt;
+        color: var(--medium-grey);
+        word-break: break-word;
+      }
+
+      .backgroundImage {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+      }
+
+      .backgroundImage div {
+        width: auto !important;
+        height: auto !important;
+        right: 0;
+        bottom: 0;
+      }
+
+      /* Helper classes */
+      .u-hide { display: none; }
+
+      /* Helper class for fixing Reposition tool bug */
+      .reposition-fix {
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;        
+      }
+
+      .reposition-fix div {
+        top: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      .fit {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        flex-shrink: 0;
+        height: 276pt;
+        padding: 95pt 45pt 55pt;
+      }
+
+      .hero,
+      .customHero {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        display: none;
+      }
+
+      .customHero {
+        top: 31pt;
+        bottom: 28pt;
+      }
+
+      .theme--baltimore .hero,
+      .theme--boston .hero,
+      .theme--princeton .hero,
+      .theme--san-diego .hero,
+      .theme--san-francisco .hero,
+      .theme--seattle .hero,
+      .theme--custom .customHero {
+        display: block;
+      }
+
+      .theme--custom .header__content { display: none; }
+
+      .hero {
+        background-image: url(https://files.outfit.io/media_library_items/169016/Thermo%2520Fisher-%2520REA-San%2520Francisco-image.jpg);
+        background-size: 103%;
+        background-position: -16pt 22pt;
+        background-repeat: no-repeat;
+      }
+
+      .theme--baltimore .hero { background-image: url(https://files.outfit.io/media_library_items/169014/Thermo%2520Fisher-%2520REA-Baltimore-image.jpg); }
+      .theme--boston .hero { 
+        background-image: url(https://files.outfit.io/media_library_items/169019/Thermo%2520Fisher-%2520REA-Boston-image.jpg); 
+        background-position: -5pt 22pt;
+      }
+      .theme--princeton .hero { 
+        background-image: url(https://files.outfit.io/media_library_items/169018/Thermo%2520Fisher-%2520REA-Princeton%2520NJ-image.jpg); 
+        background-position: -7pt 23pt;
+      }
+      .theme--san-diego .hero { background-image: url(https://files.outfit.io/media_library_items/169015/Thermo%2520Fisher-%2520REA-SanDiego-image.jpg); 
+        background-position: -8pt 22pt;
+      }
+      .theme--san-francisco .hero { background-image: url(https://files.outfit.io/media_library_items/169016/Thermo%2520Fisher-%2520REA-San%2520Francisco-image.jpg); }
+      .theme--seattle .hero { 
+        background-image: url(https://files.outfit.io/media_library_items/169017/Thermo%2520Fisher-%2520REA-Seattle-image.jpg); 
+        background-position: -7pt 22pt;
+      }
+
+      .bar {
+        display: flex;
+        position: absolute;
+        top: 31pt;
+        left: 0;
+        right: 0;
+        height: 42pt;
+      }
+
+      .bar__section--primary {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 158pt;
+        padding-right: 14pt;
+        background-color: var(--primary);
+      }
+
+      .bar__section--secondary {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        flex: 1 0 0%;
+        padding-right: 44pt;
+        background-color: rgba(223, 222, 222, 0.95);
+      }
+
+      .bar__logo--primary { width: 99pt; }
+
+      .bar__logo--secondary {
+        width: 85pt;
+        margin-right: 13pt;
+        margin-bottom: 3pt;
+      }
+
+      .bar__logo--tertiary { width: 54pt; }
+
+      .header__content {
+        position: relative;
+        color: var(--white);
+      }
+
+      .header__title {   
+        font-family: 'HelveticaNeueLT W1G 65 Md';
+        font-size: 33.9pt;
+        font-weight: bold;
+        line-height: 1em;
+      }
+
+      .header__text {
+        font-size: 20.7pt;
+        line-height: 1.2em;
+      }
+
+      .body {
+        flex: 1 0 0%;
+        padding: 5pt 44.6pt 7pt;
+      }
+
+      .title {
+        margin-bottom: 0.6pt;
+        font-family: 'HelveticaNeueLT W1G 45 Lt';
+        font-size: 31.6pt;
+        line-height: 1.2em;
+        color: var(--primary);
+      }
+
+      .heading {
+        margin-bottom: 10.2pt;
+        font-size: 20.8pt;
+        line-height: 1.3em;
+      }
+
+      .content { margin-bottom: 15pt; }
+
+      .column:first-child { margin-bottom: 13pt; }
+
+      .copy p {
+        margin-bottom: 13.1pt;
+        font-size: 10.2pt;
+        line-height: 1.4em;
+        font-weight: 300;
+      }
+
+      .copy p:last-child { margin-bottom: 0; }
+
+      .details { margin-bottom: 16.6pt; }
+
+      .details__heading {
+        font-family: 'HelveticaNeueLT W1G 55 Roman';
+        color: #006980;
+        margin-bottom: 2pt;
+        font-size: 10.4pt;
+        font-weight: bold;
+      }
+
+      .details__item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 2.4pt;
+        font-size: 10.5pt;
+        line-height: 1.2em;
+        font-weight: 500;
+      }
+
+      .details__item:last-child { margin-bottom: 0; }
+
+      .details__label { 
+        font-family: 'HelveticaNeueLT W1G 55 Roman';
+        font-weight: bold;
+        width: 56pt; 
+      }
+
+      .note {    
+        font-size: 9.9pt;
+        line-height: 1.2em;
+      }
+
+      .contact { margin-bottom: 11pt; }
+
+      .contact__heading {
+        margin-bottom: 1pt;
+        font-size: 10pt;
+        line-height: 1.45em;
+      }
+
+      .contact__heading sup {
+        font-size: 3.6pt;
+        vertical-align: super;
+      }
+
+      .contact__item { 
+        display: flex;
+        margin-bottom: 2pt;
+        font-weight: 500;
+        font-size: 10.2pt;
+        line-height: 1.2em;
+      }
+
+      .contact__item:last-child { margin-bottom: 0; }
+
+      .contact__label {
+        font-family: 'HelveticaNeueLT W1G 55 Roman';
+        font-weight: bold;
+        width: 56pt;
+      }
+
+      .disclaimer {
+        font-family: 'HelveticaNeueLT W1G 57 Cn';
+        font-size: 7.4pt;
+        font-weight: 300;
+        line-height: 1.2em;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        padding: 0pt 31pt 32pt 44pt;
+      }
+
+      .footer__content {
+        display: flex;
+        flex-direction: column;
+        margin-right: 10pt;
+      }
+
+      .url {
+        font-family: 'HelveticaNeueLT W1G 65 Md';
+        font-size: 12.9pt;
+        line-height: 1.2em;
+        font-weight: 500;
+      }
+
+      .url strong { color: var(--primary); }
+
+      .footer__text {    
+        margin-top: 21.1pt;
+        font-family: 'HelveticaNeueLT W1G 67 MdCn';
+        font-size: 7.3pt;
+        font-weight: 500;
+        line-height: 1.35em;
+      }
+
+      .logo__container {
+        margin-top: -30pt;
+        align-self: flex-start;
+        flex-shrink: 0;
+      }
+
+      .logo--primary {
+        width: 149pt;
+        max-height: 53pt;
+      }
+
+      .u-bold { font-weight: bold; }
+
+      .u-display-none {
+        display: none;
+      }
+
+      .dateValidation.overflow:hover:after {
+        content: 'Wrong Date Syntax';
+        font-size: 0.6em;
+      }
+
+      /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
+    </style>
+  </head>
+  <body style="background: white" data-crop="{{show-crop}}" data-reduce-export-font-size-by-percent="0" data-reduce-firefox-font-size-by-percent="0" data-prevent-export-overflow="false"
+        class="theme--{{{TF_theme--rfa}}}{{^TF_theme--rfa}}san-francisco{{/TF_theme--rfa}}">
+   
+    <div class="page">
+
+      <div class="bleed">
+
+        <div class="container fit">
+
+          <div class="header">
+            <div class="hero"></div><!--hero-->
+            <div class="customHero"><div class="reposition-fix">{{{TF_custom-header-image--rfa}}}</div></div><!--customHero-->
+            <div class="bar">
+              <div class="bar__section--primary">
+                <img  class="bar__logo--primary" src="https://files.outfit.io/media_library_items/169950/ThermoFisher-UMG-brand%2520logo3.svg">
+              </div><!--bar__section--primary-->
+              <div class="bar__section--secondary">
+                <img  class="bar__logo--secondary" src="https://files.outfit.io/media_library_items/169949/ThermoFisher-UMG-brand%2520logo2.svg">
+                <img  class="bar__logo--tertiary" src="https://files.outfit.io/media_library_items/169951/ThermoFisher-UMG-brand%2520logo.svg">
+              </div><!--bar__section--secondary-->
+            </div><!--bar-->
+            <div class="header__content">
+              <div class="header__title">HCS 101</div><!--header__title-->
+              <div class="header__text">Learn. Achieve. Discover</div><!--header__text-->
+            </div><!--header__content-->
+          </div><!--header-->
+          <div class="body">
+            <div class="body__inner" data-max-height="dynamic">
+              <div class="title">Two-day HCS101 training course</div><!--title-->
+              <div class="heading" data-max-line="2">{{{TF_heading--rfa}}}</div><!--heading-->
+              <div class="content">
+                <div class="column">
+                  <div class="copy">{{{TF_body-copy--rfa}}}</div><!--copy-->
+                </div><!--column-->
+                <div class="column">
+                  {{#collection.TF_event-details--rfa.length}}
+                  <div class="details">
+                    <div class="details__heading">Event details:</div><!--details__heading-->
+                    {{#collection.TF_event-details--rfa}}
+                    {{#TF_date--rfa}}
+                    <div class="details__item" data-max-line="1">
+                      <div class="details__label">Date:</div><!--details__label-->
+                      <div class="details__value dateValidation">{{{TF_date--rfa}}}</div><!--details__value-->
+                    </div><!--details__item-->
+                    {{/TF_date--rfa}}
+                    {{#TF_time--rfa}}
+                    <div class="details__item" data-max-line="1">
+                      <div class="details__label">Time:</div><!--details__label-->
+                      <div class="details__value">{{{TF_time--rfa}}}</div><!--details__value-->
+                    </div><!--details__item-->
+                    {{/TF_time--rfa}}
+                    {{#TF_location--rfa}}
+                    <div class="details__item" data-max-line="1">
+                      <div class="details__label">Location:</div><!--details__label-->
+                      <div class="details__value">{{{TF_location--rfa}}}</div><!--details__value-->
+                    </div><!--details__item-->
+                    {{/TF_location--rfa}}
+                    {{#TF_agenda--rfa}}
+                    <div class="details__item" data-max-line="1">
+                      <div class="details__label">Agenda:</div><!--details__label-->
+                      <div class="details__value">{{{TF_agenda--rfa}}}</div><!--details__value-->
+                    </div><!--details__item-->
+                    {{/TF_agenda--rfa}}
+                    {{/collection.TF_event-details--rfa}}
+                  </div><!--details-->
+                  {{/collection.TF_event-details--rfa.length}}
+                  <div class="note">{{{TF_event-note--rfa}}}</div><!--note-->
+                </div><!--column-->
+              </div><!--content-->
+              {{#collection.TF_contact-details--rfa.length}}
+              <div class="contact">
+                <div class="contact__heading">To find out more about the course or Thermo Scientific<sup>TM</sup> and Invitrogen<sup>TM</sup><br>cell analysis systems and reagents, contact:</div><!--contact__heading-->
+                {{#collection.TF_contact-details--rfa}}
+                {{#TF_name--rfa}}
+                <div class="contact__item" data-max-line="1">
+                  <div class="contact__label">Name:</div><!--contact__label-->
+                  <div class="contact__value">{{{TF_name--rfa}}}</div><!--contact__value-->
+                </div><!--contact__item-->
+                {{/TF_name--rfa}}
+                {{#TF_email--rfa}}
+                <div class="contact__item" data-max-line="1">
+                  <div class="contact__label">Email:</div><!--contact__label-->
+                  <div class="contact__value">{{{TF_email--rfa}}}</div><!--contact__value-->
+                </div><!--contact__item-->
+                {{/TF_email--rfa}}
+                {{/collection.TF_contact-details--rfa}}
+              </div><!--contact-->
+              {{/collection.TF_contact-details--rfa.length}}
+              {{#TF_disclaimer--rfa}}
+              <div class="disclaimer" data-max-line="2">{{{TF_disclaimer--rfa}}}</div><!--disclaimer-->
+              {{/TF_disclaimer--rfa}}
+            </div><!--body__inner-->
+          </div><!--body-->
+          <div class="footer">
+            <div class="footer__content">
+              {{#TF_event-url--rfa}}
+              <div class="url" data-max-line="1">{{{TF_event-url--rfa}}}</div><!--url-->
+              {{/TF_event-url--rfa}}
+              <div class="footer__text" data-max-line="2"><span class="u-bold">For Research Use Only. Not for use in diagnostic procedures.</span> @ 2020 Thermo Fisher Scientific Inc. All rights reserved. All trademarks are the property of Thermo Fisher Scientific and its subsidiaries unless otherwise specified. COL14998 <span class="u-bold">{{{TF_event-submission-number--rfa}}}</span></div><!--footer__text-->
+            </div><!--footer__content-->
+            <div class="logo__container">
+              <img class="logo--primary" src="{{{account.logos.primary}}}">
+            </div><!--logo__container-->
+          </div><!--footer-->
+
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+
+    <script>
+      window.showCrop = {{show-crop}}{{^show-crop}}true{{/show-crop}};
+    </script>
+    <script src="js/main.js"></script>   
+    <script src="js/prefixfree.js"></script>
+    <script src="js/char-limit.js"></script>
+    <script src="js/check-export-mode.js"></script>
+    <script src="js/max-line-check.js"></script>
+    <script src="js/max-height-check.js"></script>
+    <script src="js/hide-empty-titles.js"></script>
+    <script src="js/custom-rich-text.js"></script>
+    <script src="js/dynamic-inject.js"></script>
+    <script src="js/text-fit-min.js"></script>
+    <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.4.min.js" type="text/javascript"></script>
+    <script src="js/moment-min.js" type="text/javascript"></script>    
+  
+    <script>
+
+      console.clear();
+
+      function dateUtil() {
+        var dates = document.querySelectorAll(".dateValidation");
+        dates.forEach(function(date){
+          var newDate = date.innerText;
+          var dateFormat = "dddd, MMMM D, YYYY";
+          const m = moment(newDate, dateFormat, true);
+
+          const a = m.isValid();
+
+          if(a != true) {
+            date.classList.add("overflow");
+          } else {
+            date.classList.remove("overflow");
+          }
+        });
+      }
+      dateUtil();      
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck();
+          maxHeightCheck();
+          charLimit();
+          hideEmptyTitles();
+          dateUtil();
+        });
+      });
+
+      const injectObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          injectDynamicContent();
+        });
+      });      
+
+      const injectSources = document.querySelectorAll('[data-target-id]');
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });
+
+      if ( injectSources.length > 0 ) {
+        injectSources.forEach(src => {
+          injectObserver.observe(src, {
+            attributes: false,
+            characterData: true,
+            childList: true,
+            subtree: true,
+            attributeOldValue: false,
+            characterDataOldValue: true
+          });            
+        });
+      }    
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck();
+        maxHeightCheck();
+        injectDynamicContent();
+        hideEmptyTitles();
+      });
+
+      checkCrop();
+      checkExport();
+      charLimit();
+
+      // TextFit function decreases the font of the selected element to make it fit in single line (if needed, uncomment the code bellow)
+      TextFit.fit({
+        selector: '.textFit'
+      });
+
+
+    </script>
+
+
+  </body>
+</html>

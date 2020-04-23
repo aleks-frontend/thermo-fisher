@@ -1,0 +1,770 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+    <meta name="format-detection" content="date=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!--[if gte mso 9]><xml>
+        <o:OfficeDocumentSettings>
+        <o:AllowPNG/>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+        </xml><![endif]-->
+
+    <title>{{{EDM-Subject-Line}}}{{^EDM-Subject-Line}}Subject line goes here in sentence case{{/EDM-Subject-Line}}</title>
+
+    <!--
+SL1: GOES HERE 
+SL2: GOES HERE 
+SL3: GOES HERE 
+SL4: GOES HERE 
+-->
+
+    <style type="text/css">
+        
+        /* Various client-specific fixes */
+        #outlook a {
+            padding: 0;
+        }
+        
+        .ExternalClass {
+            width: 100% !important;
+        }
+        
+        .ExternalClass,
+        .ExternalClass p,
+        .ExternalClass span,
+        .ExternalClass font,
+        .ExternalClass td,
+        .ExternalClass div {
+            line-height: 100%;
+        }
+        
+        img {
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+        }
+        
+        a img {
+            border: none;
+        }
+        
+        .applelinks a {
+            color: #333333;
+            text-decoration: none;
+        }
+        
+        .ExternalClass img[class^=Emoji] {
+            width: 10px !important;
+            height: 10px !important;
+            display: inline !important;
+        }
+        
+        /* Mobile styles */
+        @media screen and (max-width: 600px) {
+            *[class=mainwrap] {
+                width: 320px !important;
+                height: auto !important;
+            }
+            *[class=imgfill] {
+                width: 100% !important;
+                height: auto !important;
+                padding: 0px !important;
+            }
+            *[class=mobinvis] {
+                display: none !important;
+            }
+            *[class=mobpad-0-0-0-0] {
+                padding: 0px 0px 0px 0px !important;
+            }
+            *[class=mobpad-0-0-10-0] {
+                padding: 0px 0px 10px 0px !important;
+                width: 100% !important;
+            }
+            *[class=mobpad-0-13-0-13] {
+                padding: 0px 13px 0px 13px !important;
+                width: 100% !important;
+            }
+            *[class=mobpad-10-13-10-13] {
+                padding: 10px 13px 10px 13px !important;
+                width: 100% !important;
+            }
+            *[class=colwrap] {
+                display: block !important;
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+
+<!--------------------------
+
+-= DESIGNER CHEAT SHEET =-
+
+---
+
+TS BRAND COLOR PALETTE
+
+Primary:
+#ee3134 Red-TF-TS-IVGN
+
+Secondary, Tertiary, Accents:
+#555759 Gray-Ion
+#006680 Teal
+#f6b436 Gold
+#98d2dd Light Blue
+
+---
+
+OMNITURE CODE:
+
+B&B:
+?CID=%%MAILING_NAME%%&EMID=%%EMAIL%%
+
+MAP:
+?CID=%%CELLNAME%%&EMID=%%EMAIL%%
+
+--------------------------->
+
+<body>
+    <!--#### MAIN WRAPPER ####-->
+    <table class="mainwrap" width="600" align="center" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+
+        <!--#### PREHEADER ####-->
+        <tr>
+            <td class="mobpad-10-13-10-13" width="100%" valign="top" style="padding-top: 0px; padding-right: 25px; padding-bottom: 12px; padding-left: 25px;">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 10px; line-height: 12px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                    <tr>
+                        <td style="padding: 0px;">
+                            <!--#### preheader one ####-->
+                          {{#collection.primary-cta}}
+                            <a href="{{cta-url}}" target="_blank" style="color: #6caae3; text-decoration:underline;">{{cta-text}}{{^cta-text}}Primary call to action{{/cta-text}}</a> {{primary-message}}{{#primary-message}}and main message of the email goes here.{{/primary-message}}
+							{{/collection.primary-cta}}
+                            <!--#### preheader two ####-->
+                            <br />
+                          {{#collection.secondary-cta}}
+                            <a href="{{cta-url}}" target="_blank" style="color: #6caae3; text-decoration:underline;">{{cta-text}}{{^cta-text}}Secondary call to action{{/cta-text}}</a> {{secondary-message}}{{^secondary-message}}and secondary message of the email goes here.{{/secondary-message}}
+						  {{/collection.secondary-cta}}
+                            <!--#### view as webpage ####-->
+                            <br />Having trouble viewing this email? <a href="#SPCLICKTOVIEW" name="Pre Header Click here" style="color: #6caae3; text-decoration:underline;" target="_blank" xt="SPCLICKTOVIEW">Click here.</a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <!--#### //PREHEADER ####-->
+
+        <!--#### BRANDBAR ####-->
+        <tr>
+            <td align="left" bgcolor="#ee3134">
+              {{#collection.banner}}
+                <a href="{{banner-link}}{{^banner-link}}http://www.thermofisher.com/us/en/home/brands/thermo-scientific.html?CID=%%MAILING_NAME%%&EMID=%%EMAIL%%{{/banner-link}}" target="_blank">
+                    <table style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; width:100%;" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td align="left" class="mobpad-0-0-0-0" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 12px;">
+                                <img src="{{banner-logo}}{{^banner-logo}}https://files.outfit.io/media_library_items/145638/2018-Q3-ThermoScientific-13px.png{{/banner-logo}}" alt="Thermo Scientific" width="200" height="50" style="vertical-align: bottom;" align="left" border="0" />
+                            </td>
+                        </tr>
+                    </table>
+                </a>
+              {{/collection.banner}}
+            </td>
+        </tr>
+        <!--#### //BRANDBAR ####-->
+
+        <!--#### HEADER ####-->
+        <tr>
+            <td>
+                <table style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; width: 100%; margin:auto;" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                        <td>
+                          {{#collection.hero-banner}}
+                            <a href="{{cta-url}}" target="_blank">
+                                <img class="imgfill" src="{{hero-banner-image}}{{^hero-banner-image}}http://www.thermofisher.com/content/dam/LifeTech/emails/templates/q318-header-image.jpg{{/hero-banner-image}}" alt="Thermo Fisher Scientific" width="600" height="240" border="0" style="display:block; width: 100%; height: auto;" />
+                            </a>
+                          {{/collection.hero-banner}}
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <!--#### //HEADER ####-->
+
+        <!--#### spacer ####-->
+        <tr>
+            <td height="10"></td>
+        </tr>
+
+        <!--#### SUBHEAD AND BUTTON ####-->
+        <tr>
+            <td class="mobpad-10-13-10-13" width="100%" valign="top" style="padding-top: 0px; padding-right: 25px; padding-bottom: 0px; padding-left: 25px;">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" style="color: #ee3134; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 22px; font-weight: bold; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                    <tr>
+
+                        <!--#### subhead ####-->
+                        <td class="colwrap" align="center" valign="top" width="375">
+                            <table border="0" cellspacing="0" cellpadding="0" width="100%" style="color: #ee3134; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 22px; font-weight: bold;">
+                                <tr>
+                                    <td class="mobpad-0-0-10-0" align="left" valign="top" style="padding-top: 10px; padding-right: 15px; padding-bottom: 10px; padding-left: 0px;">
+                                        {{sub-headline}}{{^sub-headline}}Sub-headline goes here lorem ipsum dolor sit amet, consectetur ut&nbsp;labore{{/sub-headline}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+
+                        <!--#### button ####-->
+                        <td class="colwrap" width="225" valign="middle" style="padding-top: 10px; padding-right: 0px; padding-bottom: 10px; padding-left: 0px;">
+                            <table width="100%" align="center" border="0" cellpadding="10" cellspacing="0" style="background:#ee3134; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 16px; color: #ffffff; text-decoration: none; font-weight: bold; mso-padding-alt: 10px; mso-cellspacing: 0px;">
+                                <tr>
+                                    <td height="20" valign="middle" style="text-align: center; width:100%;">
+                                      {{#collection.cta-button}}
+                                        <a href="{{cta-link}}" target="_blank" style="width:100%; display: inline-block; color: #ffffff; text-decoration: none;">{{cta-text}}{{^cta-text}}Call to action{{/cta-text}}</a>
+                                      {{/collection.cta-button}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <!--#### //SUBHEAD AND BUTTON ####-->
+
+        <!--#### BODY CONTENT ####-->
+        <tr>
+            <td class="mobpad-10-13-10-13" width="100%" valign="top" style="padding-top: 0px; padding-right: 25px; padding-bottom: 0px; padding-left: 25px;">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" style="mso-padding-alt: 0px; mso-cellspacing: 0px; font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333;">
+
+                    <!--#### copy and image ####-->
+                    <tr>
+                        <!--#### copy ####-->
+                        <td class="colwrap" align="left" valign="top">
+                            <table border="0" cellspacing="0" cellpadding="0" width="100%" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                                <tr>
+                                    <td class="mobpad-0-0-10-0" align="left" valign="top" style="padding-top: 10px; padding-right: 15px; padding-bottom: 10px; padding-left: 0px;">
+                                      {{email-text-content-1}}
+                                      {{^email-text-content-1}}
+                                        Lorem ipsum dolor sit amet, consecte tur adipiscing elit. Nunc id nulla sapien. Donec eros nisl, varius quis hendrerit ut, congue vel diam. Vestibulum vitae lectussenectus et netus. Lorem ipsum dolor sit amet, consecte tur adipiscit. Nunc id nulla sapien. Vestibulum vitae lectussenectus et&nbsp;netus.
+                                        <br />
+                                        <ul style="line-height:20px; margin-top:5px; margin-bottom:5px;">
+                                            <li>Lorem ipsum dolor sit amet</li>
+                                            <li>Aliquam commodo ipsum ac libero</li>
+                                            <li>Aliquam sed odio elementum enim</li>
+                                        </ul>
+                                        <br />
+                                        <a href="#" target="_blank" style="color: #6caae3; text-decoration:underline;">Find out more &raquo;</a>
+                                      {{/email-text-content-1}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+
+                        <!--#### image with caption ####-->
+                        <td class="colwrap" valign="top" style="padding-top: 10px; padding-right: 0px; padding-bottom: 10px; padding-left: 0px;">
+
+                            <!--#### image ####-->
+                            <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 11px; line-height: 14px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                                <tr>
+                                    {{#collection.image-w-caption}}
+                                    <!--#### CCS width should match image width ####-->
+                                    <td class="mobpad-0-0-10-0" style="width: 150px; padding-top: 0px; padding-right: 0px; padding-bottom: 10px; padding-left: 0px;">
+                                        <a href="{{image-link}}" target="_blank"><img class="imgfill" src="{{image}}{{^image}}http://www.thermofisher.com/content/dam/LifeTech/emails/templates/q318-support-image-294px2.jpg{{/image}}" alt="Thermo Fisher Scientific" width="150" height="150" style="display:block;" align="right" border="0" /></a>
+                                    </td>
+                                </tr>
+
+                                <!--#### caption ####-->
+                                <tr>
+                                    
+                                    <!--#### CCS width should match image width ####-->
+                                    <td class="mobpad-0-0-10-0" style="width: 150px; padding-top: 0px; padding-right: 0px; padding-bottom: 10px; padding-left: 0px;">
+                                        {{image-caption}}{{^image-caption}}Lorem ipsum dolor sit amet, consecte tur adipiscing elit.{{/image-caption}}
+                                    </td>
+                                </tr>
+                              {{/collection.image-w-caption}}
+                            </table>
+                        </td>
+                    </tr>
+
+                    <!--#### copy full-width ####-->
+                    <tr>
+                        <td class="colwrap" colspan="2" valign="top">
+                            <table border="0" cellspacing="0" cellpadding="0" width="100%" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                                <tr>
+                                    <td class="mobpad-0-0-10-0" align="left" valign="top" style="padding-top: 10px; padding-right: 0px; padding-bottom: 10px; padding-left: 0px;">
+                                      {{email-text-content-2}}
+                                      {{^email-text-content-2}}
+                                        Lorem ipsum dolor sit amet, consecte tur adipiscing elit. Nunc id nulla sapien. Donec eros nisl, varius quis hendrerit ut, congue vel diam. Vestibulum vitae lectussenectus et netus. Lorem ipsum dolor sit amet, consecte tur adipiscit. Nunc id nulla sapien. Vestibulum vitae lectussenectus et&nbsp;netus.
+                                        <br />
+                                        <ul style="line-height:20px; margin-top:5px; margin-bottom:5px;">
+                                            <li>Lorem ipsum dolor sit amet</li>
+                                            <li>Aliquam commodo ipsum ac libero</li>
+                                            <li>Aliquam sed odio elementum enim</li>
+                                        </ul>
+                                        <br />
+                                        <a href="#" target="_blank" style="color: #6caae3; text-decoration:underline;">Find out more &raquo;</a>
+                                      {{/email-text-content-2}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <!--#### //BODY CONTENT ####-->
+
+        <!--#### spacer ####-->
+        <tr>
+            <td height="10"></td>
+        </tr>
+
+        <!--#### WEBINAR ####-->
+        <tr>
+          {{#collection.Webinar}}
+            <td class="mobpad-10-13-10-13" style="padding-top: 10px; padding-right: 25px; padding-bottom: 10px; padding-left: 25px;">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px; border:solid 1px #c0c0c0; border-collapse:collapse;">
+                      
+                    <!--#### title ####-->
+                    <tr bgcolor="#555759" valign="top" style="font-weight:bold; color:#FFFFFF;">
+
+                        <td class="colwrap" align="center" colspan="2" style="padding: 6px;">{{webinar-title}}{{^webinar-title}}Webinar title because webinars have titles{{/webinar-title}}</td>
+                    </tr>
+
+                    <tr>
+
+                        <!--#### details ####-->
+                      {{#spreadsheet.webinar-data}}
+                        <td class="colwrap" width="100%" align="left" valign="top" style="">
+                            <table width="100%" border="0" cellpadding="6" cellspacing="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 6px; mso-cellspacing: 0px;">
+                                <tr bgcolor="#f3f3f3">
+                                    <td width="80" align="left" valign="top" style="font-weight:bold;">Speaker:</td>
+                                    <td align="left" valign="top">{{speaker}}{{^speaker}}Firstname Lastname PhD{{/speaker}}</td>
+                                </tr>
+                                <tr bgcolor="#ffffff">
+                                    <td align="left" valign="top" style="font-weight:bold;">Date:</td>
+                                    <td align="left" valign="top">{{date}}{{^date}}Month 32, 2018{{/date}}</td>
+                                </tr>
+                                <tr bgcolor="#f3f3f3">
+                                    <td align="left" valign="top" style="font-weight:bold;">Time:</td>
+                                    <td align="left" valign="top">{{time}}{{^time}}00:00 a.m PT/00:00 p.m ET{{/time}}</td>
+                                </tr>
+                                <tr bgcolor="#ffffff">
+                                    <td align="left" valign="top" style="font-weight:bold;">Description:</td>
+                                    <td align="left" valign="top">{{desc}}{{^desc}}This is a seminar that will be on the web{{/desc}}</td>
+                                </tr>
+                            </table>
+                          {{/spreadsheet.webinar-data}}
+                                                {{^spreadsheet.webinar-data}}
+                        <td class="colwrap" width="100%" align="left" valign="top" style="">
+                            <table width="100%" border="0" cellpadding="6" cellspacing="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 6px; mso-cellspacing: 0px;">
+                                <tr bgcolor="#f3f3f3">
+                                    <td width="80" align="left" valign="top" style="font-weight:bold;">Speaker:</td>
+                                    <td align="left" valign="top">Firstname Lastname PhD</td>
+                                </tr>
+                                <tr bgcolor="#ffffff">
+                                    <td align="left" valign="top" style="font-weight:bold;">Date:</td>
+                                    <td align="left" valign="top">Month 32, 2018</td>
+                                </tr>
+                                <tr bgcolor="#f3f3f3">
+                                    <td align="left" valign="top" style="font-weight:bold;">Time:</td>
+                                    <td align="left" valign="top">00:00 a.m PT/00:00 p.m ET</td>
+                                </tr>
+                                <tr bgcolor="#ffffff">
+                                    <td align="left" valign="top" style="font-weight:bold;">Description:</td>
+                                    <td align="left" valign="top">This is a seminar that will be on the web</td>
+                                </tr>
+                            </table>
+                          {{/spreadsheet.webinar-data}}
+                        </td>
+
+                        <!--#### speaker image ####-->
+                        <td bgcolor="#f3f3f3" class="colwrap" align="center" width="100%" valign="top" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+
+                            <!-- #### if speaker image is not at least 292 px, removing 'imgfill' class will keep image unstretched, centered, and on a grey background #### -->
+                            <a href="#" target="_blank"><img class="imgfill" src="{{image}}{{^image}}http://www.thermofisher.com/content/dam/LifeTech/emails/templates/q318-support-image-292px2.jpg{{/image}}" alt="Thermo Fisher Scientific" width="150" height="150" style="display:block;" align="center" border="0" /></a>
+                        </td>
+                    </tr>
+                  
+                </table>
+            </td>
+          {{/collection.Webinar}}
+        </tr>
+        <!--#### //WEBINAR ####-->
+
+        <!--#### spacer ####-->
+        <tr>
+            <td height="10"></td>
+        </tr>
+
+        <!--#### TABLE ####-->
+        <tr>
+            <td class="mobpad-10-13-10-13" style="padding-top: 10px; padding-right: 25px; padding-bottom: 10px; padding-left: 25px;">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px; border:solid 1px #c0c0c0; border-collapse:collapse;">
+                    <tr>
+{{#spreadsheet.table-data}}
+                        <!--#### responsive table cell can be duplicated, but use sparingly, or turn off elements with 'mobinvis' class ####-->
+                        <td class="colwrap" width="100%" align="left" valign="top" style="">
+                            <table width="100%" border="0" cellpadding="6" cellspacing="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 6px; mso-cellspacing: 0px;">
+                                <tr bgcolor="#FFFFFF" style="font-weight:bold; color:#555759">
+                                    <td align="left" valign="top">Product</td>
+                                    <td align="center" valign="top">Quantity</td>
+                                    <td align="center" valign="top">Size</td>
+                                    <td align="center" valign="top">Cat. No.</td>
+                                </tr>
+                              
+                                <tr bgcolor="#F6F6F6">
+                                    <td align="left" valign="top">{{product-name}}{{^product-name}}Product Name&trade; and background gray{{/product-name}}</td>
+                                    <td align="center" valign="top">{{quantity}}{{^quantity}}23{{/quantity}}</td>
+                                    <td align="center" valign="top">{{size}}{{^size}}10 rxns{{/size}}</td>
+                                    <td align="center" valign="top"><a href="{{cat-link}}" target="_blank" style="color:#6caae3; text-decoration:underline;">{{cat-no}}{{^cat-no}}CXXXXX{{/cat-no}}</a></td>
+                                </tr>
+                              
+                            </table>
+                        </td>
+                      {{/spreadsheet.table-data}}
+                      {{^spreadsheet.table-data}}
+                        <!--#### responsive table cell can be duplicated, but use sparingly, or turn off elements with 'mobinvis' class ####-->
+                        <td class="colwrap" width="100%" align="left" valign="top" style="">
+                            <table width="100%" border="0" cellpadding="6" cellspacing="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 6px; mso-cellspacing: 0px;">
+                                <tr bgcolor="#FFFFFF" style="font-weight:bold; color:#555759">
+                                    <td align="left" valign="top">Product</td>
+                                    <td align="center" valign="top">Quantity</td>
+                                    <td align="center" valign="top">Size</td>
+                                    <td align="center" valign="top">Cat. No.</td>
+                                </tr>
+                              
+                                <tr bgcolor="#F6F6F6">
+                                    <td align="left" valign="top">Product Name&trade; and background gray</td>
+                                    <td align="center" valign="top">23</td>
+                                    <td align="center" valign="top">0 rxns</td>
+                                    <td align="center" valign="top"><a href="#" target="_blank" style="color:#6caae3; text-decoration:underline;">CXXXXX</a></td>
+                                </tr>
+                              
+                            </table>
+                        </td>
+                      {{/spreadsheet.table-data}}
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <!--#### //TABLE ####-->
+
+        <!--#### spacer ####-->
+        <tr>
+            <td height="10"></td>
+        </tr>
+		{{#collection.secondary-text}}
+      
+      {{#block.secondary-text-cta}}
+        <!--#### SECONDARY TEXT CTA ####-->
+        <tr>
+            <td bgcolor="#f3f3f3" class="mobpad-10-13-10-13" width="100%" valign="top" style="padding-top: 0px; padding-right: 25px; padding-bottom: 0px; padding-left: 25px;">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                    <tr>
+                        <td class="colwrap" colspan="2" valign="top">
+                            <table border="0" cellspacing="0" cellpadding="0" width="100%" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                                <tr>
+                                    <td class="mobpad-0-0-10-0" align="left" valign="top" style="padding-top: 10px; padding-right: 0px; padding-bottom: 10px; padding-left: 0px;">
+                                        <span style="color: #555759; font-weight: bold;">{{sub-headline}}{{^sub-headline}}Sub-headline goes here{{/sub-headline}}</span>
+                                        <br /> {{content}}{{^content}}Lorem ipsum dolor sit amet, consecte-tur adipiscing elit. Nunc id nulla sapien. Donec eros nisl, varius quis hendrerit ut, congue vel diam.
+                                        <br />
+                                        <a href="#" target="_blank" style="color: #6caae3;text-decoration:underline;">Find out more &raquo;</a>{{/content}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <!--#### //SECONDARY TEXT CTA ####-->
+{{/block.secondary-text-cta}}
+        <!--#### spacer ####-->
+        <tr>
+            <td height="10"></td>
+        </tr>
+{{#block.secondary-text-cta-image-left}}
+        <!--#### SECONDARY TEXT CTA WITH IMAGE LEFT ####-->
+        <tr>
+            <td bgcolor="#f3f3f3" class="mobpad-0-0-10-0" width="100%" valign="top" style="padding-top: 0px; padding-right: 25px; padding-bottom: 0px; padding-left: 25px;">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                    <tr>
+
+                        <!--#### image ####-->
+                        <td class="colwrap" align="left" valign="top">
+                            <table border="0" cellspacing="0" cellpadding="0" width="100%" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                                <tr>
+                                    <td class="mobpad-0-0-0-0" align="left" valign="top" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+                                        <table width="100%" align="center" border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                                            <tr>
+                                                <td class="mobpad-0-0-0-0" width="95" style="padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 0px;">
+                                                    <a href="#" target="_blank"><img class="imgfill" src="{{image}}{{^image}}http://www.thermofisher.com/content/dam/LifeTech/emails/templates/q318-support-image-320px4.jpg{{/image}}" alt="Thermo Fisher Scientific" width="85" height="85" style="display:block;" align="right" border="0" /></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+
+                        <!--#### copy ####-->
+                        <td class="colwrap" valign="top" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+                            <table border="0" cellspacing="0" cellpadding="0" width="100%" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                                <tr>
+                                    <td class="mobpad-10-13-10-13" align="left" valign="top" style="padding-top: 10px; padding-right: 0px; padding-bottom: 10px; padding-left: 0px;">
+                                        <span style="color: #555759; font-weight: bold;">{{sub-headline}}{{^sub-headline}}Sub-headline goes here{{/sub-headline}}</span>
+                                        <br /> {{content}}{{^content}}Lorem ipsum dolor sit amet, consecte-tur adipiscing elit. Nunc id nulla sapien. Donec eros nisl, varius quis hendrerit ut, congue vel diam.
+{{/content}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <!--#### //SECONDARY TEXT CTA WITH IMAGE LEFT ####-->
+{{/block.secondary-text-cta-image-left}}
+        <!--#### spacer ####-->
+        <tr>
+            <td height="10"></td>
+        </tr>
+{{#block.secondary-text-cta-button}}
+        <!--#### SECONDARY TEXT CTA WITH BUTTON ####-->
+        <tr>
+            <td bgcolor="#f3f3f3" class="mobpad-10-13-10-13" width="100%" valign="top" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+                <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                    <tr>
+
+                        <!--#### copy ####-->
+                        <td class="colwrap" width="375" align="center" valign="top">
+                            <table border="0" cellspacing="0" cellpadding="0" width="100%" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                                <tr>
+                                    <td class="mobpad-0-0-10-0" align="left" valign="top" style="padding-top: 10px; padding-right: 15px; padding-bottom: 10px; padding-left: 25px;">
+                                         <span style="color: #555759; font-weight: bold;">{{sub-headline}}{{^sub-headline}}Sub-headline goes here{{/sub-headline}}</span>
+                                        <br /> {{content}}{{^content}}Lorem ipsum dolor sit amet, consecte-tur adipiscing elit. Nunc id nulla sapien. Donec eros nisl, varius quis hendrerit ut, congue vel diam.
+{{/content}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+
+                        <!--#### button ####-->
+                        <td class="colwrap" width="225" valign="middle" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+                            <table border="0" cellspacing="0" cellpadding="0" width="100%" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                                <tr>
+                                    <td class="mobpad-0-0-10-0" align="left" valign="top" style="padding-top: 0px; padding-right: 25px; padding-bottom: 0px; padding-left: 0px;">
+                                        <table width="100%" align="center" border="0" cellpadding="10" cellspacing="0" style="background:#ffffff; border: 1px solid #dcdcdc; border-collapse: collapse; font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 16px; color: #ffffff; text-decoration: none; font-weight: bold; mso-padding-alt: 10px; mso-cellspacing: 0px;">
+                                            <tr>
+                                                <td height="20" valign="middle" style="text-align: center; width:100%">
+                                                    <a href="{{button-url}}" target="_blank" style="width:100%; display: inline-block; color: #1e8ae7; text-decoration: none;">{{button-text}}{{^button-text}}Call to action{{/button-text}}</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <!--#### //SECONDARY TEXT CTA WITH BUTTON ####-->
+      {{/block.secondary-text-cta-button}}
+{{/collection.secondary-text}}
+        <!--#### spacer ####-->
+        <tr>
+            <td height="10"></td>
+        </tr>
+{{#collection.two-column-image}}
+        <!--#### TWO COLLUMN TEXT AND IMAGE ####-->
+        <tr>
+            <td bgcolor="#f3f3f3" class="mobpad-0-0-10-0" width="100%" valign="top" style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
+                <table bgcolor="#f3f3f3" width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                    <tr>
+
+                        <!--#### left ####-->
+                        <td bgcolor="#f3f3f3" class="colwrap" align="left" valign="top" style="width: 301px;">
+
+                            <table border="0" cellspacing="0" cellpadding="0" width="100%" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px; ">
+                                <tr>
+                                    <td class="mobpad-10-13-10-13" align="left" valign="top" style="padding-top: 10px; padding-right: 25px; padding-bottom: 10px; padding-left: 25px;">
+
+                                        <!--#### image (mobile size will be actual image size) ####-->
+                                        <table align="right" border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                                            <tr>
+                                                <td style="padding-top: 0px; padding-right: 0px; padding-bottom: 10px; padding-left: 10px;">
+                                                    <a href="#" target="_blank"><img class="imgfill" src="{{left-image}}{{^left-image}}http://www.thermofisher.com/content/dam/LifeTech/emails/templates/q318-support-image-150px2.jpg{{/left-image}}" alt="Thermo Fisher Scientific" width="90" height="90" style="display:block;" align="right" border="0" /></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+										{{left-content}}
+                                      {{^left-content}}
+                                        <!--#### copy ####-->
+                                        Lorem ipsum dolor sit amet, consecte tur adipiscing elit. Nunc id nulla sapien. Donec eros nisl, varius quis hendrerit ut, congue vel diam. Vestibulum vitae lectussenectus et netus. Lorem ipsum dolor sit amet, consecte tur adipiscit. Nunc id nulla sapien. Vestibulum vitae lectussenectus et&nbsp;netus.
+                                        <br />
+                                        <br />
+                                        <a href="#" target="_blank" style="color: #6caae3; text-decoration:underline;">Find out more &raquo;</a>
+                                      {{/left-content}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+
+                        <!--#### center space ####-->
+                        <td bgcolor="#ffffff" class="colwrap" valign="top" style="padding-top: 5px; padding-right: 4px; padding-bottom: 5px; padding-left: 4px;"></td>
+
+                        <!--#### right ####-->
+                        <td bgcolor="#f3f3f3" class="colwrap" align="left" valign="top" style="width: 301px;">
+                            <table border="0" cellspacing="0" cellpadding="0" width="100%" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                                <tr>
+                                    <td class="mobpad-10-13-10-13" align="left" valign="top" style="padding-top: 10px; padding-right: 25px; padding-bottom: 10px; padding-left: 25px;">
+
+                                        <!--#### image (mobile size will be actual image size) ####-->
+                                        <table align="right" border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                                            <tr>
+                                                <td style="padding-top: 0px; padding-right: 0px; padding-bottom: 10px; padding-left: 10px;">
+                                                    <a href="#" target="_blank"><img class="imgfill" src="{{right-image}}{{^right-image}}http://www.thermofisher.com/content/dam/LifeTech/emails/templates/q318-support-image-150px2.jpg{{/right-image}}" alt="Thermo Fisher Scientific" width="90" height="90" style="display:block;" align="right" border="0" /></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+										{{right-content}}
+                                      {{^right-content}}
+                                        <!--#### copy ####-->
+                                        Lorem ipsum dolor sit amet, consecte tur adipiscing elit. Nunc id nulla sapien. Donec eros nisl, varius quis hendrerit ut, congue vel diam. Vestibulum vitae lectussenectus et netus. Lorem ipsum dolor sit amet, consecte tur adipiscit. Nunc id nulla sapien. Vestibulum vitae lectussenectus et&nbsp;netus.
+                                        <br />
+                                        <br />
+                                        <a href="#" target="_blank" style="color: #6caae3; text-decoration:underline;">Find out more &raquo;</a>
+                                      {{/right-content}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <!--#### //TWO COLLUMN TEXT AND IMAGE ####-->
+{{/collection.two-column-image}}
+        <!--#### last spacer before footer ####-->
+        <tr>
+            <td height="20"></td>
+        </tr>
+
+
+        <!--#### FOOTER ####-->
+        <tr>
+            <td>
+                <table width="100%" bgcolor="#F3F3F3" border="0" cellpadding="0" cellspacing="0" style="font-family:Arial, Helvetica, sans-serif; font-size:10px; line-height: 12px; color: #888888; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+
+                    <tr>
+                        <!-- COL1 -->
+
+                        <td class="colwrap" style="">
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family:Arial, Helvetica, sans-serif; font-size:10px; line-height: 12px; color: #888888; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                                <tr>
+
+                                    <!--#### SOCIAL ####-->
+                                    <td width="72" valign="top" style="width: 32px; padding-top: 25px; padding-right: 15px; padding-bottom: 25px; padding-left: 25px;">
+                                        <table width="32" border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                                            <!--#### Facebook ####-->
+                                            <tr>
+                                                <td>
+                                                    <a href="https://www.facebook.com/thermoscientific" target="_blank"><img src="http://www.thermofisher.com/content/dam/LifeTech/emails/templates/q315-socialmedia-facebook.jpg" style="display:block;" width="32" height="32" alt="Facebook" title="Facebook" border="0" /></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="12"></td>
+                                            </tr>
+                                            <!--#### Twitter ####-->
+                                            <tr>
+                                                <td>
+                                                    <a href="https://twitter.com/thermosci" target="_blank"><img src="http://www.thermofisher.com/content/dam/LifeTech/emails/templates/q315-socialmedia-twitter.jpg" style="display:block;" alt="Twitter" width="32" height="32" border="0" /></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="12"></td>
+                                            </tr>
+                                            <!--#### LinkedIn ####-->
+                                            <tr>
+                                                <td>
+                                                    <a href="https://www.linkedin.com/company/thermo-fisher-scientific" target="_blank"><img src="http://www.thermofisher.com/content/dam/LifeTech/emails/templates/q315-socialmedia-linkedin.jpg" style="display:block;" alt="LinkedIn" width="32" height="32" border="0" /></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td height="12"></td>
+                                            </tr>
+                                            <!--#### YouTube ####-->
+                                            <tr>
+                                                <td>
+                                                    <a href="https://www.youtube.com/c/thermofisher" target="_blank"><img src="http://www.thermofisher.com/content/dam/LifeTech/emails/templates/q315-socialmedia-youtube.jpg" style="display:block;" alt="YouTube" width="32" height="32" border="0" /></a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <!--#### //SOCIAL ####-->
+
+                                    <!--#### LEGAL ####-->
+                                    <td width="382" valign="top" style="width: 357px; padding-top: 25px; padding-right: 25px; padding-bottom: 25px; padding-left: 0px;">
+                                        <span style="font-size:11px; font-weight:bold;">{{{account.snippets.edm-terms}}}
+                                        <br />
+                                        <br />
+                                        <!--#### Terms and Conditions ####-->
+
+                                        <!--#### Privacy Policy and Unsubscribe ####-->
+                                        <a href="http://www.thermofisher.com/us/en/home/global/privacy-policy.html?CID=%%MAILING_NAME%%&EMID=%%EMAIL%%" target="_blank" style="color: #6caae3; text-decoration:underline;">View</a> our privacy policy.
+                                        <br />
+                                        <br />
+                                        <a href="http://resource.thermofisher.com/aboutyou/?email=%%EMAIL%%&key=%%ENC_ID%%&r=LT_NA&l=%%MAILING_NAME%%" target="_blank" style="color: #6caae3; text-decoration:underline;">Unsubscribe</a> from receiving emails from Thermo Fisher Scientific.
+                                        <br />
+                                        <br />
+                                        <strong>Thermo Fisher Scientific</strong>
+                                        <br /> 168 Third Avenue
+                                        <br /> Waltham, MA 02451
+                                        <br /> United States
+                                        <br />
+                                        <a href="http://www.thermofisher.com/us/en/home.html?CID=%%MAILING_NAME%%&EMID=%%EMAIL%%" target="_blank" style="color: #6caae3;text-decoration:underline;">thermofisher.com</a>
+                                    </td>
+                                    <!--#### //LEGAL ####-->
+                                </tr>
+                            </table>
+                        </td>
+
+
+                        <!--#### LOGO ####-->
+                        <td class="colwrap" width="146" align="center" valign="top" style="width: 121px; ">
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family:Arial, Helvetica, sans-serif; font-size:10px; line-height: 12px; color: #888888; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                                <tr>
+                                    <td class="mobpad-0-0-0-0" align="center" style="padding-top: 80px; padding-right: 25px; padding-bottom: 25px; padding-left: 0px;">
+                                        <img src="http://www.thermofisher.com/content/dam/LifeTech/emails/templates/q315-logo-thermofisherscientific.png" width="121" height="26" alt="Thermo Fisher Scientific" style="display:block;" />
+                                    </td>
+                                </tr>
+
+                                <!--#### under logo spacer ####-->
+                                <tr>
+                                    <td height="30"></td>
+                                </tr>
+                            </table>
+
+                        </td>
+                        <!--#### //LOGO ####-->
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <!--#### //FOOTER ####-->
+
+        <!--#### last spacer of email ####-->
+        <tr>
+            <td height="20"></td>
+        </tr>
+
+    </table>
+    <!--#### //MAIN WRAPPER ####-->
+</body>
+
+</html>

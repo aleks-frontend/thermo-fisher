@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html data-sign="OSM">
+  <head>
+    <title>Template title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/minireset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <style>
+      /* Inputs Order
+      {{show-crop}}
+      */
+
+      @import url('https://outfit-assets-production.s3.amazonaws.com/fonts/Circular/stylesheet.css');
+      @import url('https://outfit-assets-production.s3.amazonaws.com/fonts/HelveticaNeueLTW1G/stylesheet.css');
+      @import url('https://outfit-assets-production.s3.amazonaws.com/fonts/Helvetica%20Neue%20LT/stylesheet.css');
+      @import url('https://outfit-assets-production.s3.amazonaws.com/fonts/helvetica-neue/stylesheet.css');
+
+      :root {
+        --primary: {{{account.colors.primary}}};
+        --grey: #dfdede;
+        --black: #000;
+        --white: {{{account.colors.white}}};
+        --medium-grey: {{{account.colors.gray-medium}}};
+        --dark-blue: {{{account.colors.dark-blue}}};
+      }
+
+      html {
+        font-family: 'HelveticaNeueLT W1G 45 Lt';
+        font-size: 11pt;
+        color: var(--medium-grey);
+        word-break: break-word;
+      }
+
+      .backgroundImage {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+      }
+
+      .backgroundImage div {
+        width: auto !important;
+        height: auto !important;
+        right: 0;
+        bottom: 0;
+      }
+
+      /* Helper classes */
+      .u-hide { display: none; }
+
+      /* Helper class for fixing Reposition tool bug */
+      .reposition-fix {
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;        
+      }
+
+      .reposition-fix div {
+        top: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      .fit {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        position: relative;
+        height: 240pt;
+        flex-shrink: 0;
+      }
+
+      .hero,
+      .customHero {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        display: none;
+      }
+
+      .hero {
+        background-size: 100.9%;
+        background-image: url(https://files.outfit.io/media_library_items/169043/ThermoFisher-UGM-Reg-Flyer-Americas-SF-image.jpg);
+        background-position: -5pt -36pt;
+        background-repeat: no-repeat;
+      }
+
+      .theme--baltimore .hero,
+      .theme--boston .hero,
+      .theme--princeton .hero,
+      .theme--san-diego .hero,
+      .theme--san-francisco .hero,
+      .theme--seattle .hero,
+      .theme--custom .customHero {
+        display: block;
+      }
+
+      .theme--baltimore .hero { background-image: url(https://files.outfit.io/media_library_items/169014/Thermo%2520Fisher-%2520REA-Baltimore-image.jpg); }
+      .theme--boston .hero { background-image: url(https://files.outfit.io/media_library_items/169019/Thermo%2520Fisher-%2520REA-Boston-image.jpg); }
+      .theme--princeton .hero { background-image: url(https://files.outfit.io/media_library_items/169018/Thermo%2520Fisher-%2520REA-Princeton%2520NJ-image.jpg); }
+      .theme--san-diego .hero { background-image: url(https://files.outfit.io/media_library_items/169015/Thermo%2520Fisher-%2520REA-SanDiego-image.jpg); }
+      .theme--san-francisco .hero { background-image: url(https://files.outfit.io/media_library_items/169043/ThermoFisher-UGM-Reg-Flyer-Americas-SF-image.jpg); }
+      .theme--seattle .hero { background-image: url(https://files.outfit.io/media_library_items/169017/Thermo%2520Fisher-%2520REA-Seattle-image.jpg); }
+
+      .bar {
+        display: flex;
+        position: absolute;
+        top: 31pt;
+        left: 0;
+        right: 0;
+        height: 42pt;
+      }
+
+      .bar__section--primary {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 158pt;
+        padding-right: 14pt;
+        background-color: var(--primary);
+      }
+
+      .bar__section--secondary {
+        display: flex;
+        flex: 1 0 0%;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 44pt;
+        background-color: rgba(223, 222, 222, 0.8);
+      }
+
+      .bar__logo--primary { width: 99pt; }
+
+      .bar__logo--secondary {
+        width: 85pt;
+        margin-right: 13pt;
+        margin-bottom: 3pt;
+      }
+
+      .bar__logo--tertiary { width: 54pt; }
+
+      .body {
+        flex: 1 0 0%;
+        padding: 15pt 44pt 15.5pt;
+      }
+
+      .title {
+        margin-bottom: 8.4pt;
+        font-family: 'HelveticaNeueLT W1G 45 Lt';
+        font-size: 30.5pt;
+        line-height: 1.2em;
+        color: var(--primary);
+      }
+
+      .heading {
+        margin-bottom: 19.5pt;
+        font-size: 16.3pt;
+        line-height: 1.3em;
+      }
+
+      .content { 
+        display: flex;
+        margin-bottom: 13pt;
+        margin-left: -14.5pt;
+      }
+
+      .column { 
+        flex: 1 0 0%;
+        margin-left: 14.5pt;
+      }
+
+      .copy p {
+        margin-bottom: 7.9pt;
+        font-weight: 300;
+        font-size: 10.4pt;
+        line-height: 1.4em;
+      }
+
+      .copy p:last-child { margin-bottom: 0; }
+
+      .copy li {
+        position: relative;
+        margin-bottom: 7.4pt;
+        padding-left: 10pt;
+        font-size: 10.2pt;
+        font-weight: 300;
+        line-height: 1.35em;
+      }
+
+      .copy li:before {
+        content: '\2022';
+        position: absolute;
+        left: 0pt;
+        color: var(--black);
+      }
+
+      .details { margin-bottom: 12pt; }
+
+      .details__heading {
+        font-family: 'HelveticaNeueLT W1G 55 Roman';
+        color: var(--dark-blue);
+        margin-bottom: 6.2pt;
+        font-size: 10.4pt;
+        font-weight: bold;
+        line-height: 1.25em;
+      }
+
+      .details__item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 11pt;
+        font-size: 10pt;
+        line-height: 1.2em;
+      }
+
+      .details__label { width: 56pt; }
+
+      .note {    
+        font-size: 9.9pt;
+        line-height: 1.2em;
+      }
+
+      .contact__heading {
+        margin-bottom: 10pt;
+        font-size: 13.5pt;
+        line-height: 1.35em;
+      }
+
+      .contact__heading sup {
+        font-size: 5pt;
+        vertical-align: super;
+      }
+
+      .contact__item { 
+        display: flex;
+        margin-bottom: 10pt;
+        font-size: 10.2pt;
+        line-height: 1.2em;
+      }
+
+      .contact__item:last-child { margin-bottom: 0pt; }
+
+      .contact__label { width: 56pt; }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 0pt 31pt 33.8pt 44pt;
+      }
+
+      .footer__content {
+        display: flex;
+        flex-direction: column;
+        margin-right: 8pt;
+      }
+
+      .url {
+        font-size: 13.1pt;
+        line-height: 1.2em;
+        font-weight: 500;
+      }
+
+      .url strong { 
+        font-family: 'HelveticaNeueLT W1G 65 Md';
+        color: var(--primary); 
+      }
+
+      .footer__text {
+        margin-top: 22pt;
+        font-family: 'HelveticaNeueLT W1G 57 Cn';
+        font-size: 7pt;
+        font-weight: normal;
+        line-height: 1.35em;
+      }
+
+      .logo__container {
+        align-self: flex-start;
+        flex-shrink: 0;
+        margin-top: -30pt;
+      }
+
+      .logo--primary {
+        width: 149pt;
+        max-height: 53pt;
+      }
+
+      .u-bold { font-weight: bold; }
+      .u-mb-14 { margin-bottom: 14pt; }
+
+      .dateValidation.overflow:hover:after {
+        content: 'Wrong Date Syntax';
+        font-size: 0.6em;
+      }      
+
+      /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
+    </style>
+  </head>
+  <body style="background: white" data-crop="{{show-crop}}" data-reduce-export-font-size-by-percent="0" data-reduce-firefox-font-size-by-percent="0" data-prevent-export-overflow="false"
+        class="theme--{{{TF_theme--ugm}}}{{^TF_theme--ugm}}san-francisco{{/TF_theme--ugm}}">
+    <div class="page">
+
+      <div class="bleed">
+
+        <div class="container fit">
+
+          <div class="header">
+            <div class="hero"></div><!--hero-->
+            <div class="customHero"><div class="reposition-fix">{{{TF_custom-header-image--ugm}}}</div></div><!--customHero-->
+            <div class="bar">
+              <div class="bar__section--primary">
+                <img  class="bar__logo--primary" src="https://files.outfit.io/media_library_items/169950/ThermoFisher-UMG-brand%2520logo3.svg">
+              </div><!--bar__section--primary-->
+              <div class="bar__section--secondary">
+                <img  class="bar__logo--secondary" src="https://files.outfit.io/media_library_items/169949/ThermoFisher-UMG-brand%2520logo2.svg">
+                <img  class="bar__logo--tertiary" src="https://files.outfit.io/media_library_items/169951/ThermoFisher-UMG-brand%2520logo.svg">
+              </div><!--bar__section--secondary-->
+            </div><!--bar-->
+          </div><!--header-->
+          <div class="body">
+            <div class="body__inner" data-max-height="dynamic">
+              <div class="title">High-content analysis<br>user group meeting</div><!--title-->
+              <div class="heading" data-max-line="2">{{{TF_heading--ugm}}}</div><!--heading-->
+              <div class="content">
+                <div class="column">
+                  <div class="copy">{{{TF_left-column--ugm}}}</div><!--copy-->
+                </div><!--column-->
+                <div class="column">
+                  <div class="copy u-mb-14">{{{TF_right-column--ugm}}}</div><!--copy-->
+                  {{#collection.TF_event-details--ugm.length}}
+                  <div class="details">
+                    <div class="details__heading">Event details:</div><!--details__heading-->
+                    {{#collection.TF_event-details--ugm}}
+                    {{#TF_date--ugm}}
+                    <div class="details__item" data-max-line="1">
+                      <div class="details__label">Date:</div><!--details__label-->
+                      <div class="details__value dateValidation">{{{TF_date--ugm}}}</div><!--details__value-->
+                    </div><!--details__item-->
+                    {{/TF_date--ugm}}
+                    {{#TF_time--ugm}}
+                    <div class="details__item" data-max-line="1">
+                      <div class="details__label">Time:</div><!--details__label-->
+                      <div class="details__value">{{{TF_time--ugm}}}</div><!--details__value-->
+                    </div><!--details__item-->
+                    {{/TF_time--ugm}}
+                    {{#TF_location--ugm}}
+                    <div class="details__item" data-max-line="1">
+                      <div class="details__label">Location:</div><!--details__label-->
+                      <div class="details__value">{{{TF_location--ugm}}}</div><!--details__value-->
+                    </div><!--details__item-->
+                    {{/TF_location--ugm}}
+                    {{#TF_agenda--ugm}}
+                    <div class="details__item" data-max-line="1">
+                      <div class="details__label">Agenda:</div><!--details__label-->
+                      <div class="details__value">{{{TF_agenda--ugm}}}</div><!--details__value-->
+                    </div><!--details__item-->
+                    {{/TF_agenda--ugm}}
+                    {{/collection.TF_event-details--ugm}}
+                  </div><!--details-->
+                  {{/collection.TF_event-details--ugm.length}}           
+                  <div class="note" data-max-line="1">{{{TF_event-note--ugm}}}</div><!--note-->
+                </div><!--column-->
+              </div><!--content-->
+              {{#collection.TF_contact-details--ugm.length}}
+              <div class="contact">
+                <div class="contact__heading">To find out more about this event or Thermo Scientific<sup>TM</sup> and<br>Invitrogen<sup>TM</sup> cell analysis systems and reagents, contact:</div><!--contact__heading-->
+                {{#collection.TF_contact-details--ugm}}
+                {{#TF_name--ugm}}
+                <div class="contact__item" data-max-line="1">
+                  <div class="contact__label">Name:</div><!--contact__label-->
+                  <div class="contact__value">{{{TF_name--ugm}}}</div><!--contact__value-->
+                </div><!--contact__item-->
+                {{/TF_name--ugm}}
+                {{#TF_email--ugm}}
+                <div class="contact__item" data-max-line="1">
+                  <div class="contact__label">Email:</div><!--contact__label-->
+                  <div class="contact__value">{{{TF_email--ugm}}}</div><!--contact__value-->
+                </div><!--contact__item-->
+                {{/TF_email--ugm}}
+                {{/collection.TF_contact-details--ugm}}
+              </div><!--contact-->
+              {{/collection.TF_contact-details--ugm.length}}                           
+            </div><!--body__inner-->
+          </div><!--body-->
+          <div class="footer">
+            <div class="footer__content">
+              <div class="url">{{{TF_event-url--ugm}}}</div><!--url-->
+              <div class="footer__text" data-max-line="2"><span class="u-bold">For Research Use Only. Not for use in diagnostic procedures.</span> @ 2017 Thermo Fisher Scientific Inc. All rights reserved.<br>All trademarks are the property of Thermo Fisher Scientific and its subsidiaries unless otherwise specified. COL15045 <span class="u-bold">{{{TF_event-submission-number--ugm}}}</span></div><!--footer__text-->
+            </div><!--footer__content-->
+            <div class="logo__container">
+              <img class="logo--primary" src="{{{account.logos.primary}}}">
+            </div><!--logo__container-->
+          </div><!--footer-->
+
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+
+    <script>
+      window.showCrop = {{show-crop}}{{^show-crop}}true{{/show-crop}};
+    </script>
+    <script src="js/main.js"></script>   
+    <script src="js/prefixfree.js"></script>
+    <script src="js/char-limit.js"></script>
+    <script src="js/check-export-mode.js"></script>
+    <script src="js/max-line-check.js"></script>
+    <script src="js/max-height-check.js"></script>
+    <script src="js/hide-empty-titles.js"></script>
+    <script src="js/custom-rich-text.js"></script>
+    <script src="js/dynamic-inject.js"></script>
+    <script src="js/text-fit-min.js"></script>
+    <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.4.min.js" type="text/javascript"></script>
+    <script src="js/moment-min.js" type="text/javascript"></script>
+    <script>
+
+      console.clear();
+
+      function dateUtil() {
+        var dates = document.querySelectorAll(".dateValidation");
+        dates.forEach(function(date){
+          var newDate = date.innerText;
+          var dateFormat = "dddd, MMMM D, YYYY";
+          const m = moment(newDate, dateFormat, true);
+
+          const a = m.isValid();
+
+          if(a != true) {
+            date.classList.add("overflow");
+          } else {
+            date.classList.remove("overflow");
+          }
+        });
+      }
+      dateUtil();       
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck();
+          maxHeightCheck();
+          charLimit();
+          hideEmptyTitles();
+          dateUtil();
+        });
+      });
+
+      const injectObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          injectDynamicContent();
+        });
+      });      
+
+      const injectSources = document.querySelectorAll('[data-target-id]');
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });
+
+      if ( injectSources.length > 0 ) {
+        injectSources.forEach(src => {
+          injectObserver.observe(src, {
+            attributes: false,
+            characterData: true,
+            childList: true,
+            subtree: true,
+            attributeOldValue: false,
+            characterDataOldValue: true
+          });            
+        });
+      }    
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck();
+        maxHeightCheck();
+        injectDynamicContent();
+        hideEmptyTitles();
+      });
+
+      checkCrop();
+      checkExport();
+      charLimit();
+
+      // TextFit function decreases the font of the selected element to make it fit in single line (if needed, uncomment the code bellow)
+      TextFit.fit({
+        selector: '.textFit'
+      });
+
+
+    </script>
+
+
+  </body>
+</html>

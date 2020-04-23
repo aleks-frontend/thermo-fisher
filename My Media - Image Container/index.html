@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Image Container</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="minireset.css">
+
+    <style>
+      
+      .page {
+        height: 100vh;
+        width: 100vw;
+      }
+      
+      .container {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      }
+      
+      .image-container{
+		width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        overflow: hidden;
+      }
+
+      /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
+    </style>
+  </head>
+  <body style="background: white">
+    
+    <div class="page">
+
+      <div class="bleed center-children">
+
+        <div class="container fit">
+
+          <div class="image-container">
+          	{{{static-background-image}}}
+          </div>
+
+        </div>
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+  <script>
+  </script>
+
+  <script src="main.js"></script>
+
+  <script src="prefixfree.js"></script>
+
+    <script>
+      function checkHeight() {
+        $('.text-overflow')
+          .each(function() {
+          	const e = $(this);
+            const height = e.find('.inner').height();
+            const parentHeight = e.height() + 2;
+			e.toggleClass('overflow', height > parentHeight);
+          });        
+      }
+      
+      function loop() {
+        checkHeight();
+      } setInterval(loop, 1000);
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html data-sign="OSR">
+  <head>
+    <title>Template title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/minireset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    
+    <style>
+      @import url('https://outfit-assets-production.s3.amazonaws.com/fonts/HelveticaNeueLTW1G/stylesheet.css');
+
+
+      /* Inputs Order
+
+      {{show-crop}}
+      {{{TF_heading--gen}}}
+      {{{TF_left-column--gen}}}
+      {{{TF_right-column--gen}}}
+      {{{TF_event-details-title--gen}}}
+      {{{TF_event-details-copy--gen}}}
+      {{{TF_event-url--gen}}}
+      {{{TF_event-submission-number--gen}}}
+      */
+
+      :root {
+        --dark-blue: {{{account.colors.dark-blue}}};
+        --red: {{{account.colors.primary}}};
+        --light-grey: #e2e3e4;
+        --medium-grey: {{{account.colors.gray-medium}}};
+        --white: {{{account.colors.white}}};
+      }
+
+      html {
+        font-family: 'HelveticaNeueLT W1G 45 Lt';
+        word-break: break-word;
+        color: var(--medium-grey);
+      }
+
+      .fit {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header {
+        position: relative;
+        height: 437pt;
+        padding: 192pt 45pt 15pt;
+      }
+
+      .backgroundImage {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-image: url('https://files.outfit.io/media_library_items/169716/Thermo%2520Fisher-GEU-image-gene.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        overflow: hidden;
+      }
+
+      .bar {
+        display: flex;
+        position: absolute;
+        top: 30pt;
+        right: 0;
+        left: 0;
+        height: 42pt;
+      }
+
+      .bar__section {
+        position: relative;
+        height: 100%;
+      }
+
+      .bar__section--primary {
+        width: 45%;
+        background-color: var(--red);
+      }
+
+      .bar__section--secondary {
+        width: 55%;
+        background-color: var(--light-grey);
+      }
+
+      .bar__logo {
+        position: absolute;
+      }
+
+      .bar__logo--primary {
+        top: 14pt;
+        left: 45pt;
+        width: 225pt;
+      }
+
+      .bar__logo--secondary {
+        top: 16pt;
+        left: 131pt;
+        width: 171pt;
+      }
+
+      .title,
+      .subtitle {
+        position: relative;
+        color: var(--white);
+      }
+
+      .title {
+        margin-bottom: 98pt;
+        text-transform: uppercase;
+        text-align: center;
+        line-height: 0.8em;
+      }
+
+      .subtitle {
+        text-align: left;
+        font-size: 29.3pt;
+        line-height: 1.2em;
+      }
+
+      .body {
+        flex: 1;
+        padding: 11pt 42pt 8pt;
+      }
+
+      .heading {
+        margin-bottom: 14.6pt;
+        font-size: 21pt;
+        line-height: 1em;
+      }
+
+      .heading:last-child {
+        margin-bottom: 0;
+      }
+
+      .content {
+        display: flex;
+        margin-left: -14pt;
+      }
+
+      .column {
+        flex: 1;
+        margin-left: 14pt;
+      }
+
+      .no-right-column.no-event-details-title.no-event-details-copy .column--secondary {
+        display: none;
+      }
+
+      .copy + .eventDetails {
+        margin-top: 20pt;
+      }
+
+      .copy h1 {
+        font-family: 'HelveticaNeueLT W1G 55 Roman';
+        margin-bottom: 1pt;
+        font-size: 10.46pt;
+        line-height: 1.3em;
+        font-weight: bold;
+        color: var(--dark-blue);
+      }
+
+      .copy p {
+        margin-bottom: 0.6em;
+        font-size: 10pt;
+        line-height: 1.4em;
+      }
+
+      .copy p + h1 {
+        margin-top: 10pt;
+      }
+            
+      .copy h1:last-child,
+      .copy p:last-child  {
+        margin-bottom: 0;
+      }
+
+      .eventDetails {
+        margin-left: -4pt;
+        padding: 3pt;
+        font-size: 30pt;
+        background: var(--light-grey);
+      }
+
+      .eventDetails__label {
+        font-family: 'HelveticaNeueLT W1G 55 Roman';
+        font-size: 10.46pt;
+        line-height: 1.2em;
+        font-weight: bold;
+        color: var(--dark-blue);
+      } 
+
+      .eventDetails__value {
+        font-size: 10pt;
+        line-height: 1.4em;
+      } 
+
+      .eventDetails__label + .eventDetails__value {
+        margin-top: 5pt;
+      }
+      
+      .no-event-details-title.no-event-details-copy .eventDetails {
+        display: none;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 44pt 33pt;
+      }
+
+      .footer__content {
+        width: 400pt;
+      }
+
+      .url {
+        margin-bottom: 7pt;
+        font-size: 13.3pt;
+        line-height: 1.4em;
+      }
+
+      .url strong {
+        font-family: 'HelveticaNeueLT W1G 55 Roman';
+        font-size: 14.1pt;
+        font-weight: bold;
+        color: var(--red);
+      }
+
+      .disclaimer {
+        font-size: 7.1pt;
+        line-height: 1.3em;
+      }
+
+      .logo {
+        width: 153pt;
+        height: 54pt;
+        object-fit: contain;
+        margin: -8pt -15pt 0 0;
+      }
+      
+      .disclaimer:hover:after,
+      .url:hover:after {
+        font-size: 13pt;
+      }
+
+      /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
+    </style>
+  </head>
+  <body style="background: white" data-crop="{{show-crop}}" class="{{^TF_right-column--gen}}no-right-column{{/TF_right-column--gen}} {{^TF_event-details-title--gen}}no-event-details-title{{/TF_event-details-title--gen}} {{^TF_event-details-copy--gen}}no-event-details-copy{{/TF_event-details-copy--gen}}" data-reduce-export-font-size-by-percent="0" data-reduce-firefox-font-size-by-percent="0" data-prevent-export-overflow="false">
+    
+    <div class="page">
+
+      <div class="bleed">
+
+        <div class="container fit">
+          <div class="header">
+            <div class="backgroundImage"></div><!--backgroundImage-->
+            <div class="bar">
+              <div class="bar__section bar__section--primary">
+                <img src="https://files.outfit.io/media_library_items/169730/Thermo%2520Fisher-GEU-brand%2520logo.svg" class="bar__logo bar__logo--primary"><!--bar__logo--primary-->
+              </div><!--bar__section--primary-->
+              <div class="bar__section bar__section--secondary">
+                <img src="https://files.outfit.io/media_library_items/169729/Thermo%2520Fisher-GEU-brand%2520logo2.svg" class="bar__logo bar__logo--secondary"><!--bar__logo--secondary-->
+              </div><!--bar__section--secondary-->
+            </div><!--bar-->
+            <div class="title"><span style="font-family: 'HelveticaNeueLT W1G 65 Md'; font-size: 40pt; font-weight: bold; margin-left: -3pt;">gene expression</span><br><span style="font-size: 30pt; letter-spacing: 22.9pt; margin-left: 14pt;font-weight:700;">university</span></div><!--title-->
+            <div class="subtitle">Explore the world of<br>gene expression analysis</div><!--subtitle-->
+          </div><!--header-->
+          <div class="body">
+            {{#TF_heading--gen}}
+            <div class="heading js-subtrahend" data-max-line="1">{{{TF_heading--gen}}}</div><!--heading-->
+            {{/TF_heading--gen}}
+            <div class="content" data-max-height="dynamic">
+              {{#TF_left-column--gen}}
+              <div class="column">
+                <div class="copy">{{{TF_left-column--gen}}}</div><!--copy-->
+              </div><!--column-->
+              {{/TF_left-column--gen}}
+              <div class="column column--secondary">
+                {{#TF_right-column--gen}}
+                <div class="copy">{{{TF_right-column--gen}}}</div><!--copy-->
+                {{/TF_right-column--gen}}
+                <div class="eventDetails">
+                  <div class="eventDetails__label" data-max-line="1">{{{TF_event-details-title--gen}}}</div><!--eventDetails__label-->
+                  <div class="eventDetails__value">{{{TF_event-details-copy--gen}}}</div><!--eventDetails__value-->
+                </div><!--eventDetails-->
+              </div><!--column-->
+            </div><!--content-->
+          </div><!--body-->
+          <div class="footer">
+            <div class="footer__content">
+              {{#TF_event-url--gen}}
+              <div class="url" data-max-line="2">{{{TF_event-url--gen}}}</div><!--url-->
+              {{/TF_event-url--gen}}
+              <div class="disclaimer" data-max-line="2"><span style="font-family: 'HelveticaNeueLT W1G 57 Cn'; font-size: 7.1pt; font-weight: bold;">For Research Use Only. Not for use in diagnostic procedures.</span> @2020 Thermo Fisher Scientific Inx. All rights reserved. 
+<br>All trademarks are the property of Thermo Fisher Scientific and its subsidiaries unless otherwise specified. <span style="font-weight: bold;">COL14927 {{{TF_event-submission-number--gen}}}</span></div><!--disclaimer-->
+            </div><!--footer__content-->
+            <img src="{{{account.logos.primary}}}" class="logo logo--primary"><!--logo--primary-->
+          </div><!--footer-->
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+
+    <script>
+      window.showCrop = {{show-crop}}{{^show-crop}}true{{/show-crop}};
+    </script>
+    <script src="js/main.js"></script>   
+    <script src="js/prefixfree.js"></script>
+    <script src="js/char-limit.js"></script>
+    <script src="js/check-export-mode.js"></script>
+    <script src="js/max-line-check.js"></script>
+    <script src="js/max-height-check.js"></script>
+    <script src="js/hide-empty-titles.js"></script>
+    <script src="js/custom-rich-text.js"></script>
+    <script src="js/dynamic-inject.js"></script>
+    <script src="js/text-fit-min.js"></script>
+    <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.4.min.js" type="text/javascript"></script>
+    <script>
+
+      console.clear();
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck();
+          maxHeightCheck();
+          charLimit();
+          hideEmptyTitles();
+        });
+      });
+
+      const injectObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          injectDynamicContent();
+        });
+      });      
+
+      const injectSources = document.querySelectorAll('[data-target-id]');
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });
+
+      if ( injectSources.length > 0 ) {
+        injectSources.forEach(src => {
+          injectObserver.observe(src, {
+            attributes: false,
+            characterData: true,
+            childList: true,
+            subtree: true,
+            attributeOldValue: false,
+            characterDataOldValue: true
+          });            
+        });
+      }    
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck();
+        maxHeightCheck();
+        injectDynamicContent();
+        hideEmptyTitles();
+      });
+
+      checkCrop();
+      checkExport();
+      charLimit();
+
+      // TextFit function decreases the font of the selected element to make it fit in single line (if needed, uncomment the code bellow)
+      TextFit.fit({
+        selector: '.textFit'
+      });
+
+
+    </script>
+
+
+  </body>
+</html>
