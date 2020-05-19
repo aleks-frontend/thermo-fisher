@@ -210,8 +210,6 @@
               <div class="grid__item grid__item--heading">Cat. No.</div>
               <div class="grid__item grid__item--heading grid__item--headingListPrice">List Price</div>
               <div class="grid__item grid__item--heading"><span class="promo">Promo</span> Price</div>
-              {{#TF_copy-2--mmt}}<div class="grid__item grid__item--copy2 grid__item--single" data-max-line="1.3">{{{TF_copy-2--mmt}}}</div>{{/TF_copy-2--mmt}}
-              {{#TF_copy-2--mmt}}<div class="grid__item grid__item--copy2 grid__item--multi" data-max-line="1.3">{{{TF_copy-2--mmt}}}</div>{{/TF_copy-2--mmt}}
               <div class="grid__item grid__item--left grid__item--span">{{{TF_product-name--mmt}}}</div>
 
               {{#spreadsheet.TF_table-data--mmt}}
@@ -228,6 +226,8 @@
               <div class="grid__item grid__item--multiProduct style--{{{row-style}}}">{{{price}}}</div>
               <div class="row-style">{{{row-style}}}</div>
               {{/spreadsheet.TF_table-data-multi-product--mmt}}
+              {{#TF_copy-2--mmt}}<div class="grid__item grid__item--copy2 grid__item--single" data-max-line="1.5">{{{TF_copy-2--mmt}}}</div>{{/TF_copy-2--mmt}}
+              {{#TF_copy-2--mmt}}<div class="grid__item grid__item--copy2 grid__item--multi" data-max-line="1.5">{{{TF_copy-2--mmt}}}</div>{{/TF_copy-2--mmt}}              
             </div>
           </div><!-- grid__container -->
 
