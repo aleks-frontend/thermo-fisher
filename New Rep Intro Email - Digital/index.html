@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" data-sign="OSL">
+
+  <head>
+    <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+    <meta name="x-apple-disable-message-reformatting"> <!-- Disable auto-scale in iOS 10 Mail entirely -->
+
+    <title></title>
+
+
+    <style>
+
+      /* ORDER INPUTS */
+      /*
+      {{TMF_header-image--nrie}}
+      {{{TMF_hello-and-first-name--nrie}}}
+      {{{TMF_body-copy-input--nrie}}}
+      {{{TMF_representative-name--nrie}}}
+      {{{TMF_representative-title--nrie}}}
+      {{{TMF_representative-department--nrie}}}
+      {{TMF_representative-picture--nrie}}} 
+      {{{TMF_representative-phone--nrie}}}
+      {{{TMF_representative-email--nrie}}}
+      {{{TMF_terms-and-conditions--edm}}} 
+      */
+
+      /** Overflow Styles **/
+      .overflow {
+        position: relative !important;
+        border: 1px dashed red;
+        color: red !important;
+      }
+
+      .overflow * { 
+        color: inherit !important; 
+      }
+
+      .overflow {
+        border: none;
+        box-shadow: 0 0 0 0.0362rem red;
+        background: rgba(255, 0, 0, 0.4);
+        position: relative;
+        z-index: 999;}
+      .overflow h1, 
+      .overflow h2, 
+      .overflow h3, 
+      .overflow h4, 
+      .overflow h5, 
+      .overflow h6, 
+      .overflow p, 
+      .overflow li { color: red !important; }
+      .overflow::before {
+        content: '+';
+        position: absolute;
+        z-index: 5;
+        top: 0;
+        right: 0;
+        height: 1em;
+        width: 1em;
+        max-height: 100%;
+        color: red;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 0.8em;
+        text-align: center;
+        line-height: 1em;
+        background-color: white;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .overflow:hover:before {
+        background-color: red;
+        color: white; }
+      .overflow:after {
+        display: none; }
+      .overflow:hover:after {
+        display: block;
+        content: 'Max number of lines exceeded!';
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: black;
+        color: white;
+        border-radius: 0;
+        padding: 0 1.5em 0 0.5em;
+        box-sizing: border-box;
+        max-height: 100%;
+        font-size: 0.8em;
+        font-weight: 400;
+        text-align: right;
+        line-height: 1em;
+        z-index: 2;
+      }
+
+      .overflow[data-max-height]:hover:after { content: 'Max height exceeded.'; }
+      .overflow[data-char-limit]:hover:after { content: 'Character limit exceeded.'; }
+      .overflow.js-email-validator:hover:after { content: 'Invalid email address.'; }
+
+      .overflow .token-value.token-empty {
+        display: none;
+      }           
+      /** //Overflow Styles **/
+
+      /* Various client-specific fixes */
+      #outlook a {
+        padding: 0;
+      }
+
+      img {
+        outline: none;
+        text-decoration: none;
+        -ms-interpolation-mode: bicubic;
+      }
+
+      a img {
+        border: none;
+      }
+
+      a {
+        color: #0039A6; 
+        text-decoration: underline;
+      }
+
+      p,ul,h1,h2 {
+        margin-block-end: 0;
+        margin-block-start: 0;
+      }
+
+
+      /* Mobile styles */
+      @media screen and (max-width: 600px) {
+        .mainwrap {
+          width: 100% !important;
+          margin: auto !important;
+        }        
+        .colwrap {
+          display: block !important;
+          width: 100% !important;
+        }  
+        .mob-float-none {
+          float: none !important;
+        }
+        .imgfill {
+          width: 100% !important;
+          height: auto !important;
+          padding: 0px !important;
+        }
+        .mobinvis {
+          display: none !important;
+        }
+        .u-mob-width-auto { width: auto; }
+
+        /* mob-paddings*/
+        .mobpad-0-0-0-0 {
+          padding: 0px 0px 0px 0px !important;
+        }
+        .mobpad-0-0-10-0 {
+          padding: 0px 0px 10px 0px !important;
+          width: 100% !important;
+        }
+        .mobpad-0-13-0-13 {
+          padding: 0px 13px 0px 13px !important;
+          width: 100% !important;
+        }
+        .mobpad-10-13-10-13 {
+          padding: 10px 13px 10px 13px !important;
+          width: 100% !important;
+        }
+        .mobpad-10-0-0-13 {
+          padding: 10px 0px 0px 13px !important;
+        }        
+        .u-mobpad-5-10-5-10 {
+          padding: 5px 10px 5px 10px !important;
+        }
+
+        .mobpad-20-0-0-0 {
+          padding: 20px 0px 0px 0px !important;
+        }
+        /* mob-paddings */
+
+        /* mob-margins */
+        .mobmar-top-20 {
+          padding-top: 20px !important;
+        }
+        /* mob-margins */
+
+        /* mob-font-style */
+        .u-mob-fontS-11 { font-size: 11px !important; }
+        .u-mob-fontS-13 { font-size: 13px !important; }
+        .u-mob-fontS-14 { font-size: 14px !important; } 
+
+        .u-mob-fontLH-1 { line-height: 1em !important; }
+        .u-mob-fontLH-1-2 { line-height: 1.2em !important; }
+        .u-mob-fontLH-1-25 { line-height: 1.25em !important; }
+        .u-mob-fontLH-1-4 { line-height: 1.4em !important; }
+        .u-mob-fontLH-1-7 { line-height: 1.7em !important; }
+        /* mob-font-style */
+      }
+
+      /* END Mobile styles */
+
+
+      /*email export HTML - styling*/
+      .btn-red { background-color: red !important; }
+      .exportEmailInstructionsContainer { color: white !important;}
+      .exportEmailInstructionsContainer h1 {
+        margin-block-start: 0.67em;
+        margin-block-end: 0.67em;
+      }
+      .exportEmailInstructionsContainer h2 {
+        margin-block-start: 0.83em;
+        margin-block-end: 0.83em;
+      }
+      /* //email export HTML - styling*/
+
+
+    </style>
+
+    <style>/* {{{account.snippets.emailExportCSS}}}*/</style>
+
+  </head>
+  <body width="100%" style="Margin: 0;">
+    <!-- {{{account.snippets.emailExportHTML}}} -->
+
+    <!--<div class="placeholder"></div><!--placeholder-->
+
+    <center id="email" style="width: 100%;">
+
+      <!--#### MAIN WRAPPER ####-->
+      <table class="mainwrap" width="600" bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" style="margin: auto; font-family: Arial, sans-serif; font-size: 13px; line-height: 22px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+
+
+        <!--#### PREHEADER ####-->
+        <tr>
+          <td valign="top" style="padding-top: 10px; padding-bottom: 10px; padding-right: 25px; padding-left: 25px; border-bottom: 2px solid #e7edf6;">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif; font-size: 10px; line-height: 12px; color: #333333; mso-padding-alt: 0px; mso-cellspacing: 0px;"> 
+              <tr>
+                <td style="font-family: Arial, sans-serif;font-size:10px; line-height:12px; color: #333333;">Having trouble viewing this email? <a href="" target="_blank" style="color:#0039A6; text-decoration:underline;">Click here.</a></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <!--#### //PREHEADER ####-->
+
+
+        <!--#### BRAND LOGO ####-->
+        <tr>
+          <td style="padding-top: 10px; padding-bottom: 10px; padding-left: 25px; padding-right: 25px;">
+            <a href="http://www.thermofisher.com/us/en/home.html?CID=#pf:BUILTIN_OutputListName#&EMID=#pf:aEMAIL_ADDR#" target="_blank">
+              <img src="{{{account.logos.primary-cropped}}}" alt="Life Technologies" style="display: block;" width="132.8" height="28" border="0"/>
+
+              <!-- https://files.outfit.io/media_library_items/191245/Thermo%2520Fisher%2520Scientific-logo%25404x-8.png -->
+            </a>
+          </td>
+        </tr>
+        <!--#### //BRAND LOGO ####-->
+
+
+        <!--#### HEADER ####-->
+        {{#TMF_header-image--nrie}}
+        <tr>
+          <td>
+            <table cellpadding="0" cellspacing="0" border="0" style="width: 100%; margin:auto;">
+
+              <!--#### header image ####-->
+              <tr>
+                <td>
+                  <a href="http://www.lifetechnologies.com/?CID=#pf:BUILTIN_OutputListName#&EMID=#pf:aEMAIL_ADDR#" target="_blank"> 
+                    <img class="imgfill" src="{{{TMF_header-image--nrie}}}" alt="" width="600" height="240" border="0" style="display: block; color:#6caae3"/>
+                  </a> 
+                </td>
+              </tr>
+              <!--#### //header image ####-->
+
+            </table>
+          </td>
+        </tr>
+        {{/TMF_header-image--nrie}}
+        <!--#### //HEADER ####-->
+
+
+        <!--#### SPACER ####-->
+        <tr>
+          <td height="10"></td> 
+        </tr>
+        <!--#### //SPACER ####-->
+
+
+        <!--#### HELLO & FIRST NAME / BODY COPY INPUT ####-->
+        <tr>
+          <td valign="top" style="padding-top: 10px; padding-right: 25px; padding-bottom: 10px; padding-left: 25px;">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" style="color:#333333; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+              <tr>
+                <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; line-height:18px; font-weight: bold; color:#333333;" data-max-line="1">
+                  Dear , {{{TMF_hello-and-first-name--nrie}}}                  
+                </td>            
+              </tr>
+
+              {{#TMF_body-copy-input--nrie}}
+              <tr>
+                <td align="left" valign="top" style="font-family:Arial, Helvetica, sans-serif; font-size:13px; line-height:18px; color:#333333;">    
+                  <br>
+                  {{{TMF_body-copy-input--nrie}}}
+                </td>
+              </tr>
+              {{/TMF_body-copy-input--nrie}}
+
+            </table>
+          </td>
+        </tr>
+        <!--#### //HELLO & FIRST NAME / BODY COPY INPUT ####-->
+
+
+        <!--#### REPRESENTATIVE SECTION ####-->
+        <tr>
+          <td valign="top" bgcolor="#f3f3f3" style="font-family: Arial, sans-serif; font-size: 13px; line-height: 13px; color: #333333; padding-top: 10px; padding-bottom: 10px; padding-left: 25px; padding-right: 25px;">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif; font-size: 13px; color: #333333;">
+              <tr>
+
+                <!--left-side-->
+                <td class="colwrap" valign="top">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+                    <!--#### representative name ####-->
+                    {{#TMF_representative-name--nrie}}
+                    <tr>
+                      <td style="font-family: Arial, sans-serif; font-size: 13px; line-height: 18px; color: #333333;" data-max-line="1">{{{TMF_representative-name--nrie}}}</td>
+                    </tr>
+                    {{/TMF_representative-name--nrie}}
+                    <!--#### //representative-name ####-->
+
+                    <!--#### representative title ####-->
+                    {{#TMF_representative-title--nrie}}
+                    <tr>
+                      <td style="font-family: Arial, sans-serif; font-size: 13px; line-height: 18px; font-weight: bold; color: #333333;" data-max-line="1">{{{TMF_representative-title--nrie}}}</td>
+                    </tr>
+                    {{/TMF_representative-title--nrie}}
+                    <!--#### //representative title ####-->
+
+                    <!--#### representative department ####-->
+                    {{#TMF_representative-department--nrie}}
+                    <tr>
+                      <td style="font-family: Arial, sans-serif; font-size: 13px; line-height: 18px; font-weight: bold; color: #333333;" data-max-line="1">{{{TMF_representative-department--nrie}}}</td>
+                    </tr>
+                    {{/TMF_representative-department--nrie}}
+                    <!--#### //representative department ####-->
+
+                    <!--#### representative static text ####-->
+                    <tr>
+                      <td style="font-family: Arial, sans-serif; font-size: 13px; line-height: 18px; font-weight: bold; color: #333333;">Thermo Fisher Scientific, Life Sciences Solutions</td>
+                    </tr>
+                    <!--#### //representative static text ####-->
+
+                    <!--#### spacer ####-->
+                    <tr>
+                      <td height="8"></td>
+                    </tr>
+                    <!--#### //spacer ####-->
+
+                    <!--#### representative phone ####-->
+                    {{#TMF_representative-phone--nrie}}
+                    <tr>
+                      <td>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family: Arial, sans-serif; font-size: 13px; line-height: 18px; color: #333333;">
+                          <tr>
+                            <td width="50" style="font-family: Arial, sans-serif; font-size: 13px; line-height: 18px; font-weight: bold;">Phone:</td>
+                            <td style="font-family: Arial, sans-serif; font-size: 13px; line-height: 18px;" data-char-limit="15">{{{TMF_representative-phone--nrie}}}</td>
+                          </tr>
+
+                        </table>
+                      </td>
+                    </tr>
+                    {{/TMF_representative-phone--nrie}}
+                    <!--#### //representative phone ####-->
+
+                    <!--#### representative email ####-->
+                    {{#TMF_representative-email--nrie}}
+                    <tr>
+                      <td>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family: Arial, sans-serif; font-size: 13px; line-height: 18px; color: #333333;">
+                          <tr>
+                            <td width="50" style="font-family: Arial, sans-serif; font-size: 13px; line-height: 18px; font-weight: bold;">Email:</td>
+                            <td style="font-family: Arial, sans-serif; font-size: 13px; line-height: 18px;" data-max-line="1">
+                              <a href="mailto:{{{TMF_representative-email--nrie}}}" class="js-email-validator" target="_blank" style="color: #333333 ;text-decoration:underline; color:#0039a6;" data-max-line="1">{{{TMF_representative-email--nrie}}}</a>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                    {{/TMF_representative-email--nrie}}
+                    <!--#### //representative email ####-->
+
+                  </table>                
+                </td>
+                <!--left-side-->
+
+                <!--right-side-->
+                {{#TMF_representative-picture--nrie}}          
+                <td class="colwrap mobpad-20-0-0-0" valign="top" style="padding-left: 10px;">
+                  <img class="mob-float-none" src="{{{TMF_representative-picture--nrie}}}" alt="representative picture" width="100" align="right" border="0" style="display: block; height: auto;"/>   
+                </td>
+                {{/TMF_representative-picture--nrie}}
+                <!--right-side-->
+
+              </tr>
+            </table>
+          </td>       
+        </tr>
+        <!--#### //REPRESENTATIVE SECTION ####-->   
+
+
+        <!--#### SPACER ####-->
+        <tr>
+          <td height="10"></td> 
+        </tr>
+        <!--#### //SPACER ####-->
+
+
+        <!-- FOOTER COLOUR BAND -->
+        <tr bgcolor="#000000">
+          <td height="2"></td>
+        </tr>
+        <!-- FOOTER COLOUR BAND -->
+
+
+        <!--#### SPACER ####-->
+        <tr>
+          <td height="10"></td>
+        </tr>
+        <!--#### //SPACER ####-->
+
+
+        <!--#### FOOTER ####-->
+        <tr>
+          <td bgcolor="#f3f3f3" valign="top" style="padding-top: 10px; padding-bottom: 10px; padding-left: 25px; padding-right: 25px;">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif; font-size:10px; line-height: 12px; color: #888888; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+
+              <tr>
+                <!-- terms and conditional -->
+                <td class="colwrap" valign="top">
+                  <table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif; font-size:10px; line-height: 12px; color: #888888; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                    <tr>                   
+                      <td style="font-family: Arial, sans-serif; font-size:10px; line-height: 12px;">
+                        {{{TMF_terms-and-conditions--edm}}}                   
+                      </td>
+                    <tr>
+                  </table>
+                </td>
+                <!-- //terms and conditional -->
+
+                <!--#### social icons ####-->
+                <td class="colwrap mobpad-20-0-0-0" valign="top" style="padding-left: 40px; ">
+                  <table class="mob-float-none" align="right" border="0" cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif; font-size:10px; line-height: 12px; color: #888888; mso-padding-alt: 0px; mso-cellspacing: 0px;">
+                    <tr>
+
+                      <!--facebook-->
+                      <td>
+                        <a href="https://www.facebook.com/LifeTechnologies" target="_blank">
+                          <img src="https://files.outfit.io/media_library_items/191426/Thermo-Fisher-My-media-email-facebook.png" alt="Thermo Fisher Scientific" style="display: block;" width="30" height="30" border="0"/>
+                        </a>
+                      </td>
+                      <!--//facebook-->
+
+                      <!--twitter-->
+                      <td style="padding-left: 5px;">
+                        <a href="https://twitter.com/lifetech" target="_blank">
+                          <img src="https://files.outfit.io/media_library_items/191429/Thermo-Fisher-My-media-email-twitter.png" alt="Thermo Fisher Scientific" style="display: block;" width="30" height="30" border="0"/>
+                        </a>
+                      </td>
+                      <!--//twitter-->
+
+                      <!--linkedin-->
+                      <td style="padding-left: 5px;">
+                        <a href="http://www.linkedin.com/company/life_technologies" target="_blank">
+                          <img src="https://files.outfit.io/media_library_items/191428/Thermo-Fisher-My-media-email-linkedin.png" alt="Thermo Fisher Scientific" style="display: block;" width="30" height="30" border="0"/>
+                        </a>
+                      </td>
+                      <!--//linkedin-->
+
+                      <!--youtube-->
+                      <td style="padding-left: 5px;">
+                        <a href="http://www.youtube.com/lifetechnologies" target="_blank">
+                          <img src="https://files.outfit.io/media_library_items/191427/Thermo-Fisher-My-media-email-youtube.png" alt="Thermo Fisher Scientific" style="display: block;" width="30" height="30" border="0"/>
+                        </a>
+                      </td>
+                      <!--//youtube-->
+
+                    </tr>
+                  </table>
+                </td>
+                <!--#### //social icons ####-->
+
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <!--#### //FOOTER ####-->
+
+      </table>
+      <!--#### //MAIN WRAPPER ####-->
+
+    </center>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js"></script>
+    <script>
+      console.clear();
+
+
+      function maxLineCheck(orientation = 'portrait') {
+        const textBlocks = document.querySelectorAll('[data-max-line]');
+
+        textBlocks.forEach(block => {
+          const computedStyle = window.getComputedStyle(block);
+          // Checking if line-height is not set and has a normal value set by default
+          const isNormal = computedStyle.getPropertyValue('line-height') == 'normal';
+          // Getting the font-size of an element that will help us calculate the line-height
+          // if the line-height is set to 'normal'
+          const fontSize = parseFloat(computedStyle.getPropertyValue('font-size'));
+          // If line-height is normal, we multiply the element's font-size with 1.14
+          if ( isNormal ) block.style.lineHeight = (fontSize * 1.14) + 'px';
+          const lineHeight = parseFloat(computedStyle.getPropertyValue('line-height'));
+          const blockHeight = block.scrollHeight;
+          // Getting the data-max-line attribute value (max number of lines allowed)
+          const maxLineAlt = block.dataset.maxLineAlt || block.dataset.maxLine;
+          const maxLine = (orientation == 'portrait') ? block.dataset.maxLine : maxLineAlt;
+          // Setting the element's max-height 
+          const limitHeight = (lineHeight * maxLine) + (lineHeight / 2);
+
+          block.style.maxHeight = limitHeight + 'px';
+          ( blockHeight > limitHeight ) ? block.classList.add('overflow') : block.classList.remove('overflow');
+        });
+      }
+
+      function maxHeightCheck(variation = 'primary') {
+        const textBlocks = document.querySelectorAll('[data-max-height]');
+
+        textBlocks.forEach(block => {
+          const dynamicCheck = block.dataset.maxHeight == 'dynamic' || block.dataset.maxHeightDynamic == 'true';
+          if ( dynamicCheck ) dynamicAssign(block);
+
+          const cssCheck = block.dataset.maxHeight == 'css';
+          const bodyComputedStyle = window.getComputedStyle(document.body);
+          const blockHeight = block.scrollHeight;
+          const unit = block.dataset.maxHeightUnit || 'px';
+          const maxHeightAlt = block.dataset.maxHeightAlt || block.dataset.maxHeight;
+          let maxHeight = (variation == 'primary') ? block.dataset.maxHeight : maxHeightAlt;    
+
+          if ( cssCheck ) {
+            const computedBlockStyle = window.getComputedStyle(block);
+            maxHeight = parseInt(computedBlockStyle.maxHeight);
+          } else {
+            // Setting the element's max-height
+            block.style.maxHeight = maxHeight + unit;
+
+            // Recalculating maxHeight in case 'rem' is set as a unit
+            if ( unit == 'rem' ) maxHeight = maxHeight * parseFloat(bodyComputedStyle.fontSize);      
+          }
+
+          // Adding an 'overflow' class to an element if it's offset height exceedes the max-line-height
+          ( blockHeight > maxHeight ) ? block.classList.add('overflow') : block.classList.remove('overflow');
+        });
+      }
+
+
+      function dynamicAssign(element) {
+        const container = element.parentNode;
+        container.style.overflow = 'hidden';
+        const containerComputed = {
+          height: parseFloat(window.getComputedStyle(container).height),
+          top: parseFloat(window.getComputedStyle(container).paddingTop),
+          bottom: parseFloat(window.getComputedStyle(container).paddingBottom)
+        };
+        const containerHeight = Math.floor(containerComputed.height - containerComputed.top - containerComputed.bottom);
+        const subtrahends = [...container.querySelectorAll('.js-subtrahend')];
+
+        const subtrahendsHeight = subtrahends.reduce((totalHeight, subtrahend) => {
+          const subtrahendMargins = {
+            top: parseFloat(window.getComputedStyle(subtrahend).marginTop),
+            bottom: parseFloat(window.getComputedStyle(subtrahend).marginBottom)
+          };
+          return totalHeight + subtrahend.offsetHeight + subtrahendMargins.top + subtrahendMargins.bottom;
+        }, 0);
+
+        const dynamicHeight = containerHeight - subtrahendsHeight;
+
+        element.dataset.maxHeightDynamic = 'true';
+        element.dataset.maxHeight = dynamicHeight;
+        container.style.overflow = 'visible';
+      }
+
+
+      // Adding limit for the word length
+      function charLimit() {
+        const elements = document.querySelectorAll("[data-char-limit]");
+
+        elements.forEach(element => {
+          const limit = element.dataset.charLimit;
+
+          if(element == null) { return }
+          var tokenValue = element.querySelectorAll(".token-value");
+
+          if(tokenValue.length != 0) {
+            element = tokenValue.item(0);
+          }
+          var code = element.innerText;
+          if(code.length > limit) {
+            // Check Token Again
+            if(tokenValue.length != 0) {
+              element.parentNode.classList.add("overflow");  
+            }
+            else {
+              element.classList.add("overflow");
+            }
+          }
+          else {
+            // Check Token Again
+            if(tokenValue.length != 0) {
+              element.parentNode.classList.remove("overflow");  
+            }
+            else {
+              element.classList.remove("overflow");
+            }
+          }
+        })
+      }   
+
+      function emailValidator() {
+        const email = document.querySelector('.js-email-validator');
+        const emailValidated = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.innerText);
+
+        if (emailValidated) {
+          email.classList.remove('overflow');
+        } else {
+          email.classList.add('overflow');
+        }
+      }      
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck();         
+          maxHeightCheck();  
+          charLimit();
+          emailValidator();
+        });
+      });
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck();    
+        maxHeightCheck();    
+        charLimit();
+        emailValidator();
+      });
+
+    </script>
+
+
+    <!-- copy HTML content option-->
+    <!--
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.0/clipboard.min.js"></script>  
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        new Clipboard('.button');
+
+        var isExportPage = window.location.href.indexOf('exports') > -1;
+
+        if (!isExportPage) {
+          document.getElementById('exportEmailInstructionsContainer').style.display = "none";
+        }
+
+        if (isExportPage) {
+
+
+          document.getElementById('email').style.display = "none";
+
+          var parent = document.getElementById("js-exports");
+
+          var htmlClipboard = new Clipboard('.copyHTMLCode', {
+            text: function() {
+              var htmlBlock = document.querySelector('#email').innerHTML;
+              return htmlBlock;
+            }
+          });
+        }
+      });
+
+      function createElement(elType, text, parent){
+        var el = document.createElement(elType);
+        el.innerHTML = text;
+        parent.appendChild(el);
+      }
+
+      function copyToClipboard(){
+        var toggle = false;
+        if(document.getElementById('email').style.display == "none"){
+          document.getElementById('email').style.display = "block";
+          toggle = true;
+        }
+
+        toggleTooltip('copiedConfirmation1');
+
+        var parent = document.getElementsByClassName('exportEmailInstructionsContainer')[0];
+
+        document.getElementById('email').style.display = "block";
+
+        var copyToClipboardBtn = document.createElement("button");
+        copyToClipboardBtn.setAttribute('data-clipboard-target', "#email");
+        copyToClipboardBtn.setAttribute('class', 'tempClickButton');
+        parent.appendChild(copyToClipboardBtn);
+
+        var copyClipboard = new Clipboard('.tempClickButton');
+
+        copyToClipboardBtn.click();
+
+        parent.removeChild(copyToClipboardBtn);
+
+        if(toggle){
+          document.getElementById('email').style.display = "none";
+        }
+      }
+
+      function toggleEmailPreview(){
+        var emailCurrentDisplay = document.getElementById('email').style.display;
+        if(emailCurrentDisplay == "none"){
+          document.getElementById('email').style.display = "block";
+          document.getElementsByClassName('showEmailBtn')[0].innerHTML = "Hide Email Preview";
+        } else {
+          document.getElementById('email').style.display = "none";
+          document.getElementsByClassName('showEmailBtn')[0].innerHTML = "Show Email Preview";
+        }
+      }
+
+      function toggleTooltip(tooltipId){
+        document.getElementById(tooltipId).style.visibility = "visible";
+
+        setTimeout(function(){
+          document.getElementById(tooltipId).style.visibility = "hidden";    
+        }, 3000);
+      }
+
+      function copyHTMLCode(){
+        toggleTooltip('copiedConfirmation2');
+
+        var someHtmlString;
+        someHtmlString = document.getElementById('email').outerHTML;
+
+        // Create a dummy input to copy the string array inside it
+        var dummy = document.createElement("input");
+
+        // Add it to the document
+        document.body.appendChild(dummy);
+
+        // Set its ID
+        dummy.setAttribute("id", "dummy_id");
+
+        // Output the array into it
+        document.getElementById("dummy_id").value=someHtmlString;
+
+        // Select it
+        dummy.select();
+
+        // Copy its contents
+        document.execCommand("copy");
+
+        // Remove it as its not needed anymore
+        document.body.removeChild(dummy);
+      }
+    </script>
+    -->
+    <!-- //copy HTML content option-->
+
+
+  </body>
+
+</html>
