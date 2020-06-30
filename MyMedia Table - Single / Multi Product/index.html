@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html data-sign="OSR">
+  <head>
+    <title>Template title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/minireset.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <style>
+      @import url('https://outfit-assets-production.s3.amazonaws.com/fonts/HelveticaNeueLTW1G/stylesheet.css');
+
+      :root {
+        --white: {{{account.colors.white}}};
+        --red: {{{account.colors.primary}}};
+        --light-gray: #d8d8d8;
+        --darker-gray:  #b8b8b8;
+        --dark-gray: {{{account.colors.gray-medium}}};
+        --navy-blue: {{{account.colors.dark-blue}}};
+      }
+
+      .style-- {
+        --dynamic-border-color: var(--dark-gray);
+      }
+
+      .style--Red {
+        --dynamic-background-color: var(--red);
+        --dynamic-text-color: var(--white);
+      }
+
+      .style--Light-Gray {
+        --dynamic-background-color: var(--light-gray);
+        --dynamic-text-color: var(--dark-gray);
+      }
+
+      .style--Dark-Gray {
+        --dynamic-background-color: var(--dark-gray);
+        --dynamic-text-color: var(--white);
+      }
+
+      .style--Navy-Blue {
+        --dynamic-background-color: var(--navy-blue);
+        --dynamic-text-color: var(--white);
+      }
+
+      .style--Darker-Gray {
+        --dynamic-background-color: var(--darker-gray);
+        --dynamic-text-color: var(--white);
+      }
+
+      /* Inputs Order
+
+      {{show-crop}}
+      {{TF_layout--mmt}}
+      {{{TF_heading-1--mmt}}}
+      {{{TF_heading-2--mmt}}}
+      {{{TF_heading-3--mmt}}}
+      {{{TF_heading-4--mmt}}}
+      {{{TF_heading-5--mmt}}}
+      */
+
+      html {
+        font-family: 'HelveticaNeueLT W1G 55 Roman';
+        color: var(--dark-gray);
+        word-break: break-word;
+      }
+
+      .fit {
+        display: flex;
+        position: absolute;
+        top: 3mm;
+        bottom: 3mm;
+        left: 3mm;
+        right: 3mm;
+      }
+
+      .grid__container {
+        flex: 1;
+      }
+
+      .grid {
+        display: grid;
+      }
+
+      .layout--single-product .grid {
+        grid-template-columns: repeat(5, auto);
+      }
+
+      .layout--multi-product .grid {
+        grid-template-columns: repeat(3, auto);
+      }
+
+      .layout--multi-product .grid__item--headingQty,
+      .layout--multi-product .grid__item--headingListPrice,
+      .layout--multi-product .grid__item--span {
+        display: none;
+      }
+
+      .grid__item {
+        min-height: 7pt;
+        text-align: right;
+        line-height: 1em;
+        font-weight: 500;
+        background-color: var(--dynamic-background-color);
+        color: var(--dynamic-text-color);
+      }
+
+      .grid__item--single,
+      .grid__item--multi {
+        display: none;
+        text-align: left;
+        padding-left: 5pt !important;
+      }
+
+      .layout--single-product .grid__item--single {
+        display: block;
+        grid-column: 1 / -1;;
+      }
+
+      .layout--multi-product .grid__item--multi {
+        display: block;
+        grid-column: span 3;
+      }
+
+      .grid__item.grid__item--copy2 {
+        font-size: 6pt !important;
+        line-height: 1em;
+      }
+
+      .layout--single-product .grid__item {
+        padding: 4pt 6pt 0 1.5pt;
+        font-size: 13.25px;
+        font-size: 10pt;
+      }
+
+      .layout--multi-product .grid__item {
+        padding: 4.7pt 6pt 0 1.5pt;
+        font-size: 10pt;
+      }
+
+      .layout--multi-product .grid__item--singleProduct,
+      .layout--single-product .grid__item--multiProduct {
+        display: none;
+      }
+
+      .grid__item:not(.grid__item--heading):not(.grid__item--single) { border-bottom: 0.25pt solid var(--dynamic-border-color); }
+
+      .grid__item--heading { 
+        font-weight: bold;
+        color: var(--white);
+        background: var(--red);
+      }
+
+      .layout--single-product .grid__item--heading {
+        padding: 4.9pt 6pt 1pt 4pt;
+      }
+
+      .layout--multi-product .grid__item--heading {
+        padding: 6pt 6pt 1pt 5pt;
+      }
+
+      .grid__item--left { text-align: left; }
+      .grid__item--span { 
+        text-align: left;
+        display: grid;
+        align-items: center;
+        padding-left: 4pt;
+        border-bottom: 0.25pt solid var(--dark-gray) !important;
+      }
+
+      .layout--single-product .grid__item--span {
+        padding-left: 4pt;
+      }
+
+      .layout--multi-product .grid__item--product {
+        padding-left: 5pt;
+        text-align: left;
+      }
+
+      .layout--multi-product .promo {
+        display: none;
+      }
+
+      .row-style {
+        display: none;
+      }
+
+      .overflow .grid__item--heading {
+        color: var(--white) !important;
+      }
+
+      .grid__item--span {
+        grid-column: 1;
+      }
+
+      /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
+    </style>
+  </head>
+  <body style="background: white" data-crop="{{show-crop}}" data-reduce-export-font-size-by-percent="0" data-reduce-firefox-font-size-by-percent="0" data-prevent-export-overflow="true"
+        class="layout--{{{TF_layout--mmt}}}{{^TF_layout--mmt}}multi-product{{/TF_layout--mmt}}">
+    <div class="page">
+
+      <div class="bleed">
+
+        <div class="container fit">
+
+          <div class="grid__container" data-max-height="dynamic">
+            <div class="grid js-cell-count-container">
+              <div class="grid__item grid__item--heading grid__item--left">{{{TF_heading-1--mmt}}}{{^TF_heading-1--mmt}}Product{{/TF_heading-1--mmt}}</div>
+              <div class="grid__item grid__item--heading grid__item--headingQty">{{{TF_heading-2--mmt}}}{{^TF_heading-2--mmt}}Qty.{{/TF_heading-2--mmt}}</div>
+              <div class="grid__item grid__item--heading">{{{TF_heading-3--mmt}}}{{^TF_heading-3--mmt}}Cat. No.{{/TF_heading-3--mmt}}</div>
+              <div class="grid__item grid__item--heading grid__item--headingListPrice">{{{TF_heading-4--mmt}}}{{^TF_heading-4--mmt}}List Price{{/TF_heading-4--mmt}}</div>
+              <div class="grid__item grid__item--heading">{{{TF_heading-5--mmt}}}{{^TF_heading-5--mmt}}<span class="promo">Promo</span> Price{{/TF_heading-5--mmt}}</div>
+
+              {{#collection.TF_products--mmt}}
+              {{#block.TF_product--mmt}}
+              <div class="grid__item grid__item--left grid__item--span" data-row-span="{{#spreadsheet.TF_table-data--mmt2}}1{{/spreadsheet.TF_table-data--mmt2}}">{{{TF_product-name--mmt}}}</div>
+              {{#spreadsheet.TF_table-data--mmt2}}
+              <div class="grid__item grid__item--singleProduct style--{{{row-style}}}">{{{column-1}}}</div>
+              <div class="grid__item grid__item--singleProduct style--{{{row-style}}}">{{{column-2}}}</div>
+              <div class="grid__item grid__item--singleProduct style--{{{row-style}}}">{{{column-3}}}</div>
+              <div class="grid__item grid__item--singleProduct style--{{{row-style}}}">{{{column-4}}}</div>
+              {{/spreadsheet.TF_table-data--mmt2}}
+              {{/block.TF_product--mmt}}
+              {{/collection.TF_products--mmt}}
+
+              {{#TF_copy--mmt}}<div class="grid__item grid__item--copy2 grid__item--single" data-max-line="1.5">{{{TF_copy--mmt}}}</div>{{/TF_copy--mmt}}
+
+            </div>
+          </div><!-- grid__container -->
+
+        </div><!--container fit-->
+
+      </div><!--bleed-->
+
+    </div><!--page-->
+
+
+    <script>
+      window.showCrop = {{show-crop}}{{^show-crop}}true{{/show-crop}};
+    </script>
+    <script src="js/main.js"></script>   
+    <script src="js/prefixfree.js"></script>
+    <script src="js/char-limit.js"></script>
+    <script src="js/check-export-mode.js"></script>
+    <script src="js/max-line-check.js"></script>
+    <script src="js/max-height-check.js"></script>
+    <script src="js/hide-empty-titles.js"></script>
+    <script src="js/custom-rich-text.js"></script>
+    <script src="js/dynamic-inject.js"></script>
+    <script src="js/text-fit-min.js"></script>
+    <script src="https://outfit-assets-production.s3-accelerate.amazonaws.com/scripts/textfit.0.0.4.min.js" type="text/javascript"></script>
+    <script>
+
+      console.clear();
+
+      // Tracking text changes and firing text restriction functions (mutationObserver)
+      const overflowObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          maxLineCheck();
+          maxHeightCheck();
+          charLimit();
+          hideEmptyTitles();
+        });
+      });
+
+      const injectObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          injectDynamicContent();
+        });
+      });      
+
+      const injectSources = document.querySelectorAll('[data-target-id]');
+
+      overflowObserver.observe(document.body, {
+        attributes: false,
+        characterData: true,
+        childList: true,
+        subtree: true,
+        attributeOldValue: false,
+        characterDataOldValue: true
+      });
+
+      if ( injectSources.length > 0 ) {
+        injectSources.forEach(src => {
+          injectObserver.observe(src, {
+            attributes: false,
+            characterData: true,
+            childList: true,
+            subtree: true,
+            attributeOldValue: false,
+            characterDataOldValue: true
+          });            
+        });
+      }    
+
+      // Calling text size restriction functions once the fonts are loaded
+      document.fonts.ready.then(() => {
+        maxLineCheck();
+        maxHeightCheck();
+        injectDynamicContent();
+        hideEmptyTitles();
+      });
+
+      window.addEventListener('resize', () => {
+        maxLineCheck();
+        maxHeightCheck();        
+      });      
+
+      checkCrop();
+      checkExport();
+      charLimit();
+
+      // TextFit function decreases the font of the selected element to make it fit in single line (if needed, uncomment the code bellow)
+      TextFit.fit({
+        selector: '.textFit'
+      });
+
+      function rowSpanCalculator() {
+        const dynamicCells = document.querySelectorAll('[data-row-span]');
+
+        for ( const dynamicCell of dynamicCells ) {
+          const rowSpan = dynamicCell.dataset.rowSpan.length;
+          dynamicCell.style.gridRow = `span ${rowSpan}`;
+        }        
+      }
+
+      rowSpanCalculator();
+
+    </script>
+
+
+  </body>
+</html>
