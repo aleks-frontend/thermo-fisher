@@ -193,6 +193,19 @@
       .grid__item--span {
         grid-column: 1;
       }
+      
+      /* Logic for hiding empty columns and changing grid layout depending on hidden rows */
+      
+      .empty-column-1 [data-column-index="1"] { display: none; }
+      .empty-column-2 [data-column-index="2"] { display: none; }
+      .empty-column-3 [data-column-index="3"] { display: none; }
+      .empty-column-4 [data-column-index="4"] { display: none; }
+      
+      .grid__container .visible-columns-1 { grid-template-columns: repeat(1, auto); }
+      .grid__container .visible-columns-2 { grid-template-columns: repeat(2, auto); }
+      .grid__container .visible-columns-3 { grid-template-columns: repeat(3, auto); }
+      .grid__container .visible-columns-4 { grid-template-columns: repeat(4, auto); }
+      .grid__container .visible-columns-5 { grid-template-columns: repeat(5, auto); }
 
       /* ANY OTHER STYLES THAT NEED MUSTACHE.JS CAPABILITIES */
     </style>
@@ -205,22 +218,58 @@
 
         <div class="container fit">
 
-          <div class="grid__container" data-max-height="dynamic">
-            <div class="grid js-cell-count-container">
-              <div class="grid__item grid__item--heading grid__item--left">{{{TF_heading-1--mmt}}}{{^TF_heading-1--mmt}}Product{{/TF_heading-1--mmt}}</div>
-              <div class="grid__item grid__item--heading grid__item--headingQty">{{{TF_heading-2--mmt}}}{{^TF_heading-2--mmt}}Qty.{{/TF_heading-2--mmt}}</div>
-              <div class="grid__item grid__item--heading">{{{TF_heading-3--mmt}}}{{^TF_heading-3--mmt}}Cat. No.{{/TF_heading-3--mmt}}</div>
-              <div class="grid__item grid__item--heading grid__item--headingListPrice">{{{TF_heading-4--mmt}}}{{^TF_heading-4--mmt}}List Price{{/TF_heading-4--mmt}}</div>
-              <div class="grid__item grid__item--heading">{{{TF_heading-5--mmt}}}{{^TF_heading-5--mmt}}<span class="promo">Promo</span> Price{{/TF_heading-5--mmt}}</div>
+          <div 
+               class="grid__container" 
+               data-max-height="dynamic">
+            <div class="grid js-cell-count-container" data-empty-columns-check="container">
+              <div 
+                   class="grid__item grid__item--heading grid__item--left"
+                   >{{{TF_heading-1--mmt}}}{{^TF_heading-1--mmt}}Product{{/TF_heading-1--mmt}}</div>
+              <div 
+                   class="grid__item grid__item--heading grid__item--headingQty"
+                   data-column-index="1"
+                   >{{{TF_heading-2--mmt}}}{{^TF_heading-2--mmt}}Qty.{{/TF_heading-2--mmt}}</div>
+              <div 
+                   class="grid__item grid__item--heading"
+                   data-column-index="2"
+                   >{{{TF_heading-3--mmt}}}{{^TF_heading-3--mmt}}Cat. No.{{/TF_heading-3--mmt}}</div>
+              <div 
+                   class="grid__item grid__item--heading grid__item--headingListPrice"
+                   data-column-index="3"
+                   >{{{TF_heading-4--mmt}}}{{^TF_heading-4--mmt}}List Price{{/TF_heading-4--mmt}}</div>
+              <div 
+                   class="grid__item grid__item--heading"
+                   data-column-index="4"
+                   >{{{TF_heading-5--mmt}}}{{^TF_heading-5--mmt}}<span class="promo">Promo</span> Price{{/TF_heading-5--mmt}}</div>
 
               {{#collection.TF_products--mmt}}
               {{#block.TF_product--mmt}}
               <div class="grid__item grid__item--left grid__item--span" data-row-span="{{#spreadsheet.TF_table-data--mmt2}}1{{/spreadsheet.TF_table-data--mmt2}}">{{{TF_product-name--mmt}}}</div>
               {{#spreadsheet.TF_table-data--mmt2}}
-              <div class="grid__item grid__item--singleProduct style--{{{row-style}}}">{{{column-1}}}</div>
-              <div class="grid__item grid__item--singleProduct style--{{{row-style}}}">{{{column-2}}}</div>
-              <div class="grid__item grid__item--singleProduct style--{{{row-style}}}">{{{column-3}}}</div>
-              <div class="grid__item grid__item--singleProduct style--{{{row-style}}}">{{{column-4}}}</div>
+              <div 
+                   class="grid__item grid__item--singleProduct style--{{{row-style}}}"
+                   {{^column-1}}data-empty-column-index="1"{{/column-1}}
+                   data-column-index="1"
+                   >{{{column-1}}}
+              </div>
+              <div 
+                   class="grid__item grid__item--singleProduct style--{{{row-style}}}"
+                   {{^column-2}}data-empty-column-index="2"{{/column-2}}
+                   data-column-index="2"                   
+                   >{{{column-2}}}
+              </div>
+              <div 
+                   class="grid__item grid__item--singleProduct style--{{{row-style}}}"
+                   {{^column-3}}data-empty-column-index="3"{{/column-3}}
+                   data-column-index="3"                   
+                   >{{{column-3}}}
+              </div>
+              <div 
+                   class="grid__item grid__item--singleProduct style--{{{row-style}}}"
+                   {{^column-4}}data-empty-column-index="4"{{/column-4}}
+                   data-column-index="4"                   
+                   >{{{column-4}}}
+              </div>
               {{/spreadsheet.TF_table-data--mmt2}}
               {{/block.TF_product--mmt}}
               {{/collection.TF_products--mmt}}
@@ -325,6 +374,50 @@
           dynamicCell.style.gridRow = `span ${rowSpan}`;
         }        
       }
+      
+function emptyColumnsCheck() {
+  const containerGrid = document.querySelector('[data-empty-columns-check="container"]');
+  const totalColumns = 5;
+  let emptyColumnsCount = 0;
+  let rowsCount = 0;
+  
+// checking how many rows are added to all the tables
+{{#collection.TF_products--mmt}}
+{{#block.TF_product--mmt}}
+{{#spreadsheet.TF_table-data--mmt2}}
+  ++rowsCount;
+{{/spreadsheet.TF_table-data--mmt2}}
+{{/block.TF_product--mmt}}    
+{{/collection.TF_products--mmt}}
+  
+    const emptyCells = {
+        'column-1': 0,
+        'column-2': 0,
+        'column-3': 0,
+        'column-4': 0
+    };
+
+    for (let i = 1; i <= totalColumns - 1; i++) {
+      // collecting all the empty cells per column
+        const columnEmptyCells = containerGrid.querySelectorAll(`[data-empty-column-index="${i}"]`).length;
+        
+        emptyCells[`column-${i}`] += columnEmptyCells;
+    }
+
+    for ( const column of Object.keys(emptyCells) ) {
+      if ( emptyCells[column] === rowsCount ) {
+        // adding a class to the grid and telling it which columns to hide
+        containerGrid.classList.add(`empty-${column}`);
+        ++emptyColumnsCount;
+      }
+    }
+  
+  	// adding a class to the grid and telling it which columns are visible 
+    //so the grid-template-columns property can be set properly
+  	containerGrid.classList.add(`visible-columns-${totalColumns - emptyColumnsCount}`);
+}
+      
+      emptyColumnsCheck();
 
       rowSpanCalculator();
 
